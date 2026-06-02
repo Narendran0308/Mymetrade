@@ -490,11 +490,11 @@ p {
 
 .navbar {
     position: fixed;
-    top: 70px;
+    top: 55px;
     left: 50%;
     transform: translateX(-50%);
     width: min(1280px, calc(100% - 32px));
-    z-index: 999;
+    z-index: 1001;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -520,7 +520,7 @@ p {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(14px, 2.2vw, 34px);
+    gap: clamp(10px, 2vw, 24px);
     margin: 0 auto;
     flex-wrap: nowrap;
     justify-content: center;
@@ -593,13 +593,26 @@ p {
     font-family: "Poppins", sans-serif;
     text-align: center;
     max-width: 1200px;
-    margin: 12% auto 0;
+    margin: 22% auto 0;
     padding: 0 20px;
     font-size: clamp(2.5rem, 4.8vw, 4.25rem);
     line-height: 1.1;
     position: relative;
     z-index: 2;
     animation: fadeIn 0.8s ease-out;
+}
+
+/* Ensure hero clears fixed navbar on smaller screens */
+@media (max-width: 1024px) {
+    .content {
+        margin-top: 28%;
+    }
+}
+
+@media (max-width: 420px) {
+    .content {
+        margin-top: 34%;
+    }
 }
 
 .content strong {
@@ -612,8 +625,8 @@ p {
     margin: 22px auto 0;
     padding: 10px 18px;
     border-radius: 6px;
-    background: #fff;
-    color: #000;
+    /* background: #fff; */
+    color: #ffffff;
     font-size: clamp(1rem, 1.8vw, 1.45rem);
     font-weight: 700;
     line-height: 1.35;
@@ -780,15 +793,18 @@ p {
 /* scrolling track */
 .marquee-track {
     display: flex;
+    width: max-content;
     gap: 0;
-    animation: scroll 15s linear infinite;
+    animation: scroll 20s linear infinite;
+        will-change: transform;
+    transform: translateZ(0);
 }
 
 .marquee-set {
     display: flex;
     flex-shrink: 0;
     gap: var(--marquee-gap);
-    padding-right: var(--marquee-gap);
+    /* padding-right: var(--marquee-gap); */
 }
 
 /* each item */
@@ -820,11 +836,11 @@ p {
 
 /* animation */
 @keyframes scroll {
-    0% {
+    from{
         transform: translateX(0%);
     }
 
-    100% {
+    to {
         transform: translateX(-50%);
     }
 }
@@ -1017,7 +1033,7 @@ p {
     color: var(--text-secondary);
     margin-bottom: 60px;
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    font-size: clamp(1.15rem, 2.6vw, 1.6rem);
 }
 
 .timeline {
@@ -1127,6 +1143,7 @@ button {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
 }
 
 
@@ -1396,7 +1413,7 @@ ul li::after {
 
 .proof-subtitle {
     color: var(--text-secondary);
-    font-size: 20px;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
     line-height: 1.55;
     margin: 0 0 55px;
     font-weight: 400;
@@ -1501,7 +1518,7 @@ ul li::after {
 }
 
 .cta-title {
-    font-size: 65px;
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
     line-height: 1.05;
     font-weight: 800;
     color: var(--heading-color);
@@ -1511,7 +1528,7 @@ ul li::after {
 
 .cta-subtitle {
     color: var(--text-secondary);
-    font-size: 19px;
+    font-size: clamp(1.05rem, 2.2vw, 1.4rem);
     line-height: 1.55;
     margin: 0 auto 38px;
     font-weight: 400;
@@ -1534,12 +1551,37 @@ ul li::after {
 
 .faq-title {
     text-align: center;
-    font-size: 72px;
+    font-size: clamp(2.75rem, 7vw, 4.5rem);
     line-height: 0.95;
     font-weight: 800;
     color: var(--heading-color);
     margin: 0 0 45px;
     letter-spacing: -2px;
+}
+
+/* Small-screen adjustments for very narrow devices */
+@media (max-width: 420px) {
+    .cta-title {
+        font-size: clamp(1.6rem, 6vw, 2.6rem);
+        line-height: 1.08;
+    }
+
+    .faq-title {
+        font-size: clamp(1.6rem, 6vw, 2.8rem);
+        line-height: 1.06;
+    }
+
+    .title {
+        font-size: clamp(1.5rem, 5.5vw, 2.6rem);
+    }
+
+    .cta-subtitle,
+    .help-subtitle,
+    .proof-subtitle,
+    .progress-para p,
+    .subtitle {
+        font-size: clamp(0.98rem, 3.8vw, 1.15rem);
+    }
 }
 
 .faq-list {
@@ -1683,7 +1725,7 @@ ul li::after {
 
 .help-subtitle {
     color: var(--text-secondary);
-    font-size: 19px;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
     line-height: 1.55;
     margin: 0 auto 38px;
     font-weight: 400;
@@ -1981,10 +2023,12 @@ html {
 
 @media (max-width: 1024px) {
     .navbar {
+        left: 50%;
+        transform: translateX(-50%);
         width: calc(100% - 24px);
         border-radius: 30px;
         padding: 12px 16px;
-        top: 68px;
+        top: 46px;
     }
     .nav-links {
         display: flex;
@@ -2089,8 +2133,10 @@ html {
 }
 
     .navbar {
+        left: 0;
+        transform: none;
         width: 100%;
-        top: 60px;
+        top: 46px;
         padding: 12px 18px;
         border-radius: 0;
         overflow: visible;
@@ -2328,7 +2374,9 @@ html {
 
 @media only screen and (max-width: 575px) {
     .navbar {
-        top: 100px;
+        left: 0;
+        transform: none;
+        top: 48px;
         border-radius: 0;
         width: 100%;
         padding: 10px 12px;
@@ -3648,9 +3696,9 @@ body.payment-page .payment-page-cards .plan-badge {
     }
 }
 
-/* Compact spacing pass */
+/* Compact spacing pass: ensure hero clears fixed navbar by enforcing a minimum pixel offset */
 .content {
-    margin-top: clamp(7rem, 8vw, 9rem);
+    margin-top: max(clamp(7rem, 8vw, 9rem), 200px);
 }
 
 .content-note {
@@ -3682,9 +3730,9 @@ body.payment-page .payment-page-cards .plan-badge {
     margin-bottom: 3rem;
 }
 
-.marquee-track {
+/* .marquee-track {
     gap: 0;
-}
+} */
 
 .benefits strong {
     margin-top: 3rem;
@@ -3790,7 +3838,7 @@ footer {
 
 @media (max-width: 768px) {
     .content {
-        margin-top: 10rem;
+        margin-top: max(10rem, 160px);
     }
 
     .video {
@@ -3803,8 +3851,34 @@ footer {
     }
 
     .marquee-wrapper {
-        padding: 24px 0;
+        padding: 18px 0;
         margin-bottom: 2rem;
+    }
+
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+        width: min(16vw, 72px);
+    }
+
+    /* .marquee-track {
+        animation-duration: 8.5s;
+    } */
+
+    .marquee-set {
+        gap: clamp(16px, 4vw, 32px);
+        padding-right: clamp(16px, 4vw, 32px);
+    }
+
+    .marquee-set .item {
+        flex: 0 0 clamp(110px, 22vw, 140px);
+    }
+
+    .marquee-set .item h2 {
+        font-size: clamp(24px, 6vw, 38px);
+    }
+
+    .marquee-set .item p {
+        font-size: clamp(12px, 3.2vw, 16px);
     }
 
     .benefits strong {
@@ -3827,7 +3901,7 @@ footer {
 
 @media only screen and (max-width: 575px) {
     .content {
-        margin-top: 9rem;
+        margin-top: max(9rem, 140px);
     }
 
     .video {
@@ -3844,6 +3918,37 @@ footer {
 
     .faq-title {
         margin-bottom: 20px;
+    }
+
+    .marquee-wrapper {
+        padding: 14px 0;
+        margin-bottom: 1.75rem;
+    }
+
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+        width: min(12vw, 56px);
+    }
+
+    /* .marquee-track {
+        animation-duration: 7.5s;
+    } */
+
+    .marquee-set {
+        gap: clamp(14px, 4vw, 28px);
+        padding-right: clamp(14px, 4vw, 28px);
+    }
+
+    .marquee-set .item {
+        flex: 0 0 clamp(100px, 26vw, 130px);
+    }
+
+    .marquee-set .item h2 {
+        font-size: clamp(22px, 7vw, 34px);
+    }
+
+    .marquee-set .item p {
+        font-size: clamp(11px, 3.5vw, 14px);
     }
 }
 
