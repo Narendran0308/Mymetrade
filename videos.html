@@ -1,0 +1,724 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Lessons | MyMeTrades</title>
+    <script>
+        document.documentElement.classList.add("videos-gate-pending");
+        fetch("backend/check_video_access.php", { credentials: "same-origin", cache: "no-store" })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                if (data.allowed) {
+                    document.documentElement.classList.remove("videos-gate-pending");
+                    return;
+                }
+                if (data.reason === "login_required") {
+                    location.replace("login.html?next=course-videos");
+                    return;
+                }
+                location.replace("payment.html?from=course-videos");
+            })
+            .catch(function () {
+                location.replace("login.html?next=course-videos");
+            });
+    </script>
+    <style>html.videos-gate-pending body { visibility: hidden; }</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .videos-page {
+            min-height: 100vh;
+            padding: 120px 20px 80px;
+        }
+
+        .videos-shell {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+        }
+
+        .videos-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .videos-header h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--heading-color);
+        }
+
+        .videos-header p {
+            margin: 0;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-inline: auto;
+        }
+
+        .videos-notice {
+            margin-top: 18px;
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            background: var(--accent-soft);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .membership-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+            padding: 20px 22px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--card-bg);
+            box-shadow: var(--shadow-card);
+        }
+
+        .membership-card h2 {
+            grid-column: 1 / -1;
+            margin: 0 0 4px;
+            font-size: 18px;
+            color: var(--heading-color);
+        }
+
+        .membership-stat {
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-tertiary);
+        }
+
+        .membership-stat span {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .membership-stat strong {
+            color: var(--heading-color);
+            font-size: 16px;
+        }
+
+        .membership-stat.highlight strong {
+            color: var(--accent-color);
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: minmax(260px, 320px) 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .video-list {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+        }
+
+        .video-list h2 {
+            margin: 0;
+            padding: 18px 20px;
+            font-size: 18px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--heading-color);
+        }
+
+        .video-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            max-height: 520px;
+            overflow-y: auto;
+        }
+
+        .video-list li button {
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            border: 0;
+            border-bottom: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .video-list li button:hover,
+        .video-list li button.active {
+            background: var(--accent-soft);
+        }
+
+        .video-list li strong {
+            display: block;
+            color: var(--heading-color);
+            margin-bottom: 4px;
+        }
+
+        .video-list li span {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .player-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+        }
+
+        .player-wrap {
+            position: relative;
+            background: #0f172a;
+            aspect-ratio: 16 / 9;
+        }
+
+        .player-wrap video,
+        .vdocipher-player-host {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #000;
+        }
+
+        .player-wrap video[hidden] {
+            display: none;
+        }
+
+        .video-watermark {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.55);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+            user-select: none;
+        }
+
+        .video-privacy-overlay {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.74);
+            color: #fff;
+            font-size: 15px;
+            line-height: 1.5;
+            text-align: center;
+            pointer-events: none;
+            z-index: 6;
+            user-select: none;
+        }
+
+        .video-privacy-overlay[hidden] {
+            display: none !important;
+        }
+
+        .player-meta {
+            padding: 20px 22px 24px;
+        }
+
+        .player-meta h3 {
+            margin: 0 0 8px;
+            color: var(--heading-color);
+        }
+
+        .player-meta p {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .auth-gate {
+            text-align: center;
+            padding: 48px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+        }
+
+        .auth-gate a {
+            display: inline-flex;
+            margin-top: 18px;
+            padding: 14px 28px;
+            border-radius: var(--radius-sm);
+            background: var(--accent-gradient);
+            color: var(--btn-text) !important;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 6px 18px var(--accent-glow);
+        }
+
+        .top-nav-simple {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top-nav-simple a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .top-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logout-btn {
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: var(--radius-sm);
+            padding: 8px 14px;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav-simple">
+        <a href="index.html">Back to Home</a>
+        <div class="top-nav-actions">
+            <a id="account-link" href="login.html">Account</a>
+            <button type="button" id="logout-btn" class="nav-logout-btn" hidden>Logout</button>
+        </div>
+    </div>
+
+    <main class="videos-page">
+        <div class="videos-shell">
+            <div class="videos-header">
+                <h1>Our Course <span class="element">Videos</span></h1>
+                <p>Watch protected mentorship lessons on Nifty, Bank Nifty, Gold and trading discipline.</p>
+                <!-- <p class="videos-notice">Protected viewing: right-click and download are disabled on this player, and your email is watermarked. Screenshots and screen recording are prohibited. The player will pause if protected playback is interrupted.</p> -->
+            </div>
+
+            <div id="auth-gate" class="auth-gate" hidden>
+                <h2>Login required</h2>
+                <p>Sign in with your member account to access Our course videos.</p>
+                <a href="login.html">Go to Login</a>
+            </div>
+
+            <div id="payment-gate" class="auth-gate" hidden>
+                <h2>Payment verification pending</h2>
+                <p id="payment-gate-text">Videos unlock after our team confirms your payment. If you already paid, share your payment screenshot via the contact form.</p>
+                <p id="payment-gate-plan" class="videos-notice" style="margin-top:16px;"></p>
+                <a href="payment.html">View Batches &amp; Pay</a>
+                <a href="index.html#contact-section" style="margin-left:12px;background:transparent;color:var(--accent-color)!important;box-shadow:none;border:1px solid var(--border-color);">Contact Support</a>
+            </div>
+
+            <div id="membership-card" class="membership-card" hidden>
+                <h2>Your mentorship access</h2>
+                <div class="membership-stat">
+                    <span>Email</span>
+                    <strong id="m-email">â€”</strong>
+                </div>
+                <div class="membership-stat">
+                    <span>Active batch</span>
+                    <strong id="m-plan">â€”</strong>
+                </div>
+                <div class="membership-stat highlight">
+                    <span>Access remaining</span>
+                    <strong id="m-expiry">â€”</strong>
+                </div>
+                <div class="membership-stat">
+                    <span>Valid until</span>
+                    <strong id="m-until">â€”</strong>
+                </div>
+            </div>
+
+            <div id="videos-app" class="videos-grid" hidden>
+                <aside class="video-list">
+                    <h2>Lessons</h2>
+                    <ul id="video-items"></ul>
+                </aside>
+                <section class="player-panel">
+                    <div id="player-wrap" class="player-wrap">
+                        <video id="course-player" playsinline controls controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;" hidden></video>
+                        <div id="video-watermark" class="video-watermark"></div>
+                        <div id="video-privacy-overlay" class="video-privacy-overlay" hidden>
+                            Protected educational content. Screenshots and recording are not allowed.
+                        </div>
+                    </div>
+                    <div class="player-meta">
+                        <h3 id="active-title">Select a lesson</h3>
+                        <p id="active-description">Choose a lesson from the list, then press play in the video player.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const player = document.getElementById("course-player");
+        const playerWrap = document.getElementById("player-wrap");
+        const watermark = document.getElementById("video-watermark");
+        const privacyOverlay = document.getElementById("video-privacy-overlay");
+        const authGate = document.getElementById("auth-gate");
+        const paymentGate = document.getElementById("payment-gate");
+        const paymentGateText = document.getElementById("payment-gate-text");
+        const paymentGatePlan = document.getElementById("payment-gate-plan");
+        const membershipCard = document.getElementById("membership-card");
+        const videosApp = document.getElementById("videos-app");
+        const videoItems = document.getElementById("video-items");
+        const activeTitle = document.getElementById("active-title");
+        const activeDescription = document.getElementById("active-description");
+        const accountLink = document.getElementById("account-link");
+        const logoutButton = document.getElementById("logout-btn");
+
+        let videos = [];
+        let viewerEmail = "Member";
+
+        function resetPlayerForGate() {
+            videos = [];
+            videoItems.innerHTML = "";
+            activeTitle.textContent = "Select a lesson";
+            activeDescription.textContent = "Choose a lesson from the list, then press play in the video player.";
+            player.pause();
+            player.removeAttribute("src");
+            player.load();
+        }
+
+        function updateAuthActions(isLoggedIn) {
+            if (isLoggedIn) {
+                accountLink.textContent = "My Account";
+                accountLink.href = "videos.html";
+                logoutButton.hidden = false;
+                return;
+            }
+
+            accountLink.textContent = "Login";
+            accountLink.href = "login.html?next=course-videos";
+            logoutButton.hidden = true;
+        }
+
+        function hidePrivacyOverlay() {
+            if (privacyOverlay) {
+                privacyOverlay.hidden = true;
+            }
+        }
+
+        function showPrivacyOverlay(message) {
+            if (!privacyOverlay) {
+                return;
+            }
+            privacyOverlay.textContent = message || "Protected educational content. Screenshots and recording are prohibited.";
+            privacyOverlay.hidden = false;
+        }
+
+        function protectPlayer() {
+            playerWrap.addEventListener("contextmenu", (event) => event.preventDefault());
+
+            document.addEventListener("contextmenu", (event) => {
+                if (event.target.closest("#player-wrap")) {
+                    event.preventDefault();
+                }
+            });
+
+            if (player.controlsList) {
+                player.controlsList.add("nofullscreen");
+                player.controlsList.add("nodownload");
+            }
+
+            const pauseLocalAndProtect = () => {
+                if (!player.paused) {
+                    player.pause();
+                }
+                showPrivacyOverlay("Protected educational content. Recording and screenshots are not allowed.");
+            };
+
+            document.addEventListener("fullscreenchange", () => {
+                if (document.fullscreenElement) {
+                    pauseLocalAndProtect();
+                }
+            });
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    pauseLocalAndProtect();
+                } else {
+                    hidePrivacyOverlay();
+                }
+            });
+
+            window.addEventListener("blur", () => {
+                pauseLocalAndProtect();
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (!event.target.closest("#player-wrap") && event.target !== player) {
+                    return;
+                }
+
+                const key = event.key.toLowerCase();
+                const blockedShortcuts = ["s", "p", "u", "i", "j", "c", "r"];
+
+                if (event.key === "PrintScreen" || key === "printscreen") {
+                    event.preventDefault();
+                    pauseLocalAndProtect();
+                }
+
+                if (event.key === "F12") {
+                    event.preventDefault();
+                }
+
+                if ((event.ctrlKey || event.metaKey) && blockedShortcuts.includes(key)) {
+                    event.preventDefault();
+                    pauseLocalAndProtect();
+                }
+            });
+
+            player.addEventListener("contextmenu", (event) => event.preventDefault());
+            player.addEventListener("dragstart", (event) => event.preventDefault());
+        }
+
+        function formatSize(bytes) {
+            const size = Number(bytes) || 0;
+            if (size < 1024 * 1024) {
+                return Math.max(1, Math.round(size / 1024)) + " KB";
+            }
+            return (size / (1024 * 1024)).toFixed(1) + " MB";
+        }
+
+        function setActiveLesson(video) {
+            activeTitle.textContent = video.title;
+            activeDescription.textContent = video.description || "No description provided.";
+            videoItems.querySelectorAll("button").forEach((button) => {
+                button.classList.toggle("active", Number(button.dataset.id) === Number(video.id));
+            });
+        }
+
+        let _overlayOriginalBg = null;
+        function showError(message) {
+            if (!privacyOverlay) return;
+            if (_overlayOriginalBg === null) _overlayOriginalBg = privacyOverlay.style.background || '';
+            privacyOverlay.style.background = 'rgba(180,20,20,0.9)';
+            privacyOverlay.textContent = message;
+            privacyOverlay.hidden = false;
+            privacyOverlay.style.pointerEvents = 'auto';
+        }
+
+        function hideError() {
+            if (!privacyOverlay) return;
+            privacyOverlay.hidden = true;
+            privacyOverlay.style.background = _overlayOriginalBg || '';
+            privacyOverlay.style.pointerEvents = 'none';
+        }
+
+        async function loadLocalVideo(video) {
+            hidePrivacyOverlay();
+            hideError();
+            player.hidden = false;
+            var src = "backend/stream_video.php?id=" + encodeURIComponent(video.id);
+            if (video.stream_token) {
+                src += "&t=" + encodeURIComponent(video.stream_token);
+            }
+
+            // Probe the stream endpoint with a small ranged request to detect HTTP errors early
+            try {
+                const probe = await fetch(src, {
+                    method: 'GET',
+                    credentials: 'same-origin',
+                    cache: 'no-store',
+                    headers: { 'Range': 'bytes=0-0' }
+                });
+
+                if (!probe.ok) {
+                    // Try to read a short error message from the body if present
+                    let bodyText = '';
+                    try { bodyText = await probe.text(); } catch (e) { bodyText = probe.statusText; }
+                    showError('Stream error: ' + probe.status + ' — ' + (bodyText || probe.statusText));
+                    player.removeAttribute('src');
+                    player.load();
+                    console.warn('Stream probe failed', probe.status, bodyText);
+                    return;
+                }
+
+                // Cancel the probe response body to prevent stalling connections
+                if (probe.body && typeof probe.body.cancel === 'function') {
+                    probe.body.cancel().catch(() => {});
+                }
+            } catch (err) {
+                showError('Network error while contacting streamer: ' + (err.message || err));
+                console.error(err);
+                return;
+            }
+
+            player.src = src;
+            player.load();
+            setActiveLesson(video);
+        }
+
+        function playVideo(video) {
+            // Always load local video via our protected streamer.
+            // Playback is started by the browser controls after the user clicks play.
+            loadLocalVideo(video);
+        }
+
+        function renderList() {
+            videoItems.innerHTML = "";
+
+            if (!videos.length) {
+                videoItems.innerHTML = "<li><button type=\"button\" disabled>No lessons uploaded yet</button></li>";
+                return;
+            }
+
+            videos.forEach((video, index) => {
+                const li = document.createElement("li");
+                const button = document.createElement("button");
+                button.type = "button";
+                button.dataset.id = video.id;
+                const planTag = video.plan_label ? " Â· " + video.plan_label : "";
+                button.innerHTML = "<strong>" + escapeHtml(video.title) + "</strong><span>" + formatSize(video.file_size) + planTag + "</span>";
+                button.addEventListener("click", () => playVideo(video));
+                li.appendChild(button);
+                videoItems.appendChild(li);
+
+                if (index === 0) {
+                    button.classList.add("active");
+                }
+            });
+
+            playVideo(videos[0]);
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function renderMembership(membership) {
+            if (!membership || !membership.has_access) {
+                membershipCard.hidden = true;
+                return;
+            }
+
+            membershipCard.hidden = false;
+            document.getElementById("m-email").textContent = membership.email || "â€”";
+            document.getElementById("m-plan").textContent = membership.plan_label || "â€”";
+
+            if (membership.is_lifetime) {
+                document.getElementById("m-expiry").textContent = "Lifetime";
+                document.getElementById("m-until").textContent = "No expiry";
+            } else {
+                document.getElementById("m-expiry").textContent =
+                    (membership.days_remaining ?? 0) + " day(s)";
+                document.getElementById("m-until").textContent = membership.expires_label || "â€”";
+            }
+        }
+
+        function showAccessGate(reason, message, membership) {
+            resetPlayerForGate();
+            authGate.hidden = true;
+            paymentGate.hidden = true;
+            membershipCard.hidden = true;
+            videosApp.hidden = true;
+
+            if (reason === "payment_required") {
+                if (message) {
+                    paymentGateText.textContent = message;
+                }
+                if (membership && membership.pending_plan_label) {
+                    paymentGatePlan.textContent =
+                        "Your selected plan: " + membership.pending_plan_label +
+                        ". We will activate it after payment verification.";
+                    paymentGatePlan.hidden = false;
+                } else {
+                    paymentGatePlan.hidden = true;
+                }
+                paymentGate.hidden = false;
+                return;
+            }
+
+            authGate.hidden = false;
+        }
+
+        async function initVideos() {
+            protectPlayer();
+            updateAuthActions(false);
+
+            try {
+                const response = await fetch("backend/list_videos.php", {
+                    credentials: "same-origin",
+                    cache: "no-store"
+                });
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    updateAuthActions(data.reason !== "login_required");
+                    showAccessGate(data.reason || "login_required", data.message || "", data.membership || null);
+                    return;
+                }
+
+                videos = data.videos || [];
+                const membership = data.membership || null;
+                viewerEmail = membership?.email || data.viewer?.email || "Member";
+                // watermark.textContent = viewerEmail + " protected stream";
+
+                renderMembership(membership);
+                authGate.hidden = true;
+                paymentGate.hidden = true;
+                videosApp.hidden = false;
+                updateAuthActions(true);
+                renderList();
+            } catch (error) {
+                updateAuthActions(false);
+                showAccessGate("login_required");
+            }
+        }
+
+        logoutButton.addEventListener("click", async () => {
+            try {
+                await fetch("backend/logout.php", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    cache: "no-store"
+                });
+            } catch (error) {
+                // Ignore and continue redirect.
+            }
+            location.replace("login.html?next=course-videos");
+        });
+
+        initVideos();
+    </script>
+</body>
+</html>

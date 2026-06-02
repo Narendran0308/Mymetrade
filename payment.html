@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans &amp; Payment | MyMeTrades</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="payment-page">
+    <div class="payment-page-shell">
+        <header class="payment-page-header">
+            <a href="index.html" class="payment-page-logo">
+                <img src="image.avif" alt="MyMeTrades logo">
+            </a>
+            <a href="terms.html" class="payment-page-back">← Back to Terms</a>
+        </header>
+
+        <main class="payment-page-main">
+            <section id="pricing" class="pricing payment-page-pricing">
+                <div class="pricing-section">
+                    <p id="course-videos-notice" class="payment-page-notice" hidden>
+                        Complete payment to unlock Our course videos. After you pay, our team will verify and activate your account.
+                    </p>
+                    <p class="payment-page-kicker">Complete your mentorship access</p>
+                    <h1 class="title payment-page-title">
+                        Choose the <span>plan</span><br>that suits your trading journey.
+                    </h1>
+                    <p class="subtitle payment-page-subtitle">
+                        Pick the batch that matches your time, goals and learning pace.
+                    </p>
+
+                    <div class="pricing-cards payment-page-cards">
+                        <article class="card0 payment-plan-card" data-plan="weekly" tabindex="0" role="button" aria-pressed="false">
+                        <h3>20-Day <br>Session</h3>
+                        <h1>12K <span>(INR)</span></h1>
+                        <p class="sub">20 days live market access + starter lessons</p>
+                        <ul>
+                            <li>Daily live market session for 20 days</li>
+                            <li>Focus: F&amp;O and Forex, including Nifty and Bank Nifty</li>
+                            <li>Entry, exit and stop-loss levels shared only when a valid setup is present.</li>
+                            <li>Starter course video access included for this tier</li>
+                            <li>Basic community support for market updates and doubts</li>
+                            <li>You will be added to the private community after payment verification.</li>
+                            <li>No cancellation, no refund</li>
+                        </ul>
+                        <button type="button" class="price-btn payment-select-btn">select weekly mentorship</button>
+                    </article>
+
+                    <article class="card0 payment-plan-card" data-plan="monthly" tabindex="0" role="button" aria-pressed="false">
+                        <h3>40-Day <br>Session</h3>
+                        <h1>49K <span>(INR)</span></h1>
+                        <p class="sub">40 days live access + deeper course lessons</p>
+                        <ul>
+                            <li>Daily live market session for 40 days</li>
+                            <li>Focus: F&amp;O, Forex, Nifty, Bank Nifty and Gold</li>
+                            <li>Learn how to wait, plan and manage trades through real market conditions.</li>
+                            <li>Mentorship support for doubts, reviews and execution discipline</li>
+                            <li>Full access to the structured trading course</li>
+                            <li>You will be added to the private community after payment verification.</li>
+                            <li>Refund policy applies as mentioned on the website</li>
+                        </ul>
+                        <button type="button" class="price-btn payment-select-btn">Select Monthly entorship</button>
+                    </article>
+
+                    <article class="card0 payment-plan-card highlight" data-plan="lifetime" tabindex="0" role="button" aria-pressed="false">
+                        <div class="plan-badge best-value">
+                            Best Value
+                            <small>Includes 1:1 Coaching</small>
+                        </div>
+                        <h3>Lifetime <br>Mentorship</h3>
+                        <h1>99K <span>(INR)</span></h1>
+                        <p class="sub">One-time payment for long-term learning</p>
+                        <ul>
+                            <li>Daily live market session access for lifetime members</li>
+                            <li>Focus: F&amp;O, Forex, Nifty, Bank Nifty and Gold</li>
+                            <li>Long-term guidance for building discipline through changing market phases.</li>
+                            <li>Full access to the complete trading course</li>
+                            <li>1-on-1 coaching</li>
+                            <li>You will be added to the private community after payment verification.</li>
+                            <li>Refund policy applies as mentioned on the website</li>
+                        </ul>
+                        <button type="button" class="price-btn payment-select-btn">Select Lifetime Mentorship</button>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="payment-checkout-section" id="checkout">
+                <div class="payment-checkout-inner">
+                <h2>Complete Payment</h2>
+                <p class="payment-checkout-hint">Select your batch, then pay the exact amount below.</p>
+
+                <div class="payment-selected-bar">
+                    <p class="payment-label">Amount to pay</p>
+                    <p class="payment-selected-amount" id="payment-selected-amount">₹12,000</p>
+                    <p class="payment-selected-plan" id="payment-selected-plan">20-Day Batch</p>
+                </div>
+
+                <button type="button" class="pay-now-btn" id="pay-now-btn">Pay ₹12,000 — 20-Day Batch</button>
+
+                <div class="qr-panel" id="qr-panel" aria-hidden="true">
+                    <p class="payment-label">Scan QR to pay <span id="qr-plan-amount">₹12,000</span></p>
+                    <p class="qr-plan-name" id="qr-plan-name">20-Day Batch (12K INR)</p>
+                    <div class="qr-frame">
+                        <img src="QR.jpeg" alt="Payment QR code" id="payment-qr">
+                        <div class="qr-fallback" id="qr-fallback">
+                            Add your QR image as <strong>payment-qr.png</strong> in the project folder.
+                        </div>
+                    </div>
+                    <p class="qr-note">Transfer the exact plan amount shown above. After payment, share your screenshot with the team for admin verification.</p>
+                    <a href="index.html#contact-section" class="payment-contact">Contact Support</a>
+                </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function ensureTermsOrLogin() {
+            const fromCourseVideos =
+                new URLSearchParams(window.location.search).get("from") === "course-videos";
+
+            if (fromCourseVideos) {
+                const notice = document.getElementById("course-videos-notice");
+                if (notice) {
+                    notice.hidden = false;
+                }
+            }
+
+            if (sessionStorage.getItem("termsAccepted") === "true") {
+                return Promise.resolve();
+            }
+            return fetch("backend/member_access.php", { credentials: "same-origin" })
+                .then((response) => (response.ok ? response.json() : null))
+                .then((data) => {
+                    if (data?.membership?.has_access) {
+                        window.location.replace("videos.html");
+                        return;
+                    }
+                    if (!data?.success) {
+                        window.location.replace(
+                            fromCourseVideos ? "login.html?next=course-videos" : "terms.html"
+                        );
+                    }
+                })
+                .catch(() => {
+                    window.location.replace(
+                        fromCourseVideos ? "login.html?next=course-videos" : "terms.html"
+                    );
+                });
+        }
+
+        const PLAN_META = {
+            weekly: { label: "Weekly Mentorship", price_display: "₹12,000", price_short: "12K", currency: "INR" },
+            monthly: { label: "Monthly Mentorship", price_display: "₹49,000", price_short: "49K", currency: "INR" },
+            lifetime: { label: "Lifetime Mentorship", price_display: "₹99,000", price_short: "99K", currency: "INR" }
+        };
+
+        const planCards = document.querySelectorAll(".payment-plan-card");
+        const payNowButton = document.getElementById("pay-now-btn");
+        const qrPanel = document.getElementById("qr-panel");
+        const qrImage = document.getElementById("payment-qr");
+        const qrFallback = document.getElementById("qr-fallback");
+        const paymentSelectedAmount = document.getElementById("payment-selected-amount");
+        const paymentSelectedPlan = document.getElementById("payment-selected-plan");
+        const qrPlanAmount = document.getElementById("qr-plan-amount");
+        const qrPlanName = document.getElementById("qr-plan-name");
+
+        let activePlanType = sessionStorage.getItem("selectedPlan") || "weekly";
+
+        function saveSelectedPlanToAccount(planType) {
+            return fetch("backend/save_selected_plan.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "same-origin",
+                body: JSON.stringify({ plan_type: planType })
+            }).catch(() => {});
+        }
+
+        function updateCheckoutSummary(planType) {
+            const plan = PLAN_META[planType];
+            if (!plan) return;
+
+            paymentSelectedAmount.textContent = plan.price_display;
+            paymentSelectedPlan.textContent = plan.label;
+            qrPlanAmount.textContent = plan.price_display;
+            qrPlanName.textContent = plan.label + " (" + plan.price_short + " " + plan.currency + ")";
+            payNowButton.textContent = "Pay " + plan.price_display + " — " + plan.label;
+        }
+
+        function selectPlan(planType) {
+            if (!PLAN_META[planType]) return;
+
+            activePlanType = planType;
+            sessionStorage.setItem("selectedPlan", planType);
+
+            planCards.forEach((card) => {
+                const selected = card.dataset.plan === planType;
+                card.classList.toggle("is-selected", selected);
+                card.setAttribute("aria-pressed", selected ? "true" : "false");
+            });
+
+            updateCheckoutSummary(planType);
+            saveSelectedPlanToAccount(planType);
+
+            qrPanel.classList.remove("show");
+            qrPanel.setAttribute("aria-hidden", "true");
+            payNowButton.style.display = "";
+        }
+
+        planCards.forEach((card) => {
+            const planType = card.dataset.plan;
+            const activate = () => selectPlan(planType);
+
+            card.addEventListener("click", (event) => {
+                if (event.target.closest(".payment-select-btn")) {
+                    event.preventDefault();
+                }
+                activate();
+            });
+
+            card.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    activate();
+                }
+            });
+
+            card.querySelector(".payment-select-btn")?.addEventListener("click", (event) => {
+                event.stopPropagation();
+                activate();
+                document.getElementById("checkout").scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        });
+
+        qrImage.addEventListener("error", () => {
+            qrImage.style.display = "none";
+            qrFallback.classList.add("show");
+        });
+
+        payNowButton.addEventListener("click", () => {
+            qrPanel.classList.add("show");
+            qrPanel.setAttribute("aria-hidden", "false");
+            payNowButton.style.display = "none";
+            qrPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+
+        ensureTermsOrLogin().then(() => {
+            fetch("backend/member_access.php", { credentials: "same-origin" })
+                .then((response) => (response.ok ? response.json() : null))
+                .then((data) => {
+                    const fromPricing = sessionStorage.getItem("selectedPlan");
+                    if (fromPricing && PLAN_META[fromPricing]) {
+                        activePlanType = fromPricing;
+                        return;
+                    }
+                    const pending = data?.membership?.pending_plan;
+                    if (pending && PLAN_META[pending]) {
+                        activePlanType = pending;
+                    }
+                })
+                .catch(() => {})
+                .finally(() => selectPlan(activePlanType));
+        });
+    </script>
+</body>
+
+</html>

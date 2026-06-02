@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -9,12 +10,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
+    <div class="login-popup-overlay" id="login-popup" aria-hidden="true">
+        <div class="login-popup" role="dialog" aria-modal="true" aria-labelledby="login-popup-title">
+            <button type="button" class="login-popup-close" id="login-popup-close" aria-label="Close welcome popup">&times;</button>
+            <p class="login-popup-kicker">Vanakkam, login successful</p>
+            <h2 id="login-popup-title">Welcome to MyMeTrades</h2>
+            <p class="login-popup-text">
+                Your account is ready. Explore live market sessions, Tamil-friendly lessons, and a disciplined trading process built for Our traders.
+            </p>
+            <div class="login-popup-actions">
+                <a href="#pricing" class="login-popup-primary">View Plans</a>
+                <button type="button" class="login-popup-secondary" id="login-popup-continue">Continue</button>
+            </div>
+        </div>
+    </div>
+
     <div class="top">
-        <p>Lifetime Access Now Open. Limited Spots Available. Secure Yours Today.</p>
+        <p>Welcome traders. Lifetime mentorship is now open with limited seats.</p>
     </div>
 
     <div class="navbar">
@@ -33,12 +49,14 @@
             <a href="#testimonials">Testimonials</a>
             <a href="#faq">FAQ</a>
             <a href="#contact-section">Contact Us</a>
-            <a href="#pricing" class="join-btn">Join <span>›</span></a>
+            <a href="videos.html">Course Lessons</a>
+            <a href="admin.php">Admin</a>
+            <a href="login.html" class="join-btn">Join <span></span></a>
 
         </div>
 
         <!-- Hamburger -->
-        <div class="menu-toggle" id="menu-toggle">☰</div>
+        <div class="menu-toggle" id="menu-toggle">=</div>
 
     </div>
 
@@ -60,211 +78,408 @@
             <a href="#testimonials">Testimonials</a>
             <a href="#faq">FAQ</a>
             <a href="#contact-section">Contact Us</a>
-            <a href="#pricing" class="join-btn"> Join <span>›</span></a>
+            <a href="videos.html">Course Lessons</a>
+            <a href="admin.php">Admin</a>
+            <a href="login.html" class="join-btn"> Join <span></span></a>
         </div>
-
     </div>
 
 
     <div class="content">
-        <strong>A very simple Mechanical models  And trade with full of <span class="element">Confidence</span>
-
-        </strong>
+        <br>
+        <strong>Simple Mechanical Models and <br> Trade with Full Confidence</strong>
+        <p class="content-note">Not Necessary(or)No need(or) will never use candle patterns, indicators, Option chain, Greeks, open intrest,OFA and <br> Mathematics calculation</p>
     </div>
 
     <div class="video">
-    <video autoplay muted loop id="bg-video">
-        <source src="video.mp4" type="video/mp4">
-    </video>
+        <img src="MAN.gif" alt="Trading mentor" class="home-gif">
+        <svg viewBox="0 0 1000 600" class="trading-chart" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:var(--bg-primary);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:var(--bg-tertiary);stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="upGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" style="stop-color:var(--up-color);stop-opacity:0.3" />
+                    <stop offset="100%" style="stop-color:var(--up-color-glow);stop-opacity:0.7" />
+                </linearGradient>
+                <linearGradient id="downGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" style="stop-color:var(--down-color);stop-opacity:0.3" />
+                    <stop offset="100%" style="stop-color:var(--down-color-glow);stop-opacity:0.7" />
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Background -->
+            <rect width="1000" height="600" fill="url(#backgroundGradient)"/>
+            
+            <!-- Top info panel -->
+            <rect x="20" y="20" width="960" height="60" fill="var(--bg-secondary)" rx="8" opacity="0.8"/>
+            <text x="40" y="55" font-size="20" font-weight="bold" fill="var(--heading-color)" font-family="Poppins">BTC/USD</text>
+            <text x="40" y="75" font-size="14" fill="var(--text-secondary)" font-family="Poppins">Professional Trading Analysis</text>
+            <text x="850" y="55" font-size="16" font-weight="bold" fill="var(--heading-color)" font-family="Poppins">$45,280.50</text>
+            <text x="880" y="75" font-size="12" fill="var(--up-color)" font-family="Poppins">+2.35%</text>
+            
+            <!-- Grid lines -->
+            <g opacity="0.1" stroke="var(--text-primary)" stroke-width="1">
+                <line x1="60" y1="120" x2="960" y2="120"/>
+                <line x1="60" y1="180" x2="960" y2="180"/>
+                <line x1="60" y1="240" x2="960" y2="240"/>
+                <line x1="60" y1="300" x2="960" y2="300"/>
+                <line x1="60" y1="360" x2="960" y2="360"/>
+                <line x1="60" y1="420" x2="960" y2="420"/>
+                <line x1="60" y1="480" x2="960" y2="480"/>
+            </g>
+            
+            <!-- Y-axis labels -->
+            <g fill="var(--text-secondary)" font-size="12" font-family="Poppins" text-anchor="end">
+                <text x="50" y="125">45500</text>
+                <text x="50" y="185">45000</text>
+                <text x="50" y="245">44500</text>
+                <text x="50" y="305">44000</text>
+                <text x="50" y="365">43500</text>
+                <text x="50" y="425">43000</text>
+                <text x="50" y="485">42500</text>
+            </g>
+            
+            <!-- Volume bars in background -->
+            <g opacity="0.2" fill="var(--up-color-glow)">
+                <rect class="vol-bar" x="80" y="420" width="12" height="40"/>
+                <rect class="vol-bar" x="110" y="380" width="12" height="80"/>
+                <rect class="vol-bar" x="140" y="400" width="12" height="60"/>
+                <rect class="vol-bar" x="170" y="350" width="12" height="110"/>
+                <rect class="vol-bar" x="200" y="390" width="12" height="70"/>
+                <rect class="vol-bar" x="230" y="360" width="12" height="100"/>
+                <rect class="vol-bar" x="260" y="400" width="12" height="60"/>
+                <rect class="vol-bar" x="290" y="330" width="12" height="130"/>
+                <rect class="vol-bar" x="320" y="370" width="12" height="90"/>
+                <rect class="vol-bar" x="350" y="340" width="12" height="120"/>
+                <rect class="vol-bar" x="380" y="380" width="12" height="80"/>
+                <rect class="vol-bar" x="410" y="350" width="12" height="110"/>
+                <rect class="vol-bar" x="440" y="390" width="12" height="70"/>
+                <rect class="vol-bar" x="470" y="320" width="12" height="140"/>
+                <rect class="vol-bar" x="500" y="370" width="12" height="90"/>
+                <rect class="vol-bar" x="530" y="340" width="12" height="120"/>
+                <rect class="vol-bar" x="560" y="380" width="12" height="80"/>
+                <rect class="vol-bar" x="590" y="330" width="12" height="130"/>
+                <rect class="vol-bar" x="620" y="360" width="12" height="100"/>
+                <rect class="vol-bar" x="650" y="380" width="12" height="80"/>
+            </g>
+            
+            <!-- Candlesticks with wicks -->
+            <g class="candles">
+                <!-- Candle 1 - Green -->
+                <g class="candle candle-1">
+                    <line x1="85" y1="180" x2="85" y2="320" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="80" y="240" width="10" height="60" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 2 - Red -->
+                <g class="candle candle-2">
+                    <line x1="115" y1="160" x2="115" y2="340" stroke="var(--down-color-border)" stroke-width="1"/>
+                    <rect x="110" y="280" width="10" height="50" fill="var(--down-color)" stroke="var(--down-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 3 - Green -->
+                <g class="candle candle-3">
+                    <line x1="145" y1="200" x2="145" y2="300" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="140" y="220" width="10" height="70" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 4 - Green -->
+                <g class="candle candle-4">
+                    <line x1="175" y1="140" x2="175" y2="360" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="170" y="200" width="10" height="140" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 5 - Green -->
+                <g class="candle candle-5">
+                    <line x1="205" y1="170" x2="205" y2="330" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="200" y="240" width="10" height="80" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 6 - Red -->
+                <g class="candle candle-6">
+                    <line x1="235" y1="150" x2="235" y2="350" stroke="var(--down-color-border)" stroke-width="1"/>
+                    <rect x="230" y="290" width="10" height="50" fill="var(--down-color)" stroke="var(--down-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 7 - Green -->
+                <g class="candle candle-7">
+                    <line x1="265" y1="130" x2="265" y2="370" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="260" y="180" width="10" height="170" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 8 - Green -->
+                <g class="candle candle-8">
+                    <line x1="295" y1="160" x2="295" y2="320" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="290" y="200" width="10" height="100" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 9 - Green -->
+                <g class="candle candle-9">
+                    <line x1="325" y1="120" x2="325" y2="360" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="320" y="170" width="10" height="160" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Candle 10 - Green -->
+                <g class="candle candle-10">
+                    <line x1="355" y1="140" x2="355" y2="340" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="350" y="200" width="10" height="120" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- More candles continuing the pattern -->
+                <g class="candle candle-11">
+                    <line x1="385" y1="180" x2="385" y2="300" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="380" y="230" width="10" height="60" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-12">
+                    <line x1="415" y1="150" x2="415" y2="330" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="410" y="210" width="10" height="100" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-13">
+                    <line x1="445" y1="170" x2="445" y2="310" stroke="var(--down-color-border)" stroke-width="1"/>
+                    <rect x="440" y="270" width="10" height="30" fill="var(--down-color)" stroke="var(--down-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-14">
+                    <line x1="475" y1="110" x2="475" y2="360" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="470" y="160" width="10" height="180" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-15">
+                    <line x1="505" y1="140" x2="505" y2="330" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="500" y="200" width="10" height="110" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-16">
+                    <line x1="535" y1="160" x2="535" y2="320" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="530" y="220" width="10" height="90" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-17">
+                    <line x1="565" y1="150" x2="565" y2="340" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="560" y="210" width="10" height="110" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-18">
+                    <line x1="595" y1="180" x2="595" y2="300" stroke="var(--down-color-border)" stroke-width="1"/>
+                    <rect x="590" y="260" width="10" height="30" fill="var(--down-color)" stroke="var(--down-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-19">
+                    <line x1="625" y1="140" x2="625" y2="330" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="620" y="200" width="10" height="110" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+                
+                <g class="candle candle-20">
+                    <line x1="655" y1="130" x2="655" y2="360" stroke="var(--up-color-border)" stroke-width="1"/>
+                    <rect x="650" y="170" width="10" height="160" fill="var(--up-color)" stroke="var(--up-color-border)" stroke-width="1.5"/>
+                </g>
+            </g>
+            
+            <!-- Animated trend line -->
+            <polyline class="trend-line" points="85,280 115,300 145,260 175,200 205,240 235,290 265,150 295,220 325,180 355,230 385,260 415,210 445,270 475,160 505,210 535,220 565,210 595,260 625,210 655,170" 
+                      stroke="var(--accent-color)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- Moving average line -->
+            <polyline class="ma-line" points="85,290 115,290 145,275 175,245 205,255 235,270 265,200 295,235 325,210 355,235 385,260 415,230 445,260 475,190 505,220 535,225 565,220 595,255 625,225 655,190" 
+                      stroke="var(--text-muted)" stroke-width="1.5" fill="none" stroke-dasharray="5,5" opacity="0.7" stroke-linecap="round"/>
+            
+            <!-- X-axis labels -->
+            <g fill="var(--text-secondary)" font-size="11" font-family="Poppins" text-anchor="middle">
+                <text x="85" y="380">1h</text>
+                <text x="175" y="380">4h</text>
+                <text x="265" y="380">1d</text>
+                <text x="355" y="380">2d</text>
+                <text x="445" y="380">3d</text>
+                <text x="535" y="380">4d</text>
+                <text x="625" y="380">5d</text>
+                <text x="715" y="380">Now</text>
+            </g>
+            
+            <!-- Legend -->
+            <g fill="var(--text-secondary)" font-size="12" font-family="Poppins">
+                <circle cx="750" cy="100" r="4" fill="var(--up-color)"/>
+                <text x="765" y="105">Bullish (Buy Pressure)</text>
+                
+                <circle cx="750" cy="130" r="4" fill="var(--down-color)"/>
+                <text x="765" y="135">Bearish (Sell Pressure)</text>
+                
+                <line x1="750" y1="155" x2="760" y2="155" stroke="var(--accent-color)" stroke-width="2.5"/>
+                <text x="765" y="160">Main Trend</text>
+                
+                <line x1="750" y1="185" x2="760" y2="185" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="3,3"/>
+                <text x="765" y="190">Moving Average</text>
+            </g>
+            
+            <!-- Status indicator -->
+            <g>
+                <circle class="status-dot" cx="750" cy="240" r="6" fill="var(--up-color)" filter="url(#glow)"/>
+                <text x="770" y="245" fill="var(--up-color)" font-size="13" font-weight="bold" font-family="Poppins">LIVE TRADING</text>
+            </g>
+        </svg>
     </div>
 
     <div class="para">
-        <p>Join the hundreds of traders who've become consistently
-            profitable through daily live trading sessions,
-            proven strategies, and direct mentorship from a 7-figure trader.</p>
+        <p>Join the hundreds of traders who've become consistently profitable through daily live trading sessions, proven strategies, and direct mentorship from a 7-figure trader.</p>
 
-        <a href="#pricing">Secure My Mentorship Spot</a>
+        <a href="login.html">Secure My Mentorship Seat</a>
 
-        <p class="con">This is a direct mentorship. Limited spots available.</p>
+        <p class="con">Small batch mentorship for serious learners. Limited seats available.</p>
 
     </div>
 
 
     <div class="marquee-wrapper">
         <div class="marquee-track">
+            <div class="marquee-set">
+                <div class="item">
+                    <h2>1</h2>
+                    <p>Our community</p>
+                </div>
 
-            <div class="item">
-                <h2>1</h2>
-                <p>Private community</p>
+                <div class="item">
+                    <h2>1</h2>
+                    <p>Direct mentor</p>
+                </div>
+
+                <div class="item">
+                    <h2>100%</h2>
+                    <p>Rule-based setups</p>
+                </div>
+
+                <div class="item">
+                    <h2>15+</h2>
+                    <p>Lessons</p>
+                </div>
+
+                <div class="item">
+                    <h2>Simple</h2>
+                    <p></p>
+                </div>
+
+                <div class="item">
+                    <h2>Powerful</h2>
+                    <p></p>
+                </div>
+
+                <div class="item">
+                    <h2>Magical</h2>
+                    <p></p>
+                </div>
             </div>
 
-            <div class="item">
-                <h2>1</h2>
-                <p>Mentor</p>
-            </div>
+            <div class="marquee-set" aria-hidden="true">
+                <div class="item">
+                    <h2>1</h2>
+                    <p>Our community</p>
+                </div>
 
-            <div class="item">
-                <h2>100%</h2>
-                <p>Mechanical models</p>
-            </div>
+                <div class="item">
+                    <h2>1</h2>
+                    <p>Direct mentor</p>
+                </div>
 
-            <div class="item">
-                <h2>50+</h2>
-                <p>Videos</p>
-            </div>
+                <div class="item">
+                    <h2>100%</h2>
+                    <p>Rule-based setups</p>
+                </div>
 
-            <!-- duplicate (IMPORTANT for seamless loop) -->
-            <div class="item">
-                <h2>1</h2>
-                <p>Private community</p>
-            </div>
+                <div class="item">
+                    <h2>15+</h2>
+                    <p>Lessons</p>
+                </div>
 
-            <div class="item">
-                <h2>1</h2>
-                <p>Mentor</p>
-            </div>
+                <div class="item">
+                    <h2>Simple</h2>
+                    <p></p>
+                </div>
 
-            <div class="item">
-                <h2>100%</h2>
-                <p>Mechanical models</p>
-            </div>
+                <div class="item">
+                    <h2>Powerful</h2>
+                    <p></p>
+                </div>
 
-            <div class="item">
-                <h2>50+</h2>
-                <p>Videos</p>
-            </div>
-
-
-            <!-- duplicate (IMPORTANT for seamless loop) -->
-            <div class="item">
-                <h2>1</h2>
-                <p>Private community</p>
-            </div>
-
-            <div class="item">
-                <h2>1</h2>
-                <p>Mentor</p>
-            </div>
-
-            <div class="item">
-                <h2>100%</h2>
-                <p>Mechanical models</p>
-            </div>
-
-            <div class="item">
-                <h2>50+</h2>
-                <p>Videos</p>
-            </div>
-
-            <!-- duplicate (IMPORTANT for seamless loop) -->
-            <div class="item">
-                <h2>1</h2>
-                <p>Private community</p>
-            </div>
-
-            <div class="item">
-                <h2>1</h2>
-                <p>Mentor</p>
-            </div>
-
-            <div class="item">
-                <h2>100%</h2>
-                <p>Mechanical models</p>
-            </div>
-
-            <div class="item">
-                <h2>50+</h2>
-                <p>Videos</p>
-            </div>
-
-            <div class="item">
-                <h2>1</h2>
-                <p>Private community</p>
-            </div>
-
-            <div class="item">
-                <h2>1</h2>
-                <p>Mentor</p>
-            </div>
-
-            <div class="item">
-                <h2>100%</h2>
-                <p>Mechanical models</p>
-            </div>
-
-            <div class="item">
-                <h2>50+</h2>
-                <p>Videos</p>
+                <div class="item">
+                    <h2>Magical</h2>
+                    <p></p>
+                </div>
             </div>
         </div>
     </div>
     <section id="benefits" class="benefits-section">
         <div class="benefits">
-            <strong>The <span>benefits</span> you get inside.</strong>
+            <strong>What you get inside our mentorship.</strong>
         </div>
 
         <div class="container">
 
             <div class="card">
-                <img src="session.avif">
+                <img src="assets/live trading.jpg" alt="Trader analyzing live market charts on screen" loading="lazy">
                 <div>
-                    <h3>Daily Live Trading Sessions</h3>
-                    <p>Trade live with a 7-figure trader every day and see exactly how profitable setups are executed.
+                    <h3>Daily Live Market Sessions</h3>
+                    <p>Watch Nifty, Bank Nifty, Forex and Gold setups explained live with clear entry, exit and risk logic.
                     </p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png">
+                <img src="assets/direct 24.jpg" alt="Mentor guiding traders in a team session" loading="lazy">
                 <div>
-                    <h3>Direct 24/7 Mentorship & Support</h3>
-                    <p>Never feel stuck. Receive guidance, get answers and accountability whenever you need it.</p>
+                    <h3>Direct Mentorship & Support</h3>
+                    <p>Ask doubts in simple language, get guidance, and stay accountable through your learning journey.</p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+                <img src="assets/in-depth.jpg" alt="Online trading course on laptop" loading="lazy">
                 <div>
-                    <h3>In-Depth Trading Course</h3>
-                    <p>Structured lessons that take you from beginner foundations to advanced strategies.</p>
-                </div>
-            </div>
-
-
-
-            <div class="card">
-                <img src="book.avif">
-                <div>
-                    <h3>Professional Trading Journal</h3>
-                    <p>Track, refine and optimize your trades like a professional, your edge is in your data.</p>
+                    <h3>Structured Trading Course</h3>
+                    <p>Step-by-step lessons from basics to execution, made easy for beginners from our local market background.</p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+                <img src="assets/trading journal.jpg" alt="Trading performance analytics dashboard" loading="lazy">
                 <div>
-                    <h3>Exclusive Inner Circle Community</h3>
-                    <p>Join a private network of ambitious traders who push, support and grow together.</p>
+                    <h3>Trading Journal Practice</h3>
+                    <p>Record every trade, review mistakes, and build the patience needed for serious market work.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="assets/inner circle.jpg" alt="Traders collaborating in a community" loading="lazy">
+                <div>
+                    <h3>Our Inner Circle</h3>
+                    <p>Join a private group of focused South Indian traders learning, reviewing and growing together.</p>
                 </div>
             </div>
 
         </div>
 
         <div class="spot">
-            <a href="">Secure My Spot</a>
+            <a href="login.html">Secure My Seat</a>
         </div>
     </section>
     <section id="process" class="process-section">
         <div class="progress-container">
 
-            <h1 class="title">
-                Our <span>proven</span> 4-step process to <br>
-                becoming a funded trader in 90 days.
-            </h1>
+            <h2 class="title">
+                Our practical 3-step process to trade Our markets with discipline.
+            </h2>
 
             <p class="subtitle">
-                Learn and apply the same proven systems that have helped our traders achieve consistency,<br>
-                pass funding challenges and grow to 6 and 7 figures.
+                Learn rules, practise live, and review your trades with a calm process built around<br>
+                Nifty, Bank Nifty, Gold and Forex market behaviour.
             </p>
 
             <div class="timeline">
@@ -277,10 +492,12 @@
                 <div class="card1">
                     <div class="number">1.</div>
                     <div class="progress-content">
-                        <h2>Master In trading professional</h2>
-                        <p>Cut through the noise and finally understand trading with clarity.
-                            Our structured course takes you from foundations to advanced strategies.
-                            Nononsense,just proven methods that get traders profitable.</p>
+                        <h2>Get Direct Mentor Guidance</h2>
+                        <p>Learn in a simple, local-friendly way with personal support, <br> doubt clearing
+                            and regular
+                            trade reviews. Every mistake becomes a lesson, every
+                            question
+                            gets answered so your process becomes cleaner.</p>
                     </div>
                 </div>
 
@@ -288,10 +505,9 @@
                 <div class="card1">
                     <div class="number">2.</div>
                     <div class="progress-content">
-                        <h2>Trade Live With Mentor</h2>
-                        <p>Stop guessing. Watch trades unfold in real time during daily live sessions <br>and learn
-                            exactly
-                            how to identify, enter, and exit high-probability setups <br> with confidence.</p>
+                        <h2>Watch Live Market Execution</h2>
+                        <p>Stop guessing. See setups unfold during daily live sessions <br>and learn
+                            how to plan entries, exits and risk before pressing the button.</p>
                     </div>
                 </div>
 
@@ -299,14 +515,10 @@
                 <div class="card1">
                     <div class="number">3.</div>
                     <div class="progress-content">
-                        <h2>Get Direct Mentorship & Support</h2>
-                        <p>Never feel stuck or alone again. With 24/7 mentorship, personal support, <br> and ongoing
-                            trade
-                            reviews, you’ll always know your next move. Every <br>mistake becomes progress, every
-                            question
-                            gets answered so you build <br> consistency faster than ever.
-
-                        </p>
+                        <h2>Build A Rule-Based Trading Routine</h2>
+                        <p>Cut through market noise and understand trading with clarity.
+                            Our structured course takes you from foundations to execution.
+                            No hype, only repeatable rules, patience and risk control.</p>
                     </div>
                 </div>
 
@@ -315,11 +527,11 @@
 
             </div>
             <div class="progress-spot">
-                <a href="">Secure My Spot Today</a>
+                <a href="login.html">Secure My Seat Today</a>
             </div>
 
             <div class="progress-para">
-                <p>Direct mentorship spots are limited to ensure quality. Secure yours today.</p>
+                <p>Seats are limited so every learner gets proper attention.</p>
             </div>
 
 
@@ -330,14 +542,14 @@
         <div class="pricing-section">
 
             <h1 class="title">
-                Choose the <span> plan</span> <br>that fits you best.
+                Choose the <span> plan</span> that suits your trading journey.
             </h1>
 
             <br>
 
             <p class="subtitle">
-                All plans include daily live trading, 24/7 support<br>
-                and full access to our proven systems.
+                Pick the batch that matches your time, goals and learning pace.<br>
+                Every plan is built around disciplined market practice.
             </p>
 
             <br>
@@ -345,43 +557,40 @@
             <div class="pricing-cards">
 
                 <div class="card0">
-                    <h3>Weekly <br>Starter</h3>
+                    <h3>20-Day Session</h3>
                     <h1>12K <span>(INR)</span></h1>
-                    <p class="sub">Billed every 4 weeks</p>
+                    <p class="sub">20 days live market access + starter lessons</p>
 
                     <ul>
-                        <li>Daily live trading session for 20 days</li>
-                        <li>Specialization: F&O & Forex (Nifty | Bank Nifty | )</li>
-                        <li>Entry, exit, and stop-loss levels will be provided. If no setup is found, it will be a
-                            no-trading day.</li>
-                        <li>No access to trading course </li>
-                        <li>This program does not include mentorship.</li>
-                        <li>You will be directed to a private community once the payment is completed.</li>
-                        <li>No cancellation, no refund </li>
+                        <li>Daily live market session for 20 days</li>
+                        <li>Focus: F&O and Forex, including Nifty and Bank Nifty</li>
+                        <li>Entry, exit and stop-loss levels shared only when a valid setup is present.</li>
+                        <li>Starter course video access included for this tier</li>
+                        <li>Basic community support for market updates and doubts</li>
+                        <li>You will be added to the private community after payment verification.</li>
+                        <li>No cancellation, no refund</li>
                     </ul>
 
-                    <button class="price-btn">Start My Weekly Mentorship</button>
+                    <a href="login.html" class="price-btn" onclick="return handleClickPricingBtn('weekly')">Start my weekly mentorship</a>
                 </div>
 
 
                 <div class="card0">
-                    <h3>Monthly <br>Starter</h3>
+                    <h3>40-Day Session</h3>
                     <h1>49K <span>(INR)</span></h1>
-                    <p class="sub">Billed every month</p>
-
+                    <p class="sub">40 days live access + deeper course lesson</p>
                     <ul>
-                        <li>Daily live trading session for 40 days</li>
-                        <li>Specialization: F&O & Forex (Nifty | Bank Nifty | Gold)</li>
-                        <li>Traders will get trading opportunities to earn profits or incur losses until the completion
-                            of the mentorship.</li>
-                        <li>Get mentorship plus round-the-clock (24/7) support</li>
-                        <li>Get full access to our trading course</li>
-                        <li>Get mentorship plus round-the-clock (24/7) support</li>
-                        <li>You will be directed to a private community once the payment is completed.</li>
-                        <li>Refer refund policy</li>
+                        <li>Daily live market session for 40 days</li>
+                        <li>Focus: F&O, Forex, Nifty, Bank Nifty and Gold</li>
+                        <li>Learn how to wait, plan and manage trades through real market conditions.</li>
+                        <li>Mentorship support for doubts, reviews and execution discipline</li>
+                        <li>Full access to the trading course</li>
+                        <li>You will be added to the private community after payment verification.</li>
+                        <li>Refund policy applies as mentioned.</li>
+                        <!-- <li> </li> -->
                     </ul>
 
-                    <button class="price-btn">Start My Monthly Mentorship</button>
+                    <a href="login.html" class="price-btn" onclick="return handleClickPricingBtn('monthly')">Start My Monthly mentorship</a>
                 </div>
 
 
@@ -391,23 +600,21 @@
                         Best Value
                         <small>Includes 1:1 Coaching</small>
                     </div>
-
-                    <h3>Lifetime <br>Mentorship</h3>
+                    <h3>Lifetime Mentorship</h3>
                     <h1>99K <span>(INR)</span></h1>
-                    <p class="sub">One-time payment</p>
+                    <p class="sub">One-time payment for long-term learning</p>
 
                     <ul>
-                        <li>Daily live trading session for lifetime access</li>
-                        <li>Specialization: F&O & Forex (Nifty | Bank Nifty | Gold)</li>
-                        <li>Traders will get trading opportunities to earn profits or incur losses until the completion
-                            of the mentorship.</li>
-                        <li>Get full access to our trading course</li>
-                        <li>1 –on-1 coaching </li>
-                        <li>You will be directed to a private community once the payment is completed.</li>
-                        <li>Refer refund policy </li>
+                        <li>Daily live market session access.</li>
+                        <li>Focus: F&O, Forex, Nifty, Bank Nifty and Gold</li>
+                        <li>Long-term guidance for building discipline through changing market phases.</li>
+                        <li>Full access to the complete trading course</li>
+                        <li>1 on 1 coaching</li>
+                        <li>You will be added to the private community after payment verification.</li>
+                        <li>Refund policy applies as mentioned.</li>
                     </ul>
 
-                    <button class="price-btn">Secure My Lifetime Mentorship</button>
+                    <a href="login.html" class="price-btn" onclick="return handleClickPricingBtn('lifetime')">Reserve Lifetime Mentorship</a>
                 </div>
 
             </div>
@@ -419,85 +626,79 @@
         <div class="proof-container">
 
             <h2 class="proof-title">
-                Proof that our mentorship 
-                delivers <span>real</span> results.
+                Proof that steady learning 
+                builds <span>real</span> confidence.
             </h2>
 
             <p class="proof-subtitle">
-                Our traders have achieved consistency, passed funding <br>
-                challenges and scaled their accounts through this program.
+                Our learners focus on process, risk control and clean execution <br>
+                instead of noise, tips and random market calls.
             </p>
 
-            <!-- <div class="proof-cards">
+            <div class="proof-cards">
 
-           
                 <div class="proof-card">
                     <div class="proof-user">
                         <div class="discord-avatar">
-                            <span>☁</span>
+                            <span>★</span>
                         </div>
 
                         <div>
-                            <h3>AsSoHa</h3>
-                            <p>Premium member</p>
+                            <h3>Tami Vannan</h3>
+                            <p>Community Member</p>
                         </div>
                     </div>
 
-                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <!-- <div class="stars">★ ★ ★ ★ ★</div> -->
 
                     <p class="proof-text">
-                        I am new in this game, and have seen a lot of confusing videos on YouTube.
-                        But when I found you I knew you was good to follow.
+                        I strongly recommend it is a most valuable trading method for stock market. You will becoming a consistent successful trader and strategy works 1000% believe it, there is no failure. Learning is simple and no complications.
                         <br><br>
-                        So as soon you promoted the course I was in and I think its the best decision
-                        I could make regarding starting this journey. I love the way you keep it simple.
+                        Thank God 🙏
                     </p>
                 </div>
 
                 <div class="proof-card">
                     <div class="proof-user">
-                        <img src="https://i.pravatar.cc/100?img=12" alt="Jay Gapuz">
+                        <div class="discord-avatar">
+                            <span>★</span>
+                        </div>
 
                         <div>
-                            <h3>Jay Gapuz</h3>
-                            <p>Premium member</p>
+                            <h3>Sweetline</h3>
+                            <p>Community Member</p>
                         </div>
                     </div>
 
-                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <!-- <div class="stars">★ ★ ★ ★ ★</div> -->
 
                     <p class="proof-text">
-                        Throughout my experience with Morne's mentorship, I can say with absolute
-                        certainty that the quality of his teachings, the structured learning approach,
-                        and the level of guidance & patience I get from him is exceptionally invaluable.
-                        <br><br>
-                        I have taken countless paid courses in the past but his training course is by far
-                        one of the best.
+                        Strategy is very clear, entry, stop losses, target are well defined. We can use and it works any kind of market, learnings are very simple and easy to understand the Market. I strongly recommend that the winning is a complete satisfactory. It gives me 100% confident in trading stock market in options & futures.
                     </p>
                 </div>
 
-         
                 <div class="proof-card">
                     <div class="proof-user">
-                        <img src="https://i.pravatar.cc/100?img=32" alt="davids_trades">
+                        <div class="discord-avatar">
+                            <span>★</span>
+                        </div>
 
                         <div>
-                            <h3>davids_trades</h3>
-                            <p>Premium member</p>
+                            <h3>Boobathi Gajapathy</h3>
+                            <p>Community Member</p>
                         </div>
                     </div>
 
-                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <!-- <div class="stars">★ ★ ★ ★ ★</div> -->
 
                     <p class="proof-text">
-                        Hi Morne....I want to thank you for putting together and offering the most
-                        comprehensive and easy to follow day trading mentorship I have participated in.
-                        Thanks to these strategies, so far I have successfully gotten funded over $300,000.
-                        I highly recommend this mentorship to anyone desiring to succeed.
+                        This course completely exceeded my expectations and life changing course. Especially my view of the market is completely changed and The material was immediately applicable to my day-to-day live trading. We can easily predict the market's future movement and I feel much more confident tackling the stock market in an advanced situation now.
+                        <br><br>
+                        Thanks to myme traders for changing my life towards success.
                     </p>
                 </div>
 
-            </div> -->
+            </div>
 
         </div>
     </section>
@@ -507,19 +708,17 @@
         <div class="cta-container">
 
             <h2 class="cta-title">
-                Are you ready to become our next 
-                Profitable trading journey to make a <span>success</span> story
+                Ready to start your own disciplined 
+                trading <span>journey</span>?
 
 
             </h2>
 
             <p class="cta-subtitle">
-                Spots are limited so secure yours today and join the traders who've already achieved consistency,
-                passed funding challenges 
-                and scaled their accounts through this program.
+              Spots are limited so secure yours today and join the traders who've already achieved consistency, passed funding challenges and scaled their accounts through this program.
             </p>
 
-            <a href="#" class="cta-btn">Secure My Mentorship Spot</a>
+            <a href="login.html" class="cta-btn">Secure My Mentorship Seat</a>
 
         </div>
     </section>
@@ -530,7 +729,7 @@
         <div class="faq-container">
 
             <h2 class="faq-title">
-                Any questions? <br>
+                Any Queries? <br>
                 Find your <span>answers</span> here.
             </h2>
 
@@ -538,27 +737,26 @@
 
                 <details class="faq-item">
                     <summary>
-                        <span>What happens if I don't get funded in 90 days?</span>
+                        <span>Will I become a professional trader quickly?</span>
                         <span class="faq-icon"></span>
                     </summary>
 
                     <p>
-                        Human behavior is unpredictable and everyone learns at their own pace.
-                        If you don't achieve funding in 60 days,
-                        <strong>I will personally trade live with you until you do.</strong>
-                        No trader is ever left behind in this program.
+                        Trading skill takes time, practice and emotional control.
+                        We will guide you with live sessions, reviews and a clear process,
+                        but results depend on your discipline, risk control and consistency.
                     </p>
                 </details>
 
                 <details class="faq-item">
                     <summary>
-                        <span>Will I be able to join the live sessions?</span>
+                        <span>Can I join the live market sessions?</span>
                         <span class="faq-icon"></span>
                     </summary>
 
                     <p>
-                        Yes. You will get access to daily live trading sessions where you can watch,
-                        learn, ask questions and follow the process in real time.
+                        Yes. You can join daily live sessions, watch the market in real time,
+                        ask doubts and understand why a setup is taken or avoided.
                     </p>
                 </details>
 
@@ -569,8 +767,8 @@
                     </summary>
 
                     <p>
-                        No. This mentorship is not about blind signals. You will learn a simple,
-                        mechanical trading model so you can understand exactly why trades are taken.
+                        No blind signals. We focus on teaching simple rule-based models so you
+                        understand the reason behind every trade idea.
                     </p>
                 </details>
 
@@ -581,8 +779,8 @@
                     </summary>
 
                     <p>
-                        The mentorship can be applied to Forex, indices, commodities and other liquid
-                        markets. The focus is on structure, execution and consistency.
+                        We mainly focus on Nifty, Bank Nifty, Gold, Forex and other liquid
+                        markets where structure, execution and risk control matter.
                     </p>
                 </details>
 
@@ -593,8 +791,8 @@
                     </summary>
 
                     <p>
-                        Yes. The lessons are built to be simple, structured and beginner-friendly,
-                        while still being valuable for traders with experience.
+                        Yes. Lessons are kept simple, structured and beginner-friendly, with
+                        examples explained in an easy local style.
                     </p>
                 </details>
 
@@ -605,8 +803,8 @@
                     </summary>
 
                     <p>
-                        Yes. If you are on a monthly plan, you can cancel anytime. There are no hidden
-                        contracts or long-term commitments.
+                        These are fixed access plans. Please choose your batch carefully before
+                        payment and read the refund policy fully.
                     </p>
                 </details>
 
@@ -617,16 +815,13 @@
                     </summary>
 
                     <p>
-                        Yes – Refunds 100% <br>
-                        If you feel the strategies or learnings are not effective and do not generate profit, we will
-                        provide an immediate refund. <br>
-                        Ensure that our trading setups are followed for 20 trades. Up to 3 to 4 losing trades are
-                        acceptable, as the market is not 100% predictable. If 5th trades result in losses, kindly submit
-                        all the 5 failure screenshots of the trading setups, confirming that all confluences were
-                        followed during learning without missing any confirmation. <br>
-                        If the required trade setup confirmations are not met, refunds cannot be processed under any
-                        circumstances. <br>
-                        Our objective is to analyze the reasons for failure, enabling continuous improvement.
+                        Yes 100% Refund.
+                        Refunds are reviewed only when the learner has followed the shared process properly. <br>
+                        * Complete the required lessons and follow the explained setup rules for 20 trades. <br>
+                        * A few losing trades are normal because markets are never 100% predictable. <br>
+                        * If you request a review, submit screenshots showing entry, exit, stop-loss and all setup confirmations. <br>
+                        * Refunds cannot be processed if the required rules, risk limits or confirmations were not followed. <br>
+                        * Our goal is to review mistakes honestly and improve the trading process.
 
 
 
@@ -646,13 +841,13 @@
 
             <h2 class="help-title">
                 Need <span>help</span>? <br>
-                Don't hesitate to contact us!
+                Ping us, we will guide you.
             </h2>
 
             <p class="help-subtitle">
-                We're here to assist you! If you have any questions, feedback, or need support, please don't
-                hesitate to reach out. <br>
-                Your satisfaction is our top priority! For crypto payments, kindly email us.
+                Have doubts about plans, payment or course access? Send your message and our team
+                will get back to you. <br>
+                For crypto payments, kindly email us.
             </p>
 
             <a href="#contact-section" class="help-btn">Contact Us</a>
@@ -668,23 +863,23 @@
             <h1 class="contact-title">Contact Us</h1>
 
             <p class="contact-subtitle">
-                We're here to assist you! If you have any questions, feedback, or need support,
-                please don't hesitate to reach out. Your satisfaction is our top priority!
-                For crypto payments, kindly email us.
+                If you have questions about plans, payment, videos or mentorship,
+                send us a message. For crypto payments, kindly email us.
             </p>
 
             <div class="contact-form-box">
-                <form>
+                <form id="contact-form">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="name" name="name" required>
 
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required>
 
                     <label for="message">How Can We Help You?</label>
-                    <textarea id="message" name="message"></textarea>
+                    <textarea id="message" name="message" required></textarea>
 
-                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    <p id="contact-form-message" class="form-message" aria-live="polite"></p>
                 </form>
             </div>
         </div>
@@ -693,17 +888,16 @@
     <section  class="disclaimer"id="disclaimer" >
     <h1 class="title">Disclaimer</h1>
     <p>
-        Trading is extremely risky and more than 90% people lose money in the markets <br><br>
-all content is for informational purpose only, Nothing on the discord server should be interpreted as "Advice" <br> <br>
+        Trading is risky and many people lose money in the markets. Learn slowly, use strict risk control and never trade with emergency money. <br><br>
+All content on MyMeTrades, including videos, live sessions and community messages, is for education only. Nothing should be treated as financial advice. <br><br>
 
-We make no representations as to the accuracy, completeness, suitability or validity of any information on this discord server and will not be liable for any errors or omissions or any damages arising from its display or use. <br><br>
+We do not guarantee accuracy, profit, account growth or any specific result from the information shared. Market conditions can change quickly. <br><br>
 
-I do not offer any financial advice whatsoever within any information supplied . any person undertaking either does so with the understanding that the information supplied is simply a guide to demonstrate strategies. <br><br>
+Any person who trades after learning from this platform does so with their own responsibility and judgement. The material is only a guide to understand trading concepts and setups. <br><br>
 
-All information supplied is done so in a non-professional environment and is for information and entertainment purpose only, <br><br>
-We at themymetrades hold no responsibility for any financial winnings or losses incurred as a result of this information <br><br>
-Nothing should be interpreted as advice there is risk of loss in trading any financial instruments and trading these instruments may not suitable for all investors <br><br>
-Please trade with capital you can afford to loss. Past performance is not indictive of future results, by joining this discord server you agree with these terms <br><br>
+MyMeTrades is not responsible for financial profit or loss caused by your trading decisions. <br><br>
+Trading financial instruments may not be suitable for every investor. Past performance does not indicate future results. <br><br>
+By joining this mentorship or community, you agree to these terms and understand the risks involved. <br><br>
 
     </p>
 </section>

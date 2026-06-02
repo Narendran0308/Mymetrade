@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mymetrades - Login & Signup</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --bg-page: #000000;
+            --bg-secondary: #121212;
+            --heading-color: #ffffff;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a3a3a3;
+            --border-color: rgba(255, 107, 0, 0.18);
+            --input-bg: #1a1a1a;
+            --input-border: #2a2a2a;
+            --accent-color: #ff6b00;
+            --accent-hover: #ff8533;
+            --accent-gradient: linear-gradient(135deg, #ff6b00 0%, #ff8c33 50%, #ffb347 100%);
+            --accent-glow: rgba(255, 107, 0, 0.45);
+            --up-color: #22c55e;
+            --down-color: #ef4444;
+            --btn-text: #0a0a0a;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            padding:20px;
+
+            background:var(--bg-page);
+            background-attachment:fixed;
+
+            font-family:"Poppins", sans-serif;
+            color:var(--text-primary);
+
+            position:relative;
+        }
+
+        /* BACK BUTTON — fixed so flex layout on body cannot shrink it to zero */
+        .back-btn{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+
+            display: inline-block;
+            width: fit-content;
+            padding: 10px 18px;
+
+            text-decoration: none;
+
+            border: none;
+            border-radius: 10px;
+
+            background: var(--accent-gradient);
+            color: var(--btn-text);
+
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 14px var(--accent-glow);
+            transition: transform 0.25s ease;
+        }
+
+        .back-btn:hover{
+            transform: translateY(-2px);
+        }
+
+        .container{
+            width:100%;
+            max-width:900px;
+        }
+
+        .auth-wrapper{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:30px;
+
+            background:var(--bg-secondary);
+
+            backdrop-filter:blur(16px) saturate(1.3);
+
+            border-radius:20px;
+
+            padding:40px;
+
+            border:1px solid var(--border-color);
+
+            box-shadow:
+                0 8px 40px rgba(0, 0, 0, 0.5),
+                0 0 24px rgba(255, 107, 0, 0.12);
+        }
+
+        /* LEFT */
+
+        .logo-section{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            padding:40px 20px;
+        }
+
+        .logo-section img{
+            width:120px;
+            margin-bottom:30px;
+        }
+
+        .logo-section h1{
+            font-size:32px;
+
+            background:var(--accent-gradient);
+
+            -webkit-background-clip:text;
+            background-clip:text;
+
+            -webkit-text-fill-color:transparent;
+
+            margin-bottom:20px;
+        }
+
+        .logo-section p{
+            color:var(--text-secondary);
+            line-height:1.8;
+            margin-bottom:15px;
+        }
+
+        .features{
+            display:flex;
+            flex-direction:column;
+            gap:15px;
+            margin-top:30px;
+        }
+
+        .feature{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .feature-icon{
+            width:24px;
+            height:24px;
+
+            border-radius:50%;
+
+            background:var(--accent-gradient);
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            color:white;
+            font-size:14px;
+            font-weight:bold;
+        }
+
+        .feature p{
+            font-size:14px;
+        }
+
+        /* RIGHT */
+
+        .form-section{
+            display:flex;
+            flex-direction:column;
+        }
+
+        .tabs{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+
+            margin-bottom:30px;
+        }
+
+        .tab-btn{
+            padding:12px 20px;
+
+            border:2px solid var(--border-color);
+            border-radius:8px;
+
+            background:transparent;
+
+            color:var(--text-secondary);
+
+            font-family:"Poppins", sans-serif;
+            font-size:15px;
+            font-weight:600;
+
+            cursor:pointer;
+
+            transition:0.3s ease;
+        }
+
+        .tab-btn.active{
+            background:var(--accent-gradient);
+
+            color:white;
+
+            border-color:transparent;
+
+            box-shadow:0 4px 12px var(--accent-glow);
+        }
+
+        .tab-btn:hover{
+            border-color:var(--accent-color);
+        }
+
+        .form-group{
+            display:none;
+        }
+
+        .form-group.active{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+
+        .input-group{
+            display:flex;
+            flex-direction:column;
+            gap:8px;
+        }
+
+        .input-group label{
+            font-size:14px;
+            font-weight:500;
+        }
+
+        .input-group input{
+            padding:12px 15px;
+
+            border:1px solid var(--input-border);
+            border-radius:8px;
+
+            background:var(--input-bg);
+
+            font-family:"Poppins", sans-serif;
+            font-size:14px;
+
+            color:var(--text-primary);
+
+            transition:0.3s ease;
+        }
+
+        .input-group input:focus{
+            outline:none;
+
+            border-color:var(--accent-color);
+
+            box-shadow:0 0 10px var(--border-color);
+        }
+
+        .submit-btn{
+            padding:12px 20px;
+
+            border:none;
+            border-radius:10px;
+
+            background:var(--accent-gradient);
+
+            color:white;
+
+            font-family:"Poppins", sans-serif;
+            font-size:15px;
+            font-weight:600;
+
+            cursor:pointer;
+
+            margin-top:10px;
+
+            transition:0.25s ease;
+
+            box-shadow:0 4px 14px var(--accent-glow);
+        }
+
+        .submit-btn:hover{
+            transform:translateY(-2px);
+        }
+
+        .secondary-btn{
+            background:var(--text-secondary);
+            color:white;
+        }
+
+        .message{
+            display:none;
+
+            margin-top:10px;
+
+            padding:12px 15px;
+
+            border-radius:8px;
+
+            font-size:14px;
+        }
+
+        .message.success{
+            display:block;
+
+            background:rgba(0,160,0,0.1);
+
+            border:1px solid var(--up-color);
+
+            color:var(--up-color);
+        }
+
+        .message.error{
+            display:block;
+
+            background:rgba(255,60,96,0.1);
+
+            border:1px solid var(--down-color);
+
+            color:var(--down-color);
+        }
+
+        .loading{
+            display:none;
+
+            text-align:center;
+
+            color:var(--accent-color);
+
+            margin-top:10px;
+
+            font-size:14px;
+        }
+
+        .loading.show{
+            display:block;
+        }
+
+        body.details-popup-open {
+            overflow: hidden;
+        }
+
+        .details-popup-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(8px);
+        }
+
+        .details-popup-overlay.show {
+            display: flex;
+        }
+
+        .details-popup {
+            width: min(520px, 100%);
+            padding: 32px;
+            border-radius: 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .details-kicker {
+            margin: 0 0 8px;
+            color: var(--accent-color);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .details-popup h2 {
+            margin: 0 0 20px;
+            font-size: 26px;
+            color: var(--text-primary);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .details-grid label {
+            display: grid;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .details-grid input {
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        .details-grid input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .details-full {
+            grid-column: 1 / -1;
+        }
+
+        .details-message {
+            min-height: 20px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .details-message.success {
+            color: var(--up-color);
+        }
+
+        .details-message.error {
+            color: var(--down-color);
+        }
+
+        .details-submit {
+            width: 100%;
+            min-height: 48px;
+            margin-top: 16px;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent-gradient);
+            color: var(--btn-text);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .details-submit:disabled {
+            opacity: 0.65;
+            cursor: wait;
+        }
+
+        @media(max-width:768px){
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-wrapper{
+                grid-template-columns:1fr;
+                padding:30px 20px;
+            }
+
+            .logo-section{
+                padding:20px 0;
+
+                border-bottom:1px solid rgba(0,86,179,0.1);
+            }
+
+            .logo-section h1{
+                font-size:24px;
+            }
+
+            .back-btn{
+                top: 12px;
+                left: 12px;
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn" aria-label="Back to home">← Back</a>
+
+    <div class="container">
+
+        <div class="auth-wrapper">
+
+            <!-- LEFT -->
+
+            <div class="logo-section">
+
+                <img src="image.avif" alt="Mymetrades Logo">
+
+                <h1>Mymetrades</h1>
+
+                <p>
+                    Join Our trading circle and learn live market execution,
+                    simple rule-based setups and disciplined risk control.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <p>Daily Live Market Sessions</p>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <p>Direct Mentorship Support</p>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <p>Rule-Based Trading Models</p>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <p>Our Community Access</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="form-section">
+
+                <div class="tabs">
+
+                    <button class="tab-btn active"
+                        onclick="switchTab('signup', event)">
+                        Sign Up
+                    </button>
+
+                    <button class="tab-btn"
+                        onclick="switchTab('login', event)">
+                        Login
+                    </button>
+
+                </div>
+
+                <!-- SIGNUP -->
+
+                <div id="signup" class="form-group active">
+
+                    <div id="signup-step1">
+
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="email" id="signup-email" placeholder="Enter your email">
+                        </div>
+
+                        <button type="button" class="submit-btn" onclick="sendSignupEmail()">
+                            Send Verification Email
+                        </button>
+
+                    </div>
+
+                    <div id="signup-step2" style="display:none;">
+
+                        <div class="input-group">
+                            <label>Password from Email</label>
+                            <input type="password" id="signup-password" placeholder="Enter password from your email">
+                        </div>
+
+                        <button type="button" class="submit-btn" onclick="completeSignup()">
+                            Complete Sign Up
+                        </button>
+
+                        <button type="button" class="submit-btn secondary-btn" onclick="resetSignupForm()">
+                            Change Email
+                        </button>
+
+                    </div>
+
+                    <div id="signup-message" class="message"></div>
+                    <div id="signup-loading" class="loading">Sending email...</div>
+
+                </div>
+
+                <!-- LOGIN -->
+
+                <div id="login" class="form-group">
+
+                    <div id="login-step1">
+
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="email" id="login-email" placeholder="Enter your email">
+                        </div>
+
+                        <button type="button" class="submit-btn" onclick="sendLoginEmail()">
+                            Send Login Email
+                        </button>
+
+                    </div>
+
+                    <div id="login-step2" style="display:none;">
+
+                        <div class="input-group">
+                            <label>Password from Email</label>
+                            <input type="password" id="login-password" placeholder="Enter password from your email">
+                        </div>
+
+                        <button type="button" class="submit-btn" onclick="completeLogin()">
+                            Login
+                        </button>
+
+                        <button type="button" class="submit-btn secondary-btn" onclick="resetLoginForm()">
+                            Change Email
+                        </button>
+
+                    </div>
+
+                    <div id="login-message" class="message"></div>
+                    <div id="login-loading" class="loading">Sending email...</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="details-popup-overlay" id="details-popup" aria-hidden="true">
+        <form class="details-popup" id="details-form" role="dialog" aria-modal="true" aria-labelledby="details-title">
+            <p class="details-kicker">One small step</p>
+            <h2 id="details-title">Enter Your Details</h2>
+            <p style="margin:0 0 18px;color:var(--text-secondary);font-size:14px;">
+                Complete your profile now, then you can enter the mentorship area.
+            </p>
+
+            <div class="details-grid">
+                <label>
+                    First Name
+                    <input type="text" id="first-name" name="first_name" required autocomplete="given-name">
+                </label>
+                <label>
+                    Last Name
+                    <input type="text" id="last-name" name="last_name" required autocomplete="family-name">
+                </label>
+                <label class="details-full">
+                    Phone Number
+                    <input type="tel" id="phone" name="phone" minlength="8" maxlength="20" required autocomplete="tel">
+                </label>
+            </div>
+
+            <p class="details-message" id="details-message"></p>
+            <button type="submit" class="details-submit" id="details-submit">Save Details</button>
+        </form>
+    </div>
+
+    <script>
+        let signupEmail = '';
+        let loginEmail = '';
+        const detailsPopup = document.getElementById('details-popup');
+        const detailsForm = document.getElementById('details-form');
+        const detailsMessage = document.getElementById('details-message');
+        const detailsSubmit = document.getElementById('details-submit');
+
+        function openDetailsPopup() {
+            detailsForm.reset();
+            detailsMessage.textContent = '';
+            detailsMessage.className = 'details-message';
+            detailsSubmit.disabled = false;
+            detailsSubmit.textContent = 'Submit Details';
+            detailsPopup.classList.add('show');
+            detailsPopup.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('details-popup-open');
+            document.getElementById('first-name').focus();
+        }
+
+        function closeDetailsPopup() {
+            detailsPopup.classList.remove('show');
+            detailsPopup.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('details-popup-open');
+        }
+
+        detailsForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            detailsMessage.textContent = '';
+            detailsMessage.className = 'details-message';
+            detailsSubmit.disabled = true;
+            detailsSubmit.textContent = 'Saving...';
+
+            fetch('backend/update_user_details.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+                body: JSON.stringify({
+                    first_name: document.getElementById('first-name').value.trim(),
+                    last_name: document.getElementById('last-name').value.trim(),
+                    phone: document.getElementById('phone').value.trim()
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        closeDetailsPopup();
+                        const emailForLogin = signupEmail;
+                        resetSignupForm();
+                        document.getElementById('login-email').value = emailForLogin;
+                        switchTab('login', { target: document.querySelectorAll('.tab-btn')[1] });
+                        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                        showMessage('signup-message', 'Details saved! You can now log in.', 'success');
+                        return;
+                    }
+
+                    detailsMessage.textContent = data.message || 'Unable to save details. Please try again.';
+                    detailsMessage.className = 'details-message error';
+                    detailsSubmit.disabled = false;
+                    detailsSubmit.textContent = 'Submit Details';
+                })
+                .catch(() => {
+                    detailsMessage.textContent = 'Unable to save details. Please try again.';
+                    detailsMessage.className = 'details-message error';
+                    detailsSubmit.disabled = false;
+                    detailsSubmit.textContent = 'Submit Details';
+                });
+        });
+
+        function switchTab(tab, event) {
+            document.getElementById('signup').classList.remove('active');
+            document.getElementById('login').classList.remove('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showMessage(elementId, text, type) {
+            const el = document.getElementById(elementId);
+            el.textContent = text;
+            el.className = 'message ' + type;
+        }
+
+        function clearMessage(elementId) {
+            const el = document.getElementById(elementId);
+            el.textContent = '';
+            el.className = 'message';
+        }
+
+        function setLoading(loadingId, show) {
+            document.getElementById(loadingId).classList.toggle('show', show);
+        }
+
+        function sendSignupEmail() {
+            const email = document.getElementById('signup-email').value.trim();
+            clearMessage('signup-message');
+            setLoading('signup-loading', true);
+
+            if (!email) {
+                setLoading('signup-loading', false);
+                showMessage('signup-message', 'Please enter your email.', 'error');
+                return;
+            }
+
+            fetch('backend/send_verification_email.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setLoading('signup-loading', false);
+                    if (data.success) {
+                        signupEmail = email;
+                        document.getElementById('signup-step1').style.display = 'none';
+                        document.getElementById('signup-step2').style.display = 'block';
+                        showMessage('signup-message', data.message, 'success');
+                    } else {
+                        const msg = data.error ? data.message + ' (' + data.error + ')' : (data.message || 'Failed to send email.');
+                        showMessage('signup-message', msg, 'error');
+                    }
+                })
+                .catch(() => {
+                    setLoading('signup-loading', false);
+                    showMessage('signup-message', 'Network error. Is Apache/XAMPP running?', 'error');
+                });
+        }
+
+        function completeSignup() {
+            const password = document.getElementById('signup-password').value.trim();
+            clearMessage('signup-message');
+            setLoading('signup-loading', true);
+
+            if (!signupEmail || !password) {
+                setLoading('signup-loading', false);
+                showMessage('signup-message', 'Enter the password from your email.', 'error');
+                return;
+            }
+
+            fetch('backend/signup.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: signupEmail, password })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setLoading('signup-loading', false);
+                    if (data.success) {
+                        showMessage('signup-message', data.message, 'success');
+                        openDetailsPopup();
+                    } else {
+                        showMessage('signup-message', data.message || 'Signup failed.', 'error');
+                    }
+                })
+                .catch(() => {
+                    setLoading('signup-loading', false);
+                    showMessage('signup-message', 'Network error. Try again.', 'error');
+                });
+        }
+
+        function resetSignupForm() {
+            signupEmail = '';
+            document.getElementById('signup-email').value = '';
+            document.getElementById('signup-password').value = '';
+            document.getElementById('signup-step1').style.display = 'block';
+            document.getElementById('signup-step2').style.display = 'none';
+            clearMessage('signup-message');
+        }
+
+        function sendLoginEmail() {
+            const email = document.getElementById('login-email').value.trim();
+            clearMessage('login-message');
+            setLoading('login-loading', true);
+
+            if (!email) {
+                setLoading('login-loading', false);
+                showMessage('login-message', 'Please enter your email.', 'error');
+                return;
+            }
+
+            fetch('backend/send_login_email.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setLoading('login-loading', false);
+                    if (data.success) {
+                        loginEmail = email;
+                        document.getElementById('login-step1').style.display = 'none';
+                        document.getElementById('login-step2').style.display = 'block';
+                        showMessage('login-message', data.message, 'success');
+                    } else {
+                        const msg = data.error ? data.message + ' (' + data.error + ')' : (data.message || 'Failed to send email.');
+                        showMessage('login-message', msg, 'error');
+                    }
+                })
+                .catch(() => {
+                    setLoading('login-loading', false);
+                    showMessage('login-message', 'Network error. Is Apache/XAMPP running?', 'error');
+                });
+        }
+
+        function completeLogin() {
+            const password = document.getElementById('login-password').value.trim();
+            clearMessage('login-message');
+            setLoading('login-loading', true);
+
+            if (!loginEmail || !password) {
+                setLoading('login-loading', false);
+                showMessage('login-message', 'Enter the password from your email.', 'error');
+                return;
+            }
+
+            const loginNext = new URLSearchParams(window.location.search).get('next') || '';
+
+            fetch('backend/login.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: loginEmail, password, next: loginNext })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setLoading('login-loading', false);
+                    if (data.success) {
+                        showMessage('login-message', data.message, 'success');
+                        const redirect = data.redirect || 'terms.html';
+                        setTimeout(() => {
+                            window.location.href = redirect;
+                        }, 1200);
+                    } else {
+                        showMessage('login-message', data.message || 'Login failed.', 'error');
+                    }
+                })
+                .catch(() => {
+                    setLoading('login-loading', false);
+                    showMessage('login-message', 'Network error. Try again.', 'error');
+                });
+        }
+
+        function resetLoginForm() {
+            loginEmail = '';
+            document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
+            document.getElementById('login-step1').style.display = 'block';
+            document.getElementById('login-step2').style.display = 'none';
+            clearMessage('login-message');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('next') !== 'course-videos') {
+                return;
+            }
+
+            const loginTab = document.querySelector('.tab-btn[onclick*="login"]');
+            if (loginTab) {
+                switchTab('login', { target: loginTab });
+            }
+
+            showMessage(
+                'login-message',
+                'Please log in to access Our course videos.',
+                'success'
+            );
+        });
+    </script>
+
+</body>
+</html>

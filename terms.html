@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions | MyMeTrades</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="terms-page">
+    <main class="terms-shell">
+        <a href="index.html" class="terms-logo">
+            <img src="image.avif" alt="MyMeTrades logo">
+        </a>
+
+        <section class="terms-panel">
+            <p class="terms-kicker">Before you continue</p>
+            <h1>Terms and Conditions</h1>
+            <p class="terms-intro">
+                Please read and accept these terms before moving ahead with your MyMeTrades mentorship batch.
+            </p>
+
+            <div class="terms-content">
+                <h2>Risk Disclaimer</h2>
+                <p>
+                    Trading is risky and many people lose money in the markets. All MyMeTrades content is for learning and education only.
+                </p>
+
+                <h2>No Financial Advice</h2>
+                <p>
+                    Nothing shared by MyMeTrades, including live sessions, videos or community messages, should be interpreted as financial advice. It is only a guide to understand strategies and market behaviour.
+                </p>
+
+                <h2>Accuracy of Information</h2>
+                <p>
+                    We do not guarantee accuracy, profit, account growth or any specific result. Market conditions can change quickly, so every learner must use their own judgement.
+                </p>
+
+                <h2>Loss Responsibility</h2>
+                <p>
+                    MyMeTrades holds no responsibility for any financial profit or loss incurred as a result of using our content, community, mentorship or trading information.
+                </p>
+
+                <h2>Capital Warning</h2>
+                <p>
+                    Trade only with capital you can afford to lose. Past performance does not indicate future results, and trading financial instruments may not be suitable for all investors.
+                </p>
+            </div>
+
+            <label class="terms-check">
+                <input type="checkbox" id="terms-accept">
+                <span>I have read and agree to the Terms and Conditions.</span>
+            </label>
+
+            <div class="terms-actions">
+                <button type="button" class="terms-primary" id="terms-continue" disabled>Accept & Continue</button>
+                <a href="index.html" class="terms-secondary">Back to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const checkbox = document.getElementById("terms-accept");
+        const continueButton = document.getElementById("terms-continue");
+
+        checkbox.addEventListener("change", () => {
+            continueButton.disabled = !checkbox.checked;
+        });
+
+        continueButton.addEventListener("click", () => {
+            sessionStorage.setItem("termsAccepted", "true");
+            window.location.href = "payment.html";
+        });
+    </script>
+</body>
+
+</html>
