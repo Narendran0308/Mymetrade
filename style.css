@@ -124,10 +124,10 @@ svg, svg * {
     stroke: currentColor;
 }
 
-:focus {
+/* :focus {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
-}
+} */
 
 /* ✨ ANIMATIONS ✨ */
 @keyframes fadeIn {
@@ -1246,7 +1246,8 @@ button {
     margin-bottom: 18px;
     text-align: center;
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    /* font-size: clamp(0.95rem, 1.6vw, 1.05rem); */
+    font-size: normal;
 }
 
 ul {
@@ -1656,7 +1657,7 @@ ul li::after {
     font-weight: 400;
     margin: 0;
     padding: 0 58px 25px 24px;
-    border-top: none;
+    /* border-top: none; */
 }
 
 .faq-item p strong {
