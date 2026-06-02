@@ -761,9 +761,9 @@ p {
 
 
 .marquee-wrapper {
-  --marquee-gap: clamp(22px, 5vw, 70px);
-  --marquee-item-width: clamp(118px, 20vw, 190px);
-  --marquee-duration: 20s;
+  --marquee-gap: clamp(16px, 4vw, 56px);
+  --marquee-item-width: clamp(126px, 18vw, 190px);
+  --marquee-duration: 24s;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -801,14 +801,14 @@ p {
     width: max-content;
     gap: 0;
     animation: scroll var(--marquee-duration) linear infinite;
-        will-change: transform;
+    will-change: transform;
     align-items: center;
     transform: translateZ(0);
 }
 
 .marquee-set {
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 auto;
     gap: var(--marquee-gap);
     padding-right: var(--marquee-gap);
 }
@@ -824,7 +824,7 @@ p {
 }
 
 /* each item */
-.item {
+.marquee-set .item {
     flex: 0 0 var(--marquee-item-width);
     width: var(--marquee-item-width);
     min-width: 0;
@@ -834,19 +834,20 @@ p {
 }
 
 /* NUMBER */
-.item h2 {
-    font-size: clamp(28px, 4.2vw, 48px);
+.marquee-set .item h2 {
+    font-size: clamp(24px, 3.8vw, 44px);
     color: var(--heading-color);
     margin: 0;
     /* 🔥 remove default margin */
-    line-height: 1;
+    line-height: 1.05;
     /* tighten spacing */
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow-wrap: normal;
 }
 
 /* TEXT */
-.item p {
-    font-size: clamp(13px, 2vw, 20px);
+.marquee-set .item p {
+    font-size: clamp(12px, 1.6vw, 18px);
     color: var(--text-primary);
     margin: 5px 0 0 0;
     font-family: "Montserrat", sans-serif;
@@ -859,11 +860,11 @@ p {
 /* animation */
 @keyframes scroll {
     from{
-        transform: translateX(0%);
+        transform: translate3d(0, 0, 0);
     }
 
     to {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
 
@@ -1051,7 +1052,7 @@ p {
 }
 
 .subtitle {
-    text-align: left;
+    text-align: center;
     color: var(--text-secondary);
     margin-bottom: 60px;
     font-family: "Montserrat", sans-serif;
@@ -1523,6 +1524,7 @@ ul li::after {
     line-height: 1.55;
     margin: 0;
     font-weight: 500;
+    text-align: justify;
 }
 
 /* CTA SECTION */
@@ -1752,6 +1754,7 @@ ul li::after {
     line-height: 1.55;
     margin: 0 auto 38px;
     font-weight: 400;
+    text-align: justify;
 }
 
 .footer {
@@ -1808,7 +1811,7 @@ html {
 .contact-container {
     max-width: 950px;
     margin: 0 auto;
-    text-align: center;
+    text-align: justify;
 }
 
 .contact-title {
@@ -2338,6 +2341,7 @@ html {
 
     .cta-subtitle {
         font-size: 0.95rem;
+        text-align: justify;
     }
 
     .faq-title {
@@ -2448,7 +2452,7 @@ html {
         margin: 1rem auto 0;
         padding: 12px 20px;
         font-size: 16px;
-        text-align: center;
+        text-align: justify;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -2536,7 +2540,7 @@ html {
 
     .progress-para p {
         margin-left: 0;
-        text-align: center;
+        text-align: justify;
         padding: 0 15px;
     }
 
@@ -2608,6 +2612,7 @@ html {
     .proof-subtitle {
         font-size: 14px;
         padding: 0 15px;
+        text-align: justify;
     }
 
     .proof-cards {
@@ -3881,9 +3886,9 @@ footer {
     .marquee-wrapper {
         padding: 18px 0;
         margin-bottom: 2rem;
-        --marquee-duration: 12s;
-        --marquee-gap: clamp(18px, 4.5vw, 32px);
-        --marquee-item-width: clamp(108px, 25vw, 150px);
+        --marquee-duration: 18s;
+        --marquee-gap: clamp(14px, 4vw, 28px);
+        --marquee-item-width: clamp(122px, 30vw, 150px);
     }
 
     .marquee-wrapper::before,
@@ -3901,11 +3906,11 @@ footer {
     }
 
     .marquee-set .item h2 {
-        font-size: clamp(22px, 5.2vw, 34px);
+        font-size: clamp(20px, 4.8vw, 30px);
     }
 
     .marquee-set .item p {
-        font-size: clamp(11px, 3vw, 16px);
+        font-size: clamp(10px, 2.8vw, 14px);
     }
 
     .benefits strong {
@@ -3950,9 +3955,9 @@ footer {
     .marquee-wrapper {
         padding: 14px 0;
         margin-bottom: 1.75rem;
-        --marquee-duration: 9s;
-        --marquee-gap: clamp(14px, 4vw, 20px);
-        --marquee-item-width: clamp(96px, 30vw, 120px);
+        --marquee-duration: 16s;
+        --marquee-gap: 12px;
+        --marquee-item-width: 118px;
     }
 
     .marquee-wrapper::before,
@@ -3974,23 +3979,23 @@ footer {
     }
 
     .marquee-set .item h2 {
-        font-size: clamp(19px, 5vw, 28px);
+        font-size: clamp(18px, 4.8vw, 24px);
     }
 
     .marquee-set .item p {
-        font-size: clamp(10px, 2.8vw, 13px);
+        font-size: clamp(9px, 2.7vw, 12px);
     }
 }
 
 /* Extra small devices (320px - 375px) */
 @media only screen and (max-width: 375px) {
     .marquee-wrapper {
-        --marquee-gap: 14px;
-        --marquee-item-width: 96px;
+        --marquee-gap: 10px;
+        --marquee-item-width: 112px;
     }
 
     .marquee-set .item h2 {
-        font-size: clamp(18px, 5vw, 28px);
+        font-size: clamp(17px, 4.7vw, 22px);
     }
 
     .marquee-set .item p {
@@ -4001,12 +4006,12 @@ footer {
 /* Small phones (376px - 420px) */
 @media only screen and (min-width: 376px) and (max-width: 420px) {
     .marquee-wrapper {
-        --marquee-gap: 16px;
-        --marquee-item-width: 102px;
+        --marquee-gap: 12px;
+        --marquee-item-width: 116px;
     }
 
     .marquee-set .item h2 {
-        font-size: clamp(19px, 5.2vw, 30px);
+        font-size: clamp(18px, 4.8vw, 24px);
     }
 
     .marquee-set .item p {
@@ -4017,12 +4022,12 @@ footer {
 /* Regular phones (421px - 575px) */
 @media only screen and (min-width: 421px) and (max-width: 575px) {
     .marquee-wrapper {
-        --marquee-gap: 18px;
-        --marquee-item-width: 112px;
+        --marquee-gap: 14px;
+        --marquee-item-width: 122px;
     }
 
     .marquee-set .item h2 {
-        font-size: clamp(21px, 5.2vw, 30px);
+        font-size: clamp(19px, 4.8vw, 26px);
     }
 
     .marquee-set .item p {
