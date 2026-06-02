@@ -1115,7 +1115,7 @@ button {
 .progress-content p {
     color: var(--text-secondary);
     font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
+    font-size: 150%;
 }
 
 .progress-spot {
