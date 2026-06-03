@@ -93,11 +93,20 @@
             });
         }, observerOptions);
 
-        // Add scroll-fade class to all cards and sections
-        const cardsAndSections = document.querySelectorAll(".card, .card1, .benefits-section, .process-section, .testimonials-section, .faq-section");
+        // Add scroll-fade class to sections that can safely animate in.
+        // Benefit cards stay visible immediately so their images never disappear after load.
+        const cardsAndSections = document.querySelectorAll(".card1, .process-section, .testimonials-section, .faq-section");
         cardsAndSections.forEach(el => {
             el.classList.add("scroll-fade");
-            observer.observe(el);
+
+            const rect = el.getBoundingClientRect();
+            const isAlreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+            if (isAlreadyVisible) {
+                el.classList.add("visible");
+            } else {
+                observer.observe(el);
+            }
         });
 
         // Update active nav link on page load

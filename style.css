@@ -2,6 +2,8 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -61,9 +63,10 @@ body {
     background: var(--bg-page);
     background-attachment: fixed;
     color: var(--text-primary);
-    font-family: "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* font-family: "Mont", sans-serif; */
 }
 
 /* Links */
@@ -191,7 +194,7 @@ svg, svg * {
 }
 
 /* Trading Chart Animations */
-@keyframes candleGrow {
+/* @keyframes candleGrow {
     from {
         opacity: 0;
         transform: scaleY(0);
@@ -254,7 +257,7 @@ svg, svg * {
     to {
         opacity: 0.2;
     }
-}
+} */
 
 /* Scroll animation class */
 .scroll-fade {
@@ -266,16 +269,17 @@ svg, svg * {
     animation: scrollFadeIn 0.6s ease-out forwards;
 }
 
-/* Trading Chart Styling */
-.trading-chart {
-    width: 100%;
-    height: 100%;
-    animation: chartPulse 4s ease-in-out infinite;
+.benefits-section,
+.benefits-section .card {
+    opacity: 1;
+    transform: none;
 }
 
-.trading-chart .candle {
+
+
+/* .trading-chart .candle {
     animation: candleGrow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
+} */
 
 .candle-1 { animation-delay: 0.1s; }
 .candle-2 { animation-delay: 0.2s; }
@@ -298,28 +302,28 @@ svg, svg * {
 .candle-19 { animation-delay: 1.9s; }
 .candle-20 { animation-delay: 2s; }
 
-.trading-chart .trend-line {
+/* .trading-chart .trend-line {
     stroke-dasharray: 2000;
     animation: trendLineDrawing 3s ease-in-out forwards;
     animation-delay: 2.2s;
-}
+} */
 
-.trading-chart .ma-line {
+/* .trading-chart .ma-line {
     stroke-dasharray: 2000;
     animation: maLineDrawing 3.2s ease-in-out forwards;
     animation-delay: 2.5s;
-}
+} */
 
-.trading-chart .status-dot {
+/* .trading-chart .status-dot {
     animation: statusPulse 1.5s ease-in-out infinite;
     animation-delay: 3.5s;
-}
-
+} */
+/* 
 .trading-chart .vol-bar {
     animation: volBarGrow 0.6s ease-out forwards;
-}
+} */
 
-.vol-bar:nth-child(1) { animation-delay: 0.05s; }
+/* .vol-bar:nth-child(1) { animation-delay: 0.05s; }
 .vol-bar:nth-child(2) { animation-delay: 0.1s; }
 .vol-bar:nth-child(3) { animation-delay: 0.15s; }
 .vol-bar:nth-child(4) { animation-delay: 0.2s; }
@@ -338,7 +342,7 @@ svg, svg * {
 .vol-bar:nth-child(17) { animation-delay: 0.85s; }
 .vol-bar:nth-child(18) { animation-delay: 0.9s; }
 .vol-bar:nth-child(19) { animation-delay: 0.95s; }
-.vol-bar:nth-child(20) { animation-delay: 1s; }
+.vol-bar:nth-child(20) { animation-delay: 1s; } */
 
 body.login-popup-open {
     overflow: hidden;
@@ -467,8 +471,12 @@ body.login-popup-open {
 .top {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     z-index: 1000;
+    margin: 0;
+    padding: 0;
 }
 
 .top p {
@@ -480,6 +488,8 @@ body.login-popup-open {
     margin: 0;
     letter-spacing: 0.02em;
     font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 p {
@@ -592,13 +602,15 @@ p {
 .content {
     color: var(--heading-color);
     font-family: "Poppins", sans-serif;
+    white-space:nowrap;
     text-align: center;
     max-width: 1200px;
+    width: 100%;
     margin: 22% auto 0;
     padding: 0 20px;
-    /* font-size: clamp(2.5rem, 4.8vw, 4.25rem); */
-    font-size: 200%;
-    line-height: 1.1;
+    box-sizing: border-box;
+    font-size: clamp(1.6rem, 3.5vw, 3rem);
+    line-height: 1.2;
     position: relative;
     z-index: 2;
     animation: fadeIn 0.8s ease-out;
@@ -619,24 +631,31 @@ p {
 
 .content strong {
     display: block;
+    text-align: center;
     text-wrap: balance;
+    white-space: normal;
+}
+
+.content span{
+    color: orangered;
 }
 
 .content-note {
     display: inline-block;
+    /* color: #191970; */
     margin: 22px auto 0;
     padding: 10px 18px;
     border-radius: 6px;
     /* background: #fff; */
     color: #ffffff;
-    font-size: clamp(1rem, 1.8vw, 1.45rem);
+    font-size: 18px;
     font-weight: normal;
     line-height: 1.35;
 }
 
 @media (min-width: 1024px) {
     .content strong {
-        white-space: nowrap;
+        white-space: normal;
     }
 }
 
@@ -655,29 +674,78 @@ p {
     z-index: 2;
 }
 
+.hero-video-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
 .video {
+    flex: 0 0 75%;
     position: relative;
     width: 100%;
-    max-width: 900px;
-    min-height: auto;
-    margin: 2rem auto 0;
     overflow: hidden;
-    padding: 0;
-    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 107, 0, 0.12);
     aspect-ratio: 16/9;
-    border-radius: 0;
-    box-shadow: none;
 }
 
-.home-gif {
+.home-video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
+    border-radius: 20px;
 }
 
-.video .trading-chart {
-    display: none;
+.video-highlights {
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.video-highlights span {
+    font-size: clamp(28px, 3vw, 48px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateX(-28px);
+    animation: highlightFadeLeft 0.75s ease forwards;
+}
+
+.video-highlights span:nth-child(1) {
+    animation-delay: 0.15s;
+    color: #ff6b00;
+}
+
+.video-highlights span:nth-child(2) {
+    animation-delay: 0.35s;
+    color: #ffb347;
+}
+
+.video-highlights span:nth-child(3) {
+    animation-delay: 0.55s;
+    color: #e8e8e8;
+}
+
+@keyframes highlightFadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 #bg-video {
@@ -703,11 +771,12 @@ p {
     align-items: center;
     text-align: justify ;
     animation: slideInUp 0.9s ease-out 0.2s both;
+    font-size: 18px;
     font-weight: normal;
 }
 
 .para p {
-    color: var(--text-secondary);
+    color: orangered;
     font-family: "Poppins", sans-serif;
     text-align: center;
     margin-top: 0;
@@ -721,8 +790,8 @@ p {
 .para > p:first-child {
     max-width: 1050px;
     color: var(--text-primary);
-    font-size: clamp(1.35rem, 2.6vw, 2rem);
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: smaller;
     line-height: 1.45;
 }
 
@@ -761,8 +830,7 @@ p {
 
 
 .marquee-wrapper {
-  --marquee-gap: clamp(16px, 4vw, 56px);
-  --marquee-item-width: clamp(126px, 18vw, 190px);
+  --marquee-gap: clamp(10px, 2.5vw, 48px);
   --marquee-duration: 24s;
     position: relative;
     overflow: hidden;
@@ -825,14 +893,11 @@ p {
 
 /* each item */
 .marquee-set .item {
-    flex: 0 0 var(--marquee-item-width);
-    width: var(--marquee-item-width);
-    min-width: 0;
-    box-sizing: border-box;
+    flex: 0 0 auto;
+    min-width: clamp(120px, 18vw, 220px);
     text-align: center;
     color: var(--heading-color);
 }
-
 /* NUMBER */
 .marquee-set .item h2 {
     font-size: clamp(24px, 3.8vw, 44px);
@@ -897,49 +962,65 @@ p {
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 20px;
-    column-gap: 20px;
-    margin-top: 15px;
+    row-gap: 16px;
+    column-gap: 16px;
     margin: 15px auto 0;
     padding: 0 20px;
     max-width: 1200px;
     box-sizing: border-box;
 }
 
+/* 5th card — sits in col 1 only, col 2 stays empty */
+.container .card:last-child:nth-child(odd) {
+    grid-column: 1 / 2;
+    width: 100%;
+}
+
 /* CARD DESIGN */
-.card {
+.benefits-section .card {
     background: var(--card-bg);
     border-radius: var(--radius-md);
-    padding: 24px;
+    padding: 0;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: 0;
     border: 1px solid var(--border-color);
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     position: relative;
     overflow: hidden;
     width: 100%;
-    margin-bottom: 0;
+    height: 150px;
     animation: slideInUp 0.6s ease-out;
     box-shadow: var(--shadow-card);
 }
 
 /* Benefit card photos */
-.card img {
-    width: 200px;
-    height: 140px;
-    flex: 0 0 200px;
+.benefits-section .card img {
+    width: 170px;
+    height: 150px;
+    flex: 0 0 170px;
     object-fit: cover;
     object-position: center;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 107, 0, 0.35);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 107, 0, 0.1);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    display: block;
+    border-radius: 0;
+    border-right: 1px solid rgba(255, 107, 0, 0.2);
+    transition: transform 0.35s ease;
+}
+
+.benefits-section .card > div {
+    flex: 1;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .card:hover img {
     transform: scale(1.02);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 28px rgba(255, 107, 0, 0.22);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 107, 0, 0.2);
 }
 
 /* TEXT */
@@ -947,15 +1028,84 @@ p {
     font-family: "Montserrat", sans-serif;
     color: var(--heading-color);
     margin: 0;
-    font-size: 30px;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .card p {
     color: var(--text-secondary);
-    margin-top: 8px;
-    font-size: 18px;
+    margin-top: 5px;
+    font-size: 13px;
     font-family: "Montserrat", sans-serif;
+    line-height: 1.5;
+}
 
+/* ── TABLET: 2 cols, image top + text bottom ── */
+@media (max-width: 1024px) {
+    .benefits-section .card {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .benefits-section .card img {
+        width: 100%;
+        height: 160px;
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+    }
+
+    .benefits-section .card > div {
+        align-items: center;
+        padding: 14px 16px;
+        text-align: center;
+    }
+
+    /* last odd card stays col 1, col 2 empty */
+    .benefits-section .container .card:last-child:nth-child(odd) {
+        grid-column: 1 / 2;
+    }
+}
+
+/* ── MOBILE: 1 col, image top + text bottom ── */
+@media (max-width: 600px) {
+    .benefits-section .container {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-section .card {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .benefits-section .card img {
+        width: 100%;
+        height: 200px;
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+    }
+
+    .benefits-section .card > div {
+        align-items: center;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .benefits-section .card h3 {
+        font-size: 18px;
+    }
+
+    .benefits-section .card p {
+        font-size: 14px;
+    }
+
+    /* on single col, last card is just full width naturally */
+    .benefits-section .container .card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
 }
 
 /* Card hover */
@@ -1131,12 +1281,14 @@ button {
     font-size: 30px;
     color: var(--heading-color);
     font-family: "Montserrat", sans-serif;
+    text-align: left;
 }
 
 .progress-content p {
     color: var(--text-secondary);
     font-family: "Montserrat", sans-serif;
     font-size: 150%;
+    text-align: left;
 }
 
 .progress-spot {
@@ -1173,6 +1325,33 @@ button {
 .pricing,
 .pricing-section {
     overflow: visible;
+}
+
+.pricing-image {
+    text-align: center;
+    margin: 20px auto 0;
+    max-width: 900px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.pricing-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+}
+
+@media (max-width: 600px) {
+    .pricing-image img {
+        max-height: 220px;
+    }
 }
 
 .pricing-section .title {
@@ -1239,7 +1418,7 @@ button {
 }
 
 .card0 h3 {
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 12px;
     font-family: "Montserrat", sans-serif;
     color: var(--heading-color);
@@ -1257,7 +1436,7 @@ button {
 }
 
 .card0 h1 span {
-    font-size: 20px;
+    font-size: 22px;
     color: var(--heading-color);
     font-family: "Montserrat", sans-serif;
 }
@@ -1375,9 +1554,14 @@ ul li::after {
 
 .price-btn {
     margin-top: auto;
-    width: 100%;
+    width: fit-content;
+    min-width: 200px;
+    max-width: 100%;
     box-sizing: border-box;
     text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .price-btn:hover,
@@ -1393,7 +1577,7 @@ ul li::after {
 .cta-btn,
 .help-btn {
     width: clamp(280px, 90%, 462px);
-    max-width: 100%;
+    max-width: 54%;
     height: 57px;
 }
 
@@ -1418,8 +1602,9 @@ ul li::after {
 .proof-title {
     font-size: clamp(2rem, 6vw, 4.5rem);
     line-height: 0.95;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--heading-color);
+    font-family: "Montserrat", sans-serif;
     margin: 0 0 25px;
     letter-spacing: -2px;
 }
@@ -1433,11 +1618,17 @@ ul li::after {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.proof-title span {
+    font-family: "Montserrat", sans-serif;
 }
 
 .proof-subtitle {
     color: var(--text-secondary);
-    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    font-size: 18px;
     line-height: 1.55;
     margin: 0 0 55px;
     font-weight: 400;
@@ -1547,8 +1738,13 @@ ul li::after {
     line-height: 1.05;
     font-weight: 800;
     color: var(--heading-color);
+    font-family: "Montserrat", sans-serif;
     margin: 0 0 22px;
     letter-spacing: -2px;
+}
+
+.cta-title span {
+    font-family: "Montserrat", sans-serif;
 }
 
 .cta-subtitle {
@@ -1557,6 +1753,7 @@ ul li::after {
     line-height: 1.55;
     margin: 0 auto 38px;
     font-weight: 400;
+    text-align: center;
     /* text-align: justify; */
 }
 
@@ -1580,6 +1777,7 @@ ul li::after {
     line-height: 0.95;
     font-weight: 800;
     color: var(--heading-color);
+    font-family: "Montserrat", sans-serif;
     margin: 0 0 45px;
     letter-spacing: -2px;
 }
@@ -1605,7 +1803,7 @@ ul li::after {
     .proof-subtitle,
     .progress-para p,
     .subtitle {
-        font-size: clamp(0.98rem, 3.8vw, 1.15rem);
+        font-size: 18px;
     }
 }
 
@@ -1744,6 +1942,7 @@ ul li::after {
     line-height: 1.05;
     font-weight: 800;
     color: var(--heading-color);
+    font-family: "Montserrat", sans-serif;
     margin: 0 0 22px;
     letter-spacing: -2px;
 }
@@ -1827,8 +2026,9 @@ html {
     line-height: 1.8;
     color: var(--text-secondary);
     max-width: 1000px;
-    margin: 0 auto 50px;
+    margin: 0 0 50px;
     font-family: "Montserrat", sans-serif;
+    text-align: left;
 }
 
 .contact-form-box {
@@ -1912,7 +2112,7 @@ html {
 .disclaimer {
     background: var(--bg-secondary);
     color: var(--text-secondary);
-    padding: 50px 20px;
+    padding: 60px 24px;
     text-align: center;
 }
 
@@ -1920,19 +2120,21 @@ html {
     font-size: 50px;
     font-weight: 700;
     color: var(--accent-color); 
+    font-family: "Montserrat", sans-serif;
     margin-bottom: 20px;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 .disclaimer p {
-    max-width: 900px;
+    max-width: 1150px;
     margin: 0 auto;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.8;
     color: var(--text-primary);
     text-align: left;
     background: var(--bg-primary);
-    padding: 25px;
+    padding: 38px 42px;
     border-radius: 12px;
     border-left: 4px solid var(--accent-color);
 }
@@ -2082,9 +2284,9 @@ html {
     .para p {
         font-size: 0.98rem;
     }
-    .para > p:first-child {
+    /* .para > p:first-child {
         font-size: clamp(1.2rem, 2.4vw, 1.65rem);
-    }
+    } */
     .para a {
         padding: 12px 27px;
         width: auto;
@@ -2092,11 +2294,15 @@ html {
         white-space: nowrap;
     }
     .card {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        text-align: left;
+    }
+    .card img {
+        width: 140px;
+        flex: 0 0 140px;
     }
     .benefits strong {
-        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        font-size: clamp(2.5rem, 4vw, 3.75rem);
     }
     .title {
         font-size: clamp(3rem, 4vw, 5.5rem);
@@ -2148,6 +2354,30 @@ html {
     position: relative;
     padding-left: 45px;
 }
+    .hero-video-section {
+        flex-direction: column;
+        gap: 25px;
+        padding: 0 16px;
+    }
+    .video,
+    .video-highlights {
+        flex: unset;
+        width: 100%;
+    }
+    .video {
+        aspect-ratio: 16/9;
+        min-height: unset;
+    }
+    .video-highlights {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .video-highlights span {
+        font-size: 18px;
+    }
+}
 
 
 
@@ -2189,7 +2419,7 @@ html {
 
     .video {
         width: 100%;
-        min-height: 50vh;
+        min-height: unset;
         margin: 1.5rem auto 0;
         padding: 0;
         box-sizing: border-box;
@@ -2225,30 +2455,55 @@ html {
     }
 
     .container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         margin: 15px auto 0;
-        padding: 0 20px;
+        padding: 0 16px;
         max-width: 100%;
         box-sizing: border-box;
-        gap: 15px;
+        gap: 14px;
+        text-align: center;
+        /* font-size: medium; */
     }
 
     .card {
         width: 100%;
         flex-direction: column;
         text-align: center;
+        padding: 0;
+        min-height: unset;
     }
 
     .card img {
         width: 100%;
-        max-width: 360px;
-        height: 200px;
-        flex-basis: auto;
-        margin: 0 auto;
+        height: 120px;
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 0;
+    }
+
+    .card > div {
+        padding: 12px 14px;
+        align-items: center;
+    }
+
+    .card h3 {
+        font-size: 20px;
+    }
+
+    .card p {
+        font-size: 18px;
+    }
+
+    .container .card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 480px;
+        margin: 0;
+        width: 100%;
     }
 
     .benefits strong {
-        font-size: 32px;
+        font-size: 3.75rem;
         display: block;
         margin-left: 0;
     }
@@ -2258,7 +2513,7 @@ html {
     }
 
     .subtitle {
-        font-size: 0.95rem;
+        font-size: 18px;
     }
 
     .timeline {
@@ -2279,6 +2534,7 @@ html {
 
     .progress-content h2 {
         font-size: 20px;
+        text-align: left;
     }
 
     .progress-content p {
@@ -2327,11 +2583,11 @@ html {
     }
 
     .proof-subtitle {
-        font-size: 0.95rem;
+        font-size: 18px;
     }
 
     .proof-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns:repeat(2, 1fr);
         gap: 20px;
     }
 
@@ -2340,8 +2596,8 @@ html {
     }
 
     .cta-subtitle {
-        font-size: 0.95rem;
-        text-align: justify;
+        font-size: 18px;
+        text-align: center;
     }
 
     .faq-title {
@@ -2377,7 +2633,7 @@ html {
 
     .help-btn {
         width: 100%;
-        max-width: 260px;
+        max-width: 54%;
     }
 
     .contact-title {
@@ -2385,7 +2641,7 @@ html {
     }
 
     .contact-subtitle {
-        font-size: 0.95rem;
+        font-size: 18px;
     }
 
     .contact-form-box {
@@ -2399,7 +2655,7 @@ html {
         margin-left: 0;
         margin-right: 0;
     }
-}
+
 
 @media only screen and (max-width: 575px) {
     .navbar {
@@ -2425,7 +2681,7 @@ html {
 
     .video {
         width: 100%;
-        min-height: 45vh;
+        min-height: unset;
         margin: 1rem auto 0;
         padding: 0;
         box-sizing: border-box;
@@ -2439,11 +2695,11 @@ html {
         font-size: 0.9rem;
         margin-top: 0;
     }
-
+/* 
     .para > p:first-child {
         font-size: clamp(1.05rem, 4.8vw, 1.35rem);
         line-height: 1.5;
-    }
+    } */
 
     .para a {
         display: inline-block;
@@ -2468,7 +2724,13 @@ html {
         padding: 0 15px;
         max-width: 100%;
         box-sizing: border-box;
-        gap: 15px;
+        gap: 12px;
+    }
+
+    .container .card:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 100%;
+        margin: 0;
     }
 
     .benefits strong {
@@ -2479,25 +2741,35 @@ html {
 
     .card {
         width: 100%;
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
+        flex-direction: row;
+        text-align: left;
+        padding: 0;
+        gap: 0;
+        min-height: 100px;
     }
 
     .card img {
-        width: 100%;
-        max-width: 320px;
-        height: 180px;
-        flex-basis: auto;
-        margin: 0 auto;
+        width: 100px;
+        flex: 0 0 100px;
+        height: auto;
+        border-right: 1px solid rgba(255, 107, 0, 0.2);
+        border-bottom: none;
+        border-radius: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card > div {
+        padding: 12px 14px;
+        align-items: flex-start;
     }
 
     .card h3 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .card p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .process-section {
@@ -2521,6 +2793,7 @@ html {
 
     .progress-content h2 {
         font-size: 18px;
+        text-align: left;
     }
 
     .progress-content p {
@@ -2534,7 +2807,7 @@ html {
     }
 
     .subtitle {
-        font-size: 25px;
+        font-size: 18px;
         padding: 0 15px;
     }
 
@@ -2583,7 +2856,7 @@ html {
     }
 
     .card0 h3 {
-        font-size: 18px;
+        font-size: 10px;
     }
 
     .card0 h1 {
@@ -2616,7 +2889,7 @@ html {
     }
 
     .proof-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns:repeat(2, 1fr);
         gap: 15px;
         padding: 0 15px;
     }
@@ -2697,7 +2970,7 @@ html {
 
     .help-btn {
         width: 100%;
-        max-width: 260px;
+        max-width: 50%;
         height: 50px;
         font-size: 16px;
     }
@@ -2707,8 +2980,13 @@ html {
         text-align: center;
     }
 
+     .marquee-set .item {
+        /* flex: 0 0 auto; */
+        min-width: clamp(90px, 22vw, 140px);
+    }
+
     .contact-subtitle {
-        font-size: 14px;
+        font-size: 18px;
         padding: 0 15px;
     }
 
@@ -3736,10 +4014,7 @@ body.payment-page .payment-page-cards .plan-badge {
 
 .content-note {
     margin-top: 16px;
-}
-
-.video {
-    margin-top: 1.25rem;
+    color: #8A8A8A;
 }
 
 .para {
@@ -3768,7 +4043,7 @@ body.payment-page .payment-page-cards .plan-badge {
 } */
 
 .benefits strong {
-    margin-top: 3rem;
+    margin-top: 3.75rem;
 }
 
 .container {
@@ -3875,7 +4150,7 @@ footer {
     }
 
     .video {
-        min-height: 38vh;
+        min-height: unset;
         margin-top: 1rem;
     }
 
@@ -3884,11 +4159,10 @@ footer {
     }
 
     .marquee-wrapper {
-        padding: 18px 0;
+        padding: 25px 0;
         margin-bottom: 2rem;
         --marquee-duration: 18s;
-        --marquee-gap: clamp(14px, 4vw, 28px);
-        --marquee-item-width: clamp(122px, 30vw, 150px);
+        --marquee-gap: clamp(10px, 3vw, 24px);
     }
 
     .marquee-wrapper::before,
@@ -3937,7 +4211,7 @@ footer {
     }
 
     .video {
-        min-height: 34vh;
+        min-height: unset;
     }
 
     .para p {
@@ -3957,7 +4231,6 @@ footer {
         margin-bottom: 1.75rem;
         --marquee-duration: 16s;
         --marquee-gap: 12px;
-        --marquee-item-width: 118px;
     }
 
     .marquee-wrapper::before,
@@ -3974,9 +4247,9 @@ footer {
         padding-right: var(--marquee-gap);
     }
 
-    .marquee-set .item {
+    /* .marquee-set .item {
         flex: 0 0 var(--marquee-item-width);
-    }
+    } */
 
     .marquee-set .item h2 {
         font-size: clamp(18px, 4.8vw, 24px);
@@ -3991,7 +4264,6 @@ footer {
 @media only screen and (max-width: 375px) {
     .marquee-wrapper {
         --marquee-gap: 10px;
-        --marquee-item-width: 112px;
     }
 
     .marquee-set .item h2 {
@@ -4007,7 +4279,6 @@ footer {
 @media only screen and (min-width: 376px) and (max-width: 420px) {
     .marquee-wrapper {
         --marquee-gap: 12px;
-        --marquee-item-width: 116px;
     }
 
     .marquee-set .item h2 {
@@ -4023,7 +4294,6 @@ footer {
 @media only screen and (min-width: 421px) and (max-width: 575px) {
     .marquee-wrapper {
         --marquee-gap: 14px;
-        --marquee-item-width: 122px;
     }
 
     .marquee-set .item h2 {
@@ -4035,4 +4305,964 @@ footer {
     }
 }
 
+/* Final responsive pass for homepage sections */
+.content,
+.hero-video-section,
+.para,
+.container,
+.progress-container,
+.pricing-cards,
+.proof-cards,
+.faq-list,
+.contact-container {
+    width: min(100%, 1200px);
+    max-width: 100%;
+    box-sizing: border-box;
+}
 
+.content {
+    padding-inline: clamp(16px, 4vw, 32px);
+    font-size: clamp(1.75rem, 5vw, 3.75rem);
+    line-height: 1.12;
+}
+
+.content-note {
+    max-width: 900px;
+    font-size: clamp(0.9rem, 2vw, 1.125rem);
+    line-height: 1.45;
+}
+
+.hero-video-section {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(150px, 1fr);
+    align-items: center;
+    gap: clamp(18px, 4vw, 50px);
+    padding-inline: clamp(16px, 4vw, 24px);
+}
+
+.video {
+    width: 100%;
+    margin-inline: auto;
+    aspect-ratio: 16 / 9;
+    min-height: unset;
+}
+
+.video-highlights {
+    min-width: 0;
+    gap: clamp(12px, 3vw, 30px);
+}
+
+.video-highlights span {
+    font-size: clamp(1.15rem, 3vw, 3rem);
+    overflow-wrap: anywhere;
+}
+
+.para {
+    padding-inline: clamp(16px, 4vw, 24px);
+}
+
+.para p,
+.para > p:first-child {
+    max-width: 1050px;
+    font-size: clamp(0.95rem, 2.3vw, 1.1rem);
+    line-height: 1.55;
+}
+
+.para a,
+.spot a,
+.progress-spot a {
+    max-width: 100%;
+    white-space: normal;
+}
+
+.progress-container {
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 24px);
+}
+
+.timeline {
+    width: min(100%, 980px);
+    margin-inline: auto;
+    padding-left: 0;
+}
+
+.progress-line {
+    left: 0;
+}
+
+.card1 {
+    width: min(100%, 900px);
+    margin-inline: auto;
+    justify-content: center;
+}
+
+.progress-content {
+    width: 100%;
+    max-width: 760px;
+}
+
+.progress-content h2 {
+    text-align: center;
+}
+
+.progress-content p {
+    text-align: justify;
+    text-align-last: center;
+    line-height: 1.55;
+}
+
+.benefits strong {
+    font-size: 3.75rem;
+    line-height: 1.08;
+}
+
+.container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-inline: clamp(16px, 4vw, 20px);
+}
+
+.benefits-section .card,
+.benefits-section .card img {
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .hero-video-section {
+        grid-template-columns: 1fr;
+    }
+
+    .video-highlights {
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+
+    .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .content {
+        margin-top: max(8rem, 132px);
+        font-size: clamp(1.55rem, 8vw, 2.25rem);
+    }
+
+    .content-note {
+        display: block;
+        padding-inline: 0;
+    }
+
+    .hero-video-section {
+        padding-inline: 14px;
+    }
+
+    .video,
+    .home-video {
+        border-radius: 14px;
+    }
+
+    .para {
+        margin-top: 1rem;
+        padding-inline: 16px;
+    }
+
+    .para p,
+    .para > p:first-child {
+        font-size: clamp(0.92rem, 4vw, 1rem);
+        line-height: 1.55;
+        margin-bottom: 20px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .container .card:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: none;
+    }
+
+    .benefits-section .card {
+        grid-template-columns: minmax(92px, 34vw) 1fr;
+    }
+
+    .benefits-section .card img {
+        height: 80%;
+        min-height: 116px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+        line-height: 1.25;
+    }
+
+    .card p {
+        font-size: clamp(0.78rem, 3.5vw, 0.9rem);
+        line-height: 1.45;
+    }
+
+    .timeline {
+        padding-left: 0;
+    }
+
+    .progress-line {
+        display: none;
+    }
+
+    .card1 {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .progress-content p {
+        text-align: justify;
+        text-align-last: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .content {
+        font-size: clamp(1.35rem, 8vw, 1.85rem);
+        padding-inline: 12px;
+    }
+
+    .hero-video-section,
+    .para,
+    .container {
+        padding-inline: 12px;
+    }
+
+    .benefits-section .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .benefits-section .card img {
+        height: 150px;
+        min-height: 150px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+    }
+
+    .benefits-section .card > div {
+        align-items: center;
+    }
+}
+
+/* Site-wide responsive safety net */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    min-width: 0;
+}
+
+section,
+.top,
+.navbar,
+.content,
+.hero-video-section,
+.para,
+.marquee-wrapper,
+.benefits-section,
+.process-section,
+.pricing,
+.proof-section,
+.cta-section,
+.faq-section,
+.help-section,
+.contact-section,
+.disclaimer,
+.footer {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.content,
+.para,
+.benefits,
+.container,
+.progress-container,
+.pricing-section,
+.proof-container,
+.cta-container,
+.faq-container,
+.help-container,
+.contact-container {
+    width: min(100%, 1200px);
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+.title,
+.subtitle,
+.proof-title,
+.proof-subtitle,
+.cta-title,
+.cta-subtitle,
+.faq-title,
+.help-title,
+.help-subtitle,
+.contact-title,
+.contact-subtitle,
+.disclaimer .title,
+.disclaimer p {
+    overflow-wrap: anywhere;
+}
+
+.nav-links,
+.pricing-cards,
+.proof-cards,
+.login-popup-actions {
+    min-width: 0;
+}
+
+.price-btn,
+.cta-btn,
+.help-btn,
+.join-btn,
+.login-popup-primary,
+.login-popup-secondary,
+.progress-spot a,
+.spot a,
+.submit-btn {
+    max-width: 70%;
+    white-space: normal;
+    text-align: center;
+}
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    justify-items: center;
+    overflow: visible;
+}
+
+.card0 {
+    width: 100%;
+    max-width: 380px;
+}
+
+.pricing-cards .plan-badge {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    max-width: calc(100% - 28px);
+    text-align: center;
+    white-space: normal;
+}
+
+.pricing-cards .plan-badge small {
+    text-align: center;
+}
+
+.proof-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+}
+
+.proof-card {
+    align-self: start;
+    height: auto;
+    min-height: auto;
+}
+
+.faq-item summary {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 1100px) {
+    .pricing-cards,
+    .proof-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pricing-cards .card0:last-child,
+    .proof-cards .proof-card:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .top {
+        padding-inline: 12px;
+    }
+
+    .navbar {
+        width: calc(100% - 24px);
+        left: 12px;
+        right: 12px;
+        transform: none;
+        border-radius: 18px;
+    }
+
+    .content {
+        margin-top: max(8.5rem, 140px);
+        font-size: clamp(1.55rem, 7vw, 2.75rem);
+    }
+
+    .hero-video-section,
+    .container,
+    .progress-container,
+    .pricing-section,
+    .proof-container,
+    .cta-container,
+    .faq-container,
+    .help-container,
+    .contact-container {
+        padding-inline: 16px;
+    }
+
+    .hero-video-section,
+    .container,
+    .pricing-cards,
+    .proof-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-cards .card0:last-child,
+    .proof-cards .proof-card:last-child {
+        grid-column: auto;
+    }
+
+    .card0 {
+        max-width: 520px;
+    }
+
+    .benefits-section .card {
+        grid-template-columns: minmax(110px, 34vw) 1fr;
+        text-align: left;
+    }
+
+    .benefits-section .card img {
+        height: 100%;
+        min-height: 130px;
+        border-right: 1px solid rgba(255, 107, 0, 0.2);
+        border-bottom: none;
+    }
+
+    .benefits-section .card > div {
+        align-items: flex-start;
+    }
+
+    .card1 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .progress-content {
+        max-width: 100%;
+    }
+
+    .progress-content p,
+    .proof-text,
+    .help-subtitle,
+    .contact-container,
+    .contact-subtitle {
+        text-align: left;
+        text-align-last: auto;
+    }
+
+    .faq-item summary {
+        font-size: clamp(1rem, 4.5vw, 1.25rem);
+        padding: 20px 18px;
+        gap: 14px;
+    }
+
+    .faq-item p {
+        font-size: clamp(0.92rem, 3.8vw, 1rem);
+        padding: 0 18px 20px;
+    }
+
+    .contact-title,
+    .help-title,
+    .proof-title,
+    .cta-title,
+    .faq-title {
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 520px) {
+    .navbar {
+        top: 32px;
+        padding: 10px 12px;
+    }
+
+    .logo img {
+        max-width: 58px;
+    }
+
+    .join-btn {
+        padding: 9px 12px;
+        font-size: 0.82rem !important;
+    }
+
+    .content {
+        margin-top: max(7.5rem, 124px);
+        padding-inline: 14px;
+    }
+
+    .content-note {
+        font-size: clamp(0.82rem, 3.6vw, 0.95rem);
+    }
+
+    .video-highlights {
+        gap: 10px;
+    }
+
+    .video-highlights span {
+        font-size: clamp(1rem, 5vw, 1.25rem);
+    }
+
+    .benefits strong,
+    .title,
+    .proof-title,
+    .cta-title,
+    .faq-title,
+    .help-title,
+    .contact-title {
+        font-size: clamp(1.55rem, 8vw, 2.25rem);
+        line-height: 1.12;
+    }
+
+    .subtitle,
+    .proof-subtitle,
+    .cta-subtitle,
+    .help-subtitle,
+    .contact-subtitle,
+    .progress-para p {
+        font-size: clamp(0.92rem, 4vw, 1rem);
+        line-height: 1.55;
+    }
+
+    .benefits-section .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .benefits-section .card img {
+        height: 170px;
+        min-height: 170px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+    }
+
+    .benefits-section .card > div {
+        align-items: center;
+    }
+
+    .process-section,
+    .pricing,
+    .proof-section,
+    .cta-section,
+    .faq-section,
+    .help-section,
+    .contact-section,
+    .disclaimer {
+        padding-inline: 12px;
+    }
+
+    .card1,
+    .card0,
+    .proof-card,
+    .faq-item,
+    .contact-form-box {
+        border-radius: 14px;
+    }
+
+    .card1,
+    .card0,
+    .proof-card {
+        padding-inline: 16px;
+    }
+
+    .proof-user {
+        align-items: flex-start;
+    }
+
+    .proof-user h3 {
+        font-size: clamp(1rem, 5vw, 1.25rem);
+    }
+
+    .proof-user p {
+        font-size: clamp(0.85rem, 4vw, 1rem);
+    }
+
+    .contact-form-box {
+        padding: 24px 16px;
+    }
+
+    .contact-form-box input,
+    .contact-form-box textarea {
+        font-size: 16px;
+        padding: 14px 15px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .navbar {
+        width: calc(100% - 16px);
+        left: 8px;
+        right: 8px;
+    }
+
+    .join-btn {
+        padding-inline: 10px;
+    }
+
+    .content,
+    .hero-video-section,
+    .para,
+    .container,
+    .progress-container,
+    .pricing-section,
+    .proof-container,
+    .cta-container,
+    .faq-container,
+    .help-container,
+    .contact-container {
+        padding-inline: 10px;
+    }
+
+    .benefits-section .card img {
+        height: 145px;
+        min-height: 145px;
+    }
+}
+
+/* Solid fiery orange buttons */
+button,
+.btn,
+input[type="submit"],
+.join-btn,
+.price-btn,
+.cta-btn,
+.help-btn,
+.pay-now-btn,
+.continue-test-btn,
+.login-popup-primary,
+.login-popup-secondary,
+.progress-spot a,
+.spot a,
+.para a,
+.submit-btn,
+.card0.payment-plan-card .payment-select-btn {
+    background: #ff6b00 !important;
+    background-image: none !important;
+    color: #0a0a0a !important;
+    border-color: #ff6b00 !important;
+    box-shadow: none !important;
+}
+
+button:hover,
+button:focus-visible,
+.btn:hover,
+.btn:focus-visible,
+input[type="submit"]:hover,
+input[type="submit"]:focus-visible,
+.join-btn:hover,
+.join-btn:focus-visible,
+.price-btn:hover,
+.price-btn:focus-visible,
+.cta-btn:hover,
+.cta-btn:focus-visible,
+.help-btn:hover,
+.help-btn:focus-visible,
+.pay-now-btn:hover,
+.pay-now-btn:focus-visible,
+.continue-test-btn:hover,
+.continue-test-btn:focus-visible,
+.login-popup-primary:hover,
+.login-popup-primary:focus-visible,
+.login-popup-secondary:hover,
+.login-popup-secondary:focus-visible,
+.progress-spot a:hover,
+.progress-spot a:focus-visible,
+.spot a:hover,
+.spot a:focus-visible,
+.para a:hover,
+.para a:focus-visible,
+.submit-btn:hover,
+.submit-btn:focus-visible,
+.card0.payment-plan-card .payment-select-btn:hover,
+.card0.payment-plan-card .payment-select-btn:focus-visible {
+    background: #ff6b00 !important;
+    background-image: none !important;
+    color: #0a0a0a !important;
+    border-color: #ff6b00 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Hero note responsive wrapping */
+.content {
+    white-space: normal !important;
+}
+
+.content-note {
+    display: block;
+    width: min(100%, 900px);
+    margin-inline: auto;
+    white-space: normal !important;
+    overflow-wrap: break-word;
+    word-break: normal;
+    text-wrap: pretty;
+}
+
+.content-note strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 520px) {
+    .content-note {
+        width: 100%;
+        font-size: clamp(0.78rem, 3.7vw, 0.95rem);
+        line-height: 1.55;
+    }
+}
+
+/* Process card typography balance */
+.process-section .number {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    flex: 0 0 auto;
+}
+
+.process-section .progress-content h2 {
+    font-size: clamp(1.4rem, 3vw, 2.25rem);
+    line-height: 1.25;
+}
+
+.process-section .progress-content p {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    line-height: 1.65;
+}
+
+@media (max-width: 640px) {
+    .process-section .number {
+        font-size: clamp(1.8rem, 10vw, 2.75rem);
+    }
+
+    .process-section .progress-content h2 {
+        font-size: clamp(1.2rem, 5.5vw, 1.6rem);
+    }
+
+    .process-section .progress-content p {
+        font-size: clamp(0.95rem, 4vw, 1.08rem);
+    }
+}
+
+/* Keep the benefits cards visually even. */
+.benefits-section .container {
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.benefits-section .container .card {
+    height: 100%;
+    min-height: 190px;
+}
+
+.benefits-section .container .card:last-child:nth-child(odd) {
+    grid-column: 1 / 2;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .benefits-section .container .card {
+        min-height: 0;
+        height: auto;
+    }
+}
+
+@media (max-width: 520px) {
+    .benefits-section .container {
+        grid-auto-rows: auto;
+    }
+
+    .benefits-section .container .card {
+        min-height: 0;
+        height: auto;
+    }
+}
+
+/* Keep every main section title in the same font as the pricing title. */
+.benefits strong,
+.title,
+.proof-title,
+.cta-title,
+.faq-title,
+.help-title,
+.contact-title,
+.disclaimer .title,
+.benefits strong span,
+.title span,
+.proof-title span,
+.cta-title span,
+.faq-title span,
+.help-title span,
+.contact-title span,
+.disclaimer .title span {
+    font-family: "Montserrat", sans-serif;
+}
+
+
+
+/* =============================================
+   BENEFITS SECTION — RESPONSIVE OVERRIDES
+   These rules are placed last to win all cascade conflicts
+   ============================================= */
+
+/* LAPTOP/DESKTOP (>1024px): image left, text right, 2 columns */
+.benefits-section .container {
+    grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.benefits-section .container .card:last-child:nth-child(odd) {
+    grid-column: 1 / 2 !important;
+}
+
+/* TABLET (601px–1024px): image top, text bottom, 2 columns */
+@media (max-width: 1024px) {
+    .benefits-section .container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .benefits-section .card {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+
+    .benefits-section .card img {
+        width: 100% !important;
+        height: 150px !important;
+        flex: none !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2) !important;
+    }
+
+    .benefits-section .card > div {
+        align-items: center !important;
+        text-align: center !important;
+        padding: 14px 16px !important;
+    }
+
+    .benefits-section .container .card:last-child:nth-child(odd) {
+        grid-column: 1 / 2 !important;
+    }
+}
+
+/* MOBILE (<=600px): image top, text bottom, 1 column */
+@media (max-width: 600px) {
+    .benefits-section .container {
+        grid-template-columns: 1fr !important;
+    }
+
+    .benefits-section .card {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+
+    .benefits-section .card img {
+        width: 100% !important;
+        height: 200px !important;
+        flex: none !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2) !important;
+    }
+
+    .benefits-section .card > div {
+        align-items: center !important;
+        text-align: center !important;
+        padding: 16px !important;
+    }
+
+    .benefits-section .card h3 {
+        font-size: 16px !important;
+    }
+
+    .benefits-section .card p {
+        font-size: 13px !important;
+    }
+
+    /* single column — last card just fills naturally */
+    .benefits-section .container .card:last-child:nth-child(odd) {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* ── MOBILE NAVBAR LOGO FIX ── */
+@media (max-width: 600px) {
+    .logo img {
+        max-width: 48px;
+        max-height: 38px;
+    }
+
+    .navbar {
+        padding: 8px 12px;
+    }
+}
+
+/* ── MOBILE TOP BANNER + NAVBAR POSITION FIX ── */
+@media (max-width: 600px) {
+    .top p {
+        padding: 6px 12px;
+        font-size: 0.72rem;
+        letter-spacing: 0;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    .navbar {
+        top: 46px;
+    }
+
+    .logo img {
+        max-width: 44px;
+        max-height: 34px;
+    }
+}
+
+/* ── MOBILE S (<=375px) ── */
+@media (max-width: 375px) {
+    .top p {
+        padding: 5px 10px;
+        font-size: 0.65rem;
+    }
+
+    .navbar {
+        top: 44px;
+    }
+
+    .logo img {
+        max-width: 36px;
+        max-height: 28px;
+    }
+}
