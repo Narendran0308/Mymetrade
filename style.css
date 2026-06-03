@@ -2014,8 +2014,8 @@ html {
 }
 
 .contact-title {
-    font-size: 72px;
-    font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
     margin-bottom: 20px;
     color: var(--heading-color);
     font-family: "Montserrat", sans-serif;
