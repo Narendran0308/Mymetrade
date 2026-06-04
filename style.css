@@ -678,7 +678,7 @@ p {
     justify-content: center;
     gap: 50px;
     max-width: 1200px;
-    margin: 2rem auto 0;
+    margin: 0 auto 0;
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -1214,7 +1214,7 @@ p {
 }
 
 .subtitle {
-    text-align: left;
+    text-align: center;
     color: var(--text-secondary);
     margin-bottom: 60px;
     font-family: "Montserrat", sans-serif;
@@ -1656,7 +1656,7 @@ ul li::after {
     font-size: 19px;
     line-height: 1.55;
     margin: 0 0 55px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .proof-cards {
@@ -4069,7 +4069,7 @@ body.payment-page .payment-page-cards .plan-badge {
 
 .content-note {
     margin-top: 16px;
-    color: #8A8A8A;
+    color: #ffffff;
 }
 
 .para {
@@ -5436,12 +5436,11 @@ input[type="submit"]:focus-visible,
 }
 
 .trust span {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.4));
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
 }
 
 @media (max-width: 600px) {
@@ -5532,4 +5531,97 @@ input[type="submit"]:focus-visible,
     .proof-subtitle {
         font-size: 14px !important;
     }
+}
+
+/* ── TRUST TEXT SIZES ── */
+.trust p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+}
+
+.trust-large {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    -webkit-text-fill-color: #ffffff;
+}
+
+.trust-small {
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-family: "Montserrat", sans-serif;
+    -webkit-text-fill-color: var(--text-secondary);
+}
+
+.trust-highlight {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ── TRUST HIGHLIGHT OVERRIDE (must be last) ── */
+.trust-highlight {
+    background: var(--accent-gradient) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+/* ── ACCENT HIGHLIGHT TEXT ── */
+.accent-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.45));
+}
+
+/* ── CONTENT NOTE TIGHT SPACING ── */
+.content-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+.content-note-sub {
+    display: block;
+    font-size: 0.95em;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+}
+/* ── HERO VIDEO SECTION GAP REDUCTION ── */
+.hero-video-section {
+    margin-top: 0;
+}
+
+@media (max-width: 1024px) {
+    .hero-video-section {
+        margin-top: 0;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-video-section {
+        margin-top: 0;
+        gap: 14px;
+        padding: 0 12px;
+    }
+}
+
+/* ── SUBTITLE ALWAYS CENTRED ── */
+.subtitle {
+    text-align: center !important;
 }
