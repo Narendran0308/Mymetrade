@@ -2,8 +2,6 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 html {
@@ -714,7 +712,6 @@ p {
 .video-highlights span {
     font-size: clamp(28px, 3vw, 48px);
     font-weight: 600;
-    color: #fff;
     line-height: 1.2;
     opacity: 0;
     transform: translateX(-28px);
@@ -723,18 +720,33 @@ p {
 
 .video-highlights span:nth-child(1) {
     animation-delay: 0.15s;
-    color: #ff6b00;
+    background: linear-gradient(180deg, #ff6b00 0%, #ffb347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .video-highlights span:nth-child(2) {
     animation-delay: 0.35s;
-    color: #ffb347;
+    background: linear-gradient(180deg, #ff6b00 0%, #ffb347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .video-highlights span:nth-child(3) {
     animation-delay: 0.55s;
-    color: #e8e8e8;
+    background: linear-gradient(180deg, #ff6b00 0%, #ffb347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
+
+.trust{
+    text-align: center;
+
+}
+
 
 @keyframes highlightFadeLeft {
     from {
@@ -1202,7 +1214,7 @@ p {
 }
 
 .subtitle {
-    text-align: center;
+    text-align: left;
     color: var(--text-secondary);
     margin-bottom: 60px;
     font-family: "Montserrat", sans-serif;
@@ -1318,7 +1330,7 @@ button {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    font-size: 19px;
 }
 
 
@@ -1331,26 +1343,39 @@ button {
     text-align: center;
     margin: 20px auto 0;
     max-width: 900px;
-    padding: 0 20px;
+    padding: 0 12px;
     box-sizing: border-box;
 }
 
 .pricing-image img {
     width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    object-position: center top;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-card);
     display: block;
-    margin: 0 auto;
     background: transparent;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .pricing-image {
+        padding: 0 12px;
+    }
+    .pricing-image img {
+        max-height: 280px;
+    }
 }
 
 @media (max-width: 600px) {
+    .pricing-image {
+        padding: 0 12px;
+        margin-top: 10px;
+    }
     .pricing-image img {
-        max-height: 220px;
+        max-height: 200px;
     }
 }
 
@@ -1628,7 +1653,7 @@ ul li::after {
 
 .proof-subtitle {
     color: var(--text-secondary);
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.55;
     margin: 0 0 55px;
     font-weight: 400;
@@ -2014,7 +2039,7 @@ html {
 }
 
 .contact-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--heading-color);
@@ -2543,7 +2568,7 @@ html {
     }
 
     .subtitle {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .timeline {
@@ -2613,7 +2638,7 @@ html {
     }
 
     .proof-subtitle {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .proof-cards {
@@ -4147,7 +4172,7 @@ ul li {
 }
 
 .footer {
-    margin-top: 48px;
+    margin-top: 0;
 }
 
 .contact-subtitle {
@@ -5086,7 +5111,7 @@ input[type="submit"]:focus-visible,
 }
 
 .process-section .progress-content p {
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-size: 19px;
     line-height: 1.65;
 }
 
@@ -5100,7 +5125,7 @@ input[type="submit"]:focus-visible,
     }
 
     .process-section .progress-content p {
-        font-size: clamp(0.95rem, 4vw, 1.08rem);
+        font-size: 19px;
     }
 }
 
@@ -5294,5 +5319,217 @@ input[type="submit"]:focus-visible,
     .logo img {
         max-width: 36px;
         max-height: 28px;
+    }
+}
+
+/* ── DISCLAIMER DROPDOWN ── */
+.disclaimer {
+    padding: 40px 24px;
+    background: var(--bg-secondary);
+    display: block;
+}
+
+.disclaimer-dropdown {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+.disclaimer-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    transition: background 0.2s ease;
+}
+
+.disclaimer-summary::-webkit-details-marker {
+    display: none;
+}
+
+.disclaimer-summary:hover {
+    background: var(--bg-tertiary);
+}
+
+.disclaimer-title {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.disclaimer-icon {
+    font-size: 14px;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.disclaimer-dropdown[open] .disclaimer-icon {
+    transform: rotate(180deg);
+}
+
+.disclaimer-content {
+    padding: 0 28px 28px;
+    border-top: 1px solid var(--border-color);
+}
+
+.disclaimer-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 20px 0 0;
+    text-align: left;
+    background: none;
+    padding: 0;
+    border: none;
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .disclaimer {
+        padding: 24px 14px;
+    }
+
+    .disclaimer-summary {
+        padding: 14px 18px;
+    }
+
+    .disclaimer-content {
+        padding: 0 18px 20px;
+    }
+
+    .disclaimer-content p {
+        font-size: 13px;
+    }
+}
+
+/* ── TRUST SECTION ── */
+.trust {
+    background: var(--bg-primary);
+    padding: 30px 24px 30px;
+    text-align: center;
+}
+
+.trust div {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.trust p {
+    font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+}
+
+.trust span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.4));
+}
+
+@media (max-width: 600px) {
+    .trust {
+        padding: 40px 18px;
+    }
+}
+
+/* ── PRICING CARD BADGES & HIGHLIGHTS ── */
+.plan-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 14px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.plan-badge.starter {
+    background: var(--accent-gradient);
+    border: none;
+    color: #000;
+    border-radius: 999px;
+    padding: 8px 20px;
+    width: fit-content;
+    margin: 0 auto 14px;
+}
+
+.plan-badge.most-popular {
+    background: var(--accent-gradient);
+    border: none;
+    color: #000;
+    border-radius: 999px;
+    padding: 8px 20px;
+    width: fit-content;
+    margin: 0 auto 14px;
+}
+
+.plan-badge.best-value {
+    background: var(--accent-gradient);
+    border: none;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    border-radius: 999px;
+    padding: 8px 20px;
+    width: fit-content;
+    margin: 0 auto 14px;
+}
+
+.plan-badge.best-value small {
+    font-size: 11px;
+    font-weight: 500;
+    color: #000;
+}
+
+/* strikethrough title */
+.card0 h3 s {
+    text-decoration: line-through;
+    text-decoration-color: var(--accent-color);
+    color: var(--text-secondary);
+}
+
+/* yellow highlight sub text */
+.highlight-sub {
+    display: inline-block;
+    /* background: #facc15; */
+     color: var(--text-secondary)
+    /* padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px !important;
+    line-height: 1.5;
+    text-align: center; */
+}
+
+/* ── PROOF SUBTITLE MATCHES PROOF TEXT SIZE ── */
+.proof-subtitle {
+    font-size: 19px !important;
+    line-height: 1.55;
+}
+
+@media (max-width: 575px) {
+    .proof-subtitle {
+        font-size: 14px !important;
     }
 }
