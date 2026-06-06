@@ -1352,9 +1352,9 @@ button {
     max-height: none;
     object-fit: contain;
     object-position: center;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-card);
+    /* border-radius: var(--radius-md); */
+    /* border: 1px solid var(--border-color); */
+    /* box-shadow: var(--shadow-card); */
     display: block;
     background: transparent;
     box-sizing: border-box;
@@ -1376,6 +1376,9 @@ button {
     }
     .pricing-image img {
         max-height: 200px;
+    }
+     .pricing-cards {
+        gap: 50px;
     }
 }
 
@@ -1426,7 +1429,7 @@ button {
 @media (max-width: 600px) {
     .pricing-cards {
         flex-wrap: wrap;
-        gap: 18px;
+        gap: 50px;
         padding: 40px 12px 10px;
     }
 
@@ -1611,11 +1614,11 @@ ul li::after {
 
 .proof-section {
     background: var(--bg-primary);
-    padding: 20px 20px 90px;
+    padding: 0px 20px 20px;
     color: var(--text-primary);
     font-family: "Montserrat", sans-serif;
     overflow: hidden;
-    margin-top: 150px;
+    margin-top: 30px;
 }
 
 .proof-container {
@@ -2434,6 +2437,11 @@ html {
     }
 }
 
+@media (max-width: 480px) {
+    .plan-badge.best-value {
+        top: 12px;
+    }
+}
 
 
 .timeline-card {
@@ -2448,7 +2456,7 @@ html {
         transform: none;
         width: 100%;
         top: 46px;
-        padding: 12px 14px;
+        padding: 6px 14px;
         box-sizing: border-box;
         border-radius: 0;
         overflow: hidden;
@@ -4126,7 +4134,7 @@ body.payment-page .payment-page-cards .plan-badge {
 }
 
 .card0 {
-    padding: 48px 30px 36px;
+    padding: 15px 30px 36px;
 }
 
 ul {
@@ -4138,11 +4146,11 @@ ul li {
 }
 
 .proof-section {
-    padding-bottom: 60px;
+    padding-bottom: 20px;
 }
 
 .proof-title {
-    margin-top: 70px;
+    margin-top: 18px;
 }
 
 .proof-subtitle,
@@ -4256,7 +4264,7 @@ footer {
 
     .pricing-cards {
         padding-top: 30px;
-        gap: 18px;
+        gap: 30px;
     }
 }
 
@@ -4753,13 +4761,14 @@ section,
 
 @media (max-width: 768px) {
     .top {
-        padding-inline: 12px;
+        padding-inline: 0px;
     }
 
     .navbar {
-        width: calc(100% - 24px);
-        left: 12px;
-        right: 12px;
+        width:100%;
+        left: -5px;;
+        right:1px;
+        margin: 6px;
         transform: none;
         border-radius: 18px;
     }
@@ -4976,9 +4985,9 @@ section,
 
 @media (max-width: 360px) {
     .navbar {
-        width: calc(100% - 16px);
-        left: 8px;
-        right: 8px;
+        width:100%;
+        left: -6px;
+        right: 0px;
     }
 
     .join-btn {
@@ -5281,7 +5290,7 @@ input[type="submit"]:focus-visible,
     }
 
     .navbar {
-        padding: 8px 12px;
+        padding: 6px 0px;
     }
 }
 
@@ -5296,7 +5305,7 @@ input[type="submit"]:focus-visible,
     }
 
     .navbar {
-        top: 46px;
+        top: 38px;
     }
 
     .logo img {
@@ -5313,7 +5322,7 @@ input[type="submit"]:focus-visible,
     }
 
     .navbar {
-        top: 44px;
+        top: 33px;
     }
 
     .logo img {
@@ -5341,7 +5350,7 @@ input[type="submit"]:focus-visible,
 .disclaimer-summary {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 18px 28px;
     cursor: pointer;
     list-style: none;
@@ -5365,6 +5374,7 @@ input[type="submit"]:focus-visible,
     color: var(--accent-color);
     font-family: "Montserrat", sans-serif;
     letter-spacing: 0.5px;
+    text-align: center;
 }
 
 .disclaimer-icon {
@@ -5454,11 +5464,13 @@ input[type="submit"]:focus-visible,
     display: inline-block;
     padding: 6px 18px;
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 14px;
     font-family: "Montserrat", sans-serif;
+    min-width: 195px;
+    min-height: 30px;
 }
 
 .plan-badge.starter {
@@ -5466,9 +5478,9 @@ input[type="submit"]:focus-visible,
     border: none;
     color: #000;
     border-radius: 999px;
-    padding: 8px 20px;
+    padding: 12px 19px;
     width: fit-content;
-    margin: 0 auto 14px;
+    margin: 0px auto 14px;
 }
 
 .plan-badge.most-popular {
@@ -5476,9 +5488,9 @@ input[type="submit"]:focus-visible,
     border: none;
     color: #000;
     border-radius: 999px;
-    padding: 8px 20px;
+    padding: 12px 19px;
     width: fit-content;
-    margin: 0 auto 14px;
+    margin: 0px auto 14px;
 }
 
 .plan-badge.best-value {
@@ -5492,7 +5504,7 @@ input[type="submit"]:focus-visible,
     border-radius: 999px;
     padding: 8px 20px;
     width: fit-content;
-    margin: 0 auto 14px;
+    margin: 0px auto 14px;
 }
 
 .plan-badge.best-value small {
