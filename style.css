@@ -5603,6 +5603,8 @@ input[type="submit"]:focus-visible,
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    color: var(--text-secondary);
+    -webkit-text-fill-color: var(--text-secondary);
     line-height: 1.4;
     margin-bottom: 0;
 }
@@ -5610,8 +5612,8 @@ input[type="submit"]:focus-visible,
 .content-note-sub {
     display: block;
     font-size: 0.95em;
-    color: #ffffff;
-    -webkit-text-fill-color: #ffffff;
+    color: var(--text-secondary);
+    -webkit-text-fill-color: var(--text-secondary);
 }
 /* ── HERO VIDEO SECTION GAP REDUCTION ── */
 .hero-video-section {
