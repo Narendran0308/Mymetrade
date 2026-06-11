@@ -42,7 +42,7 @@
             justify-content:center;
             align-items:center;
 
-            padding:20px;
+            padding:84px 24px 48px;
 
             background:var(--bg-page);
             background-attachment:fixed;
@@ -55,7 +55,7 @@
 
         /* BACK BUTTON — fixed so flex layout on body cannot shrink it to zero */
         .back-btn{
-            position: fixed;
+            position: absolute;
             top: 20px;
             left: 20px;
             z-index: 100;
@@ -88,21 +88,23 @@
 
         .container{
             width:100%;
-            max-width:900px;
+            max-width:1180px;
         }
 
         .auth-wrapper{
             display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:30px;
+            grid-template-columns:minmax(280px, 360px) minmax(300px, 360px);
+            justify-content:space-between;
+            gap:clamp(16px, 1vw, 210px);
+            min-height:520px;
 
             background:var(--bg-secondary);
 
             backdrop-filter:blur(16px) saturate(1.3);
 
-            border-radius:20px;
+            border-radius:18px;
 
-            padding:40px;
+            padding:44px 72px;
 
             border:1px solid var(--border-color);
 
@@ -116,17 +118,21 @@
         .logo-section{
             display:flex;
             flex-direction:column;
-            justify-content:center;
-            padding:40px 20px;
+            justify-content:space-between;
+            padding:0;
         }
 
         .logo-section img{
-            width:120px;
-            margin-bottom:30px;
+            width:112px;
+            margin-bottom:26px;
+        }
+
+        .brand-copy {
+            max-width:310px;
         }
 
         .logo-section h1{
-            font-size:32px;
+            font-size:30px;
 
             background:var(--accent-gradient);
 
@@ -138,17 +144,18 @@
             margin-bottom:20px;
         }
 
-        .logo-section p{
+        .logo-section > p{
             color:var(--text-secondary);
-            line-height:1.8;
+            line-height:1.65;
             margin-bottom:15px;
+            max-width:310px;
         }
 
         .features{
             display:flex;
             flex-direction:column;
-            gap:15px;
-            margin-top:30px;
+            gap:12px;
+            margin-top:40px;
         }
 
         .feature{
@@ -176,6 +183,8 @@
 
         .feature p{
             font-size:14px;
+            line-height:1.35;
+            margin:0;
         }
 
         /* RIGHT */
@@ -183,6 +192,9 @@
         .form-section{
             display:flex;
             flex-direction:column;
+            justify-content:flex-start;
+            padding:0;
+            min-height:430px;
         }
 
         .tabs{
@@ -190,7 +202,7 @@
             grid-template-columns:1fr 1fr;
             gap:10px;
 
-            margin-bottom:30px;
+            margin-bottom:24px;
         }
 
         .tab-btn{
@@ -233,7 +245,14 @@
         .form-group.active{
             display:flex;
             flex-direction:column;
-            gap:20px;
+            gap:14px;
+            min-height:356px;
+        }
+
+        .form-panel{
+            display:flex;
+            min-height:356px;
+            flex-direction:column;
         }
 
         .input-group{
@@ -457,6 +476,26 @@
             cursor: wait;
         }
 
+        .app {
+            margin-top: auto;
+            padding-top: 40px;
+            color: green;
+        }
+
+        .app p {
+            margin: 0;
+            color: var(--heading-color);
+            font-size: 22px;
+            line-height: 1.35;
+            letter-spacing: 0;
+            padding-top: 0px;
+            color: green;
+        }
+
+        .app p:first-child {
+            margin-bottom: 22px;
+        }
+
         @media(max-width:768px){
 
             .details-grid {
@@ -464,14 +503,16 @@
             }
 
             .auth-wrapper{
-                grid-template-columns:1fr;
-                padding:30px 20px;
+                grid-template-columns: 1fr 1fr;
+                padding:10px 12px;
+                min-height:0;
+                gap: 20px;
             }
 
             .logo-section{
                 padding:20px 0;
-
-                border-bottom:1px solid rgba(0,86,179,0.1);
+                border-bottom:0;
+                border-right:1px solid rgba(0,86,179,0.1);
             }
 
             .logo-section h1{
@@ -483,6 +524,37 @@
                 left: 12px;
                 padding: 8px 14px;
                 font-size: 13px;
+            }
+
+            .form-section{
+                padding:0px 0 0;
+                min-height:0;
+            }
+
+            .form-group.active,
+            .form-panel{
+                min-height:0;
+            }
+
+            .app{
+                padding-top:36px;
+            }
+
+            .app p{
+                font-size:19px;
+            }
+        }
+
+        /* Mobile view - single column */
+        @media(max-width:600px){
+            .auth-wrapper{
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .logo-section{
+                border-right:0;
+                border-bottom:1px solid rgba(0,86,179,0.1);
             }
         }
 
@@ -501,14 +573,18 @@
 
             <div class="logo-section">
 
-                <img src="image.avif" alt="Mymetrades Logo">
+                <div class="brand-copy">
 
-                <h1>Mymetrades</h1>
+                    <img src="image.avif" alt="Mymetrades Logo">
 
-                <p>
-                    Join Our trading circle and learn live market execution,
-                    simple rule-based setups and disciplined risk control.
-                </p>
+                    <h1>Mymetrades</h1>
+
+                    <p>
+                        Join Our trading circle and learn live market execution,
+                        simple rule-based setups and disciplined risk control.
+                    </p>
+
+                </div>
 
                 <div class="features">
 
@@ -558,7 +634,7 @@
 
                 <div id="signup" class="form-group active">
 
-                    <div id="signup-step1">
+                    <div id="signup-step1" class="form-panel">
 
                         <div class="input-group">
                             <label>Email Address</label>
@@ -568,7 +644,10 @@
                         <button type="button" class="submit-btn" onclick="sendSignupEmail()">
                             Send Verification Email
                         </button>
-
+                        <div class="app">
+                        <p> We appreciate !! </p>
+                        <p>Your interest and welcome you to our winning community</p>
+                        </div>    
                     </div>
 
                     <div id="signup-step2" style="display:none;">
@@ -597,7 +676,7 @@
 
                 <div id="login" class="form-group">
 
-                    <div id="login-step1">
+                    <div id="login-step1" class="form-panel">
 
                         <div class="input-group">
                             <label>Email Address</label>
@@ -608,9 +687,14 @@
                             Send Login Email
                         </button>
 
+                        <div class="app">
+                        <p> We appreciate !! </p>
+                        <p>Your interest and welcome you to our winning community</p>
+                        </div>
+
                     </div>
 
-                    <div id="login-step2" style="display:none;">
+                    <div id="login-step2" class="form-panel" style="display:none;">
 
                         <div class="input-group">
                             <label>Password from Email</label>
@@ -624,6 +708,11 @@
                         <button type="button" class="submit-btn secondary-btn" onclick="resetLoginForm()">
                             Change Email
                         </button>
+
+                        <div class="app">
+                        <p> We appreciate !! </p>
+                        <p>Your interest and welcome you to our winning community</p>
+                        </div>  
 
                     </div>
 

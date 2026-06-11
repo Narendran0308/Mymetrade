@@ -862,10 +862,10 @@ if ($isAuthenticated) {
             <a href="videos.html" target="_blank" rel="noopener">Preview Library</a>
             <a href="index.html">Website</a>
             <a class="logout" href="admin.php?logout=1">Logout</a>
-            <!-- <form id="reset-dashboard-form" method="post" style="display:inline;margin-left:8px;">
+            <form id="reset-dashboard-form" method="post" style="display:inline;margin-left:8px;">
                 <input type="hidden" name="_reset_dashboard" value="1">
                 <button type="button" id="reset-dashboard-button" class="btn-danger" style="font-size:13px;padding:6px 10px;">Reset Dashboard</button>
-            </form> -->
+            </form>
         </div>
     </nav>
 
@@ -1260,15 +1260,26 @@ document.addEventListener('DOMContentLoaded', function(){
             });
         }).then(function(json){
             if (json && json.success) {
-                alert('Dashboard reset completed. The page will reload.');
+                var msg = 'Dashboard reset completed.';
+                if (json.cleared && json.cleared.length > 0) {
+                    msg += '\nCleared tables: ' + json.cleared.join(', ');
+                }
+                alert(msg + '\nThe page will reload.');
                 window.location.reload();
             } else {
-                alert('Reset failed: ' + (json && json.message ? json.message : 'Unknown error'));
+                var errorMsg = 'Reset failed: ' + (json && json.message ? json.message : 'Unknown error');
+                if (json && json.errors && json.errors.length > 0) {
+                    errorMsg += '\n\nErrors:\n' + json.errors.join('\n');
+                }
+                if (json && json.cleared && json.cleared.length > 0) {
+                    errorMsg += '\n\nPartially cleared: ' + json.cleared.join(', ');
+                }
+                alert(errorMsg);
                 btn.disabled = false;
                 btn.textContent = 'Reset Dashboard';
             }
         }).catch(function(err){
-            alert('Reset failed: ' + err.message || err);
+            alert('Reset failed: ' + (err.message || err));
             btn.disabled = false;
             btn.textContent = 'Reset Dashboard';
         });
