@@ -494,6 +494,7 @@ p {
     font-size: 1rem;
     line-height: 1.6;
     letter-spacing: 0.07px;
+    /* text-align: left; */
 }
 
 .navbar {
@@ -1022,12 +1023,13 @@ p {
     width: 170px;
     height: 150px;
     flex: 0 0 170px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     display: block;
     border-radius: 0;
     border-right: 1px solid rgba(255, 107, 0, 0.2);
     transition: transform 0.35s ease;
+    background: var(--card-bg);
 }
 
 .benefits-section .card > div {
@@ -1076,6 +1078,8 @@ p {
         flex: none;
         border-right: none;
         border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        object-fit: contain;
+        background: var(--card-bg);
     }
 
     .benefits-section .card > div {
@@ -1108,6 +1112,8 @@ p {
         flex: none;
         border-right: none;
         border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        object-fit: contain;
+        background: var(--card-bg);
     }
 
     .benefits-section .card > div {
@@ -1351,7 +1357,13 @@ button {
 
 .pricing-visual {
     display: grid;
-    grid-template-columns: minmax(0, 68%) minmax(180px, 1fr);
+    grid-template-columns: minmax(0, 60%) minmax(180px, 1fr);
+    align-items: center;
+    gap: clamp(20px, 4vw, 50px);
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
     align-items: center;
     gap: clamp(34px, 6vw, 84px);
     width: min(100%, 1050px);
@@ -1373,8 +1385,7 @@ button {
     max-height: none;
     object-fit: contain;
     object-position: center;
-    border-radius: 56px !important;
-    clip-path: inset(0 round 56px);
+    border-radius: clamp(20px, 3vw, 40px);
     /* border: 1px solid var(--border-color); */
     /* box-shadow: var(--shadow-card); */
     display: block;
@@ -1394,18 +1405,21 @@ button {
 }
 
 .pricing-words span {
-    color: var(--heading-color);
+    background: linear-gradient(180deg, #ff6b00 0%, #ffb347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-family: "Poppins", sans-serif;
     font-size: clamp(2rem, 3.5vw, 3.2rem);
     font-weight: 500;
-    line-height: 1;
+    line-height: 1.3;
     letter-spacing: 0;
     white-space: nowrap;
+    padding-bottom: 4px;
 }
 
 .climb {
-    border-radius: 56px !important;
-    clip-path: inset(0 round 56px);
+    border-radius: clamp(20px, 3vw, 40px) !important;
 }
 
 /* Laptop view only - reduce image size */
@@ -1419,8 +1433,7 @@ button {
         width: 100%;
         max-width: none;
         margin: 0;
-        border-radius: 56px !important;
-        clip-path: inset(0 round 56px);
+        border-radius: clamp(20px, 3vw, 40px) !important;
     }
 }
 
@@ -1440,8 +1453,7 @@ button {
         height: auto;
         max-height: 280px;
         object-fit: contain;
-        border-radius: 34px !important;
-        clip-path: inset(0 round 34px);
+        border-radius: clamp(20px, 3vw, 40px) !important;
     }
 
     .pricing-words {
@@ -1465,11 +1477,11 @@ button {
     .pricing-image {
         padding: 0 12px;
         margin-top: 10px;
+        /* border-radius: 15px; */
     }
     .pricing-image img.climb {
         max-height: 200px;
-        border-radius: 24px !important;
-        clip-path: inset(0 round 24px);
+        border-radius: clamp(20px, 3vw, 40px) !important;
     }
 
     .pricing-words {
@@ -2147,10 +2159,15 @@ ul li::after {
 
 /* Footer Divider */
 .footer-divider {
-    width: 100%;
+    width: 100vw !important;
     height: 1px;
     background: var(--border-solid);
     margin: 20px 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
 }
 
 /* Footer Legal */
@@ -4564,7 +4581,7 @@ footer {
 
 .content-note {
     max-width: 900px;
-    font-size: clamp(0.9rem, 2vw, 1.125rem);
+    font-size: clamp(1.3rem, 5vw, 1.125rem);
     line-height: 1.45;
 }
 
@@ -5619,7 +5636,17 @@ input[type="submit"]:focus-visible,
     text-align: center;
 }
 
-.trust-telegram,
+.trust-telegram{
+     width: min(100%, 760px);
+    margin: 18px auto 0 !important;
+    padding: 8px 16px;
+    /* background: rgba(18, 18, 18, 0.82); */
+    color: var(--text-secondary) !important;
+    font-size: clamp(0.9rem, 1.7vw, 1.15rem) !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
+    overflow-wrap: anywhere;
+}
 .trust-advisory {
     width: min(100%, 760px);
     margin: 18px auto 0 !important;
@@ -5632,11 +5659,26 @@ input[type="submit"]:focus-visible,
     overflow-wrap: anywhere;
 }
 
+.trust-divider {
+    width: 100vw !important;
+    height: 2px !important;
+    background: rgba(255, 255, 255, 0.24) !important;
+    margin: 20px 0 !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+}
+
 .trust-telegram {
     white-space: nowrap !important;
     overflow: visible !important;
     display: inline-block !important;
-    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-size: clamp(0.55rem, 2.5vw, 1rem);
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .trust-telegram a {
@@ -5651,11 +5693,6 @@ input[type="submit"]:focus-visible,
 .trust-telegram a:focus-visible {
     color: #5ca8ff;
     text-decoration: underline;
-}
-
-.trust-advisory {
-    border-top: 1px solid rgba(255, 255, 255, 0.24);
-    margin-top: 20px !important;
 }
 
 .trust span {
@@ -5673,8 +5710,8 @@ input[type="submit"]:focus-visible,
 
     .trust-telegram,
     .trust-advisory {
-        padding-inline: 12px;
-        font-size: 0.85rem !important;
+        /* padding-inline: px; */
+        font-size: 0.70rem !important;
     }
 
     .trust-telegram {
