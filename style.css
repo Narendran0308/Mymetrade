@@ -635,7 +635,12 @@ p {
     white-space: normal;
 }
 
-.content span{
+.content .content-line {
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.content .confidence-word {
     color: orangered;
 }
 
@@ -1021,15 +1026,16 @@ p {
 /* Benefit card photos */
 .benefits-section .card img {
     width: 170px;
-    height: 150px;
+    height: 170px;
     flex: 0 0 170px;
     object-fit: contain;
     object-position: center;
     display: block;
+    align-self: center;
     border-radius: 0;
     border-right: 1px solid rgba(255, 107, 0, 0.2);
     transition: transform 0.35s ease;
-    background: var(--card-bg);
+    background: #000;
 }
 
 .benefits-section .card > div {
@@ -1074,12 +1080,14 @@ p {
 
     .benefits-section .card img {
         width: 100%;
-        height: 160px;
+        height: auto;
+        aspect-ratio: 1 / 1;
         flex: none;
         border-right: none;
         border-bottom: 1px solid rgba(255, 107, 0, 0.2);
         object-fit: contain;
-        background: var(--card-bg);
+        object-position: center;
+        background: #000;
     }
 
     .benefits-section .card > div {
@@ -1108,12 +1116,14 @@ p {
 
     .benefits-section .card img {
         width: 100%;
-        height: 200px;
+        height: auto;
+        aspect-ratio: 1 / 1;
         flex: none;
         border-right: none;
         border-bottom: 1px solid rgba(255, 107, 0, 0.2);
         object-fit: contain;
-        background: var(--card-bg);
+        object-position: center;
+        background: #000;
     }
 
     .benefits-section .card > div {
@@ -1278,6 +1288,11 @@ p {
     box-shadow: var(--shadow-card);
 }
 
+.card1 .number {
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
 .card1:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-card-hover);
@@ -1290,6 +1305,7 @@ p {
     background: linear-gradient(var(--gradient-start), var(--gradient-end));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-align: left !important;
 }
 
 a,
@@ -1743,13 +1759,13 @@ ul li::after {
 }
 
 .proof-title {
-    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 6vw, 5rem);
     line-height: 0.95;
     font-weight: 700;
     color: var(--heading-color);
     font-family: "Montserrat", sans-serif;
     margin: 0 0 25px;
-    letter-spacing: -2px;
+    letter-spacing: normal;
 }
 
 .proof-title span,
@@ -1877,13 +1893,13 @@ ul li::after {
 }
 
 .cta-title {
-    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    font-size: clamp(2rem, 6vw, 5rem);
     line-height: 1.05;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--heading-color);
     font-family: "Montserrat", sans-serif;
     margin: 0 0 22px;
-    letter-spacing: -2px;
+    letter-spacing: normal;
 }
 
 .cta-title span {
@@ -2081,13 +2097,13 @@ ul li::after {
 }
 
 .help-title {
-    font-size: 65px;
+    font-size: clamp(2rem, 6vw, 5rem);
     line-height: 1.05;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--heading-color);
     font-family: "Montserrat", sans-serif;
     margin: 0 0 22px;
-    letter-spacing: -2px;
+    letter-spacing: normal;
 }
 
 .help-subtitle {
@@ -2774,25 +2790,6 @@ html {
         padding-left: 30px;
     }
 
-    .card1 {
-        width: 100%;
-        margin: 0 auto 40px;
-        flex-direction: column;
-        padding: 30px 20px;
-    }
-
-    .number {
-        font-size: 80px;
-    }
-
-    .progress-content h2 {
-        font-size: 20px;
-        text-align: left;
-    }
-
-    .progress-content p {
-        font-size: 0.95rem;
-    }
 
     .progress-para p {
         margin-left: 0;
@@ -3032,26 +3029,6 @@ html {
 
 
 
-    .card1 {
-        width: 100%;
-        margin: 0 auto 30px;
-        flex-direction: column;
-        padding: 20px 15px;
-        gap: 15px;
-    }
-
-    .number {
-        font-size: 60px;
-    }
-
-    .progress-content h2 {
-        font-size: 18px;
-        text-align: left;
-    }
-
-    .progress-content p {
-        font-size: 20px;
-    }
 
     .title {
         font-size: clamp(1.5rem, 6vw, 2.2rem);
@@ -4643,26 +4620,6 @@ footer {
     left: 0;
 }
 
-.card1 {
-    width: min(100%, 900px);
-    margin-inline: auto;
-    justify-content: center;
-}
-
-.progress-content {
-    width: 100%;
-    max-width: 760px;
-}
-
-.progress-content h2 {
-    text-align: center;
-}
-
-.progress-content p {
-    text-align: justify;
-    text-align-last: center;
-    line-height: 1.55;
-}
 
 .benefits strong {
     font-size: 3.75rem;
@@ -4766,17 +4723,6 @@ footer {
         display: none;
     }
 
-    .card1 {
-        width: 100%;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .progress-content p {
-        text-align: justify;
-        text-align-last: center;
-    }
 }
 
 @media (max-width: 380px) {
@@ -5013,14 +4959,7 @@ section,
         align-items: flex-start;
     }
 
-    .card1 {
-        flex-direction: column;
-        text-align: center;
-    }
 
-    .progress-content {
-        max-width: 100%;
-    }
 
     .progress-content p,
     .proof-text,
@@ -5298,33 +5237,68 @@ input[type="submit"]:focus-visible,
     }
 }
 
-/* Process card typography balance */
-.process-section .number {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+/* Climbing image corners (canonical across all devices) */
+.pricing-image {
+    --climbing-corner-radius: clamp(20px, 3vw, 40px);
+    border-radius: var(--climbing-corner-radius) !important;
+    overflow: hidden;
+}
+
+.pricing-image img.climb,
+img.climb {
+    border-radius: var(--climbing-corner-radius) !important;
+    display: block;
+}
+
+/* Process cards (canonical) */
+.process-section .timeline .card1 {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    justify-content: stretch;
+    column-gap: 20px;
+}
+
+.process-section .timeline .card1 .number {
+    align-self: start;
+    margin: 0;
     line-height: 1;
+    font-size: clamp(2rem, 4vw, 3.5rem);
     flex: 0 0 auto;
 }
 
-.process-section .progress-content h2 {
-    font-size: clamp(1.4rem, 3vw, 2.25rem);
-    line-height: 1.25;
+.process-section .timeline .card1 .progress-content {
+    align-self: start;
+    margin: 0;
+    padding-top: 0;
+    width: 100%;
+    max-width: 760px;
 }
 
-.process-section .progress-content p {
+.process-section .timeline .card1 .progress-content h2 {
+    margin-top: 0;
+    font-size: clamp(1.4rem, 3vw, 2.25rem);
+    line-height: 1.25;
+    text-align: left;
+}
+
+.process-section .timeline .card1 .progress-content p {
     font-size: 19px;
     line-height: 1.65;
+    text-align: left;
+    text-align-last: auto;
 }
 
 @media (max-width: 640px) {
-    .process-section .number {
+    .process-section .timeline .card1 .number {
         font-size: clamp(1.8rem, 10vw, 2.75rem);
     }
 
-    .process-section .progress-content h2 {
+    .process-section .timeline .card1 .progress-content h2 {
         font-size: clamp(1.2rem, 5.5vw, 1.6rem);
     }
 
-    .process-section .progress-content p {
+    .process-section .timeline .card1 .progress-content p {
         font-size: 19px;
     }
 }
@@ -5399,6 +5373,15 @@ input[type="submit"]:focus-visible,
 .benefits-section .container {
     grid-template-columns: repeat(2, 1fr) !important;
 }
+.benefits-section .card img {
+    width: 170px !important;
+    height: 170px !important;
+    flex: 0 0 170px !important;
+    align-self: center !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: #000 !important;
+}
 
 .benefits-section .container .card:last-child:nth-child(odd) {
     grid-column: 1 / 2 !important;
@@ -5417,10 +5400,14 @@ input[type="submit"]:focus-visible,
 
     .benefits-section .card img {
         width: 100% !important;
-        height: 150px !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important;
         flex: none !important;
         border-right: none !important;
         border-bottom: 1px solid rgba(255, 107, 0, 0.2) !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        background: #000 !important;
     }
 
     .benefits-section .card > div {
@@ -5446,11 +5433,17 @@ input[type="submit"]:focus-visible,
     }
 
     .benefits-section .card img {
-        width: 100% !important;
-        height: 200px !important;
+        width: clamp(140px, 45vw, 190px) !important;
+        max-width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important;
         flex: none !important;
+        margin: 0 auto !important;
         border-right: none !important;
         border-bottom: 1px solid rgba(255, 107, 0, 0.2) !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        background: #000 !important;
     }
 
     .benefits-section .card > div {
@@ -5619,11 +5612,13 @@ input[type="submit"]:focus-visible,
     background: var(--bg-primary);
     padding: 30px 24px 30px;
     text-align: center;
+    overflow-x: clip;
 }
 
 .trust div {
     max-width: 900px;
     margin: 0 auto;
+    overflow: visible;
 }
 
 .trust p {
@@ -5636,17 +5631,6 @@ input[type="submit"]:focus-visible,
     text-align: center;
 }
 
-.trust-telegram{
-     width: min(100%, 760px);
-    margin: 18px auto 0 !important;
-    padding: 8px 16px;
-    /* background: rgba(18, 18, 18, 0.82); */
-    color: var(--text-secondary) !important;
-    font-size: clamp(0.9rem, 1.7vw, 1.15rem) !important;
-    font-weight: 600 !important;
-    line-height: 1.45 !important;
-    overflow-wrap: anywhere;
-}
 .trust-advisory {
     width: min(100%, 760px);
     margin: 18px auto 0 !important;
@@ -6111,7 +6095,7 @@ input[type="submit"]:focus-visible,
     flex-wrap: nowrap !important;
     width: auto !important;
     min-width: 0 !important;
-    gap: clamp(14px, 2.2vw, 28px) !important;
+    gap: clamp(13px, 7.2vw, 64px) !important;
     transform: none !important;
 }
 
@@ -6156,3 +6140,4 @@ input[type="submit"]:focus-visible,
         font-size: clamp(1rem, 4.8vw, 1.25rem) !important;
     }
 }
+
