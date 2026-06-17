@@ -530,7 +530,7 @@ p {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(10px, 2vw, 24px);
+    gap: clamp(13px, 5vw, 44px);
     margin: 0 auto;
     flex-wrap: nowrap;
     justify-content: center;
@@ -1018,7 +1018,7 @@ p {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 150px;
+    height: 170px;
     animation: slideInUp 0.6s ease-out;
     box-shadow: var(--shadow-card);
 }
@@ -1028,12 +1028,13 @@ p {
     width: 170px;
     height: 170px;
     flex: 0 0 170px;
+    padding: 10px;
+    box-sizing: border-box;
     object-fit: contain;
     object-position: center;
     display: block;
     align-self: center;
     border-radius: 0;
-    border-right: 1px solid rgba(255, 107, 0, 0.2);
     transition: transform 0.35s ease;
     background: #000;
 }
@@ -1258,10 +1259,12 @@ p {
 .progress-line {
     position: absolute;
     left: 20px;
-    top: 150px;
+    top: 0;
+    bottom: 0;
     width: 8px;
-    height: 75%;
+    height: auto;
     background: var(--border-solid);
+    border-radius: 10px;
 }
 
 .progress {
@@ -1390,9 +1393,11 @@ button {
     text-align: center;
     margin: 0;
     max-width: none;
-    aspect-ratio: 16 / 9;
     padding: 0;
     box-sizing: border-box;
+    background: #000;
+    border-radius: clamp(25px, 4vw, 40px);
+    overflow: hidden;
 }
 
 .pricing-image img.climb {
@@ -1401,14 +1406,11 @@ button {
     max-height: none;
     object-fit: contain;
     object-position: center;
-    border-radius: clamp(20px, 3vw, 40px);
-    /* border: 1px solid var(--border-color); */
-    /* box-shadow: var(--shadow-card); */
+    border-radius: clamp(25px, 4vw, 40px) !important;
     display: block;
     margin: 0 auto;
     background: transparent;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 .pricing-words {
@@ -1449,7 +1451,8 @@ button {
         width: 100%;
         max-width: none;
         margin: 0;
-        border-radius: clamp(20px, 3vw, 40px) !important;
+        object-fit: contain;
+        border-radius: clamp(25px, 4vw, 40px) !important;
     }
 }
 
@@ -1469,7 +1472,7 @@ button {
         height: auto;
         max-height: 280px;
         object-fit: contain;
-        border-radius: clamp(20px, 3vw, 40px) !important;
+        border-radius: clamp(25px, 4vw, 40px) !important;
     }
 
     .pricing-words {
@@ -1497,7 +1500,8 @@ button {
     }
     .pricing-image img.climb {
         max-height: 200px;
-        border-radius: clamp(20px, 3vw, 40px) !important;
+        object-fit: contain;
+        border-radius: clamp(25px, 4vw, 40px) !important;
     }
 
     .pricing-words {
@@ -2243,7 +2247,7 @@ html {
 }
 
 .contact-title {
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-size: 14px;
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--heading-color);
@@ -2611,7 +2615,7 @@ html {
 
     .timeline {
     position: relative;
-    padding-left: 45px;
+    padding-left: 72px;
 }
     .hero-video-section {
         flex-direction: column;
@@ -2829,7 +2833,7 @@ html {
     }
 
     .proof-title {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(1.6rem, 4.2vw, 3.5rem);
     }
 
     .proof-subtitle {
@@ -2842,7 +2846,7 @@ html {
     }
 
     .cta-title {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(1.6rem, 4.2vw, 3.5rem);
     }
 
     .cta-subtitle {
@@ -2887,7 +2891,7 @@ html {
     }
 
     .contact-title {
-        font-size: clamp(2rem, 6vw, 4.5rem);
+        font-size: clamp(2rem, 6vw, 2.5rem);
     }
 
     .contact-subtitle {
@@ -3257,17 +3261,18 @@ html {
         padding: 20px;
     }
     .timeline {
-    padding-left: 40px;
+    padding-left: 72px;
     position: relative;
     }
 
     .progress-line {
     display: block;
     position: absolute;
-    left: 14px;
+    left: 18px;
     top: 0;
+    bottom: 0;
     width: 4px;
-    height: 100%;
+    height: auto;
     background: var(--border-solid);
     border-radius: 10px;
     }
@@ -4545,8 +4550,9 @@ footer {
 .proof-cards,
 .faq-list,
 .contact-container {
-    width: min(100%, 1200px);
+    width: min(100%, 1400px);
     max-width: 100%;
+    margin-inline: auto;
     box-sizing: border-box;
 }
 
@@ -4613,11 +4619,11 @@ footer {
 .timeline {
     width: min(100%, 980px);
     margin-inline: auto;
-    padding-left: 0;
+    padding-left: 72px;
 }
 
 .progress-line {
-    left: 0;
+    left: 18px;
 }
 
 
@@ -4799,7 +4805,7 @@ section,
 .faq-container,
 .help-container,
 .contact-container {
-    width: min(100%, 1200px);
+    width: min(100%, 1400px);
     margin-inline: auto;
     box-sizing: border-box;
 }
@@ -4828,15 +4834,24 @@ section,
 }
 
 .price-btn,
-.cta-btn,
 .help-btn,
 .join-btn,
 .login-popup-primary,
 .login-popup-secondary,
-.progress-spot a,
 .spot a,
 .submit-btn {
-    max-width: 70%;
+    max-width: 50%;
+    white-space: normal;
+    text-align: center;
+}
+.cta-btn{
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+}
+
+.progress-spot a{
+    max-width: 75%;
     white-space: normal;
     text-align: center;
 }
@@ -5209,6 +5224,15 @@ input[type="submit"]:focus-visible,
     animation: none !important;
 }
 
+.secure-cta,
+.secure-cta:hover,
+.secure-cta:focus-visible {
+    background: #FFFF00 !important;
+    background-image: none !important;
+    border-color: #FFFF00 !important;
+    color: #0a0a0a !important;
+}
+
 /* Hero note responsive wrapping */
 .content {
     white-space: normal !important;
@@ -5240,13 +5264,11 @@ input[type="submit"]:focus-visible,
 /* Climbing image corners (canonical across all devices) */
 .pricing-image {
     --climbing-corner-radius: clamp(20px, 3vw, 40px);
-    border-radius: var(--climbing-corner-radius) !important;
-    overflow: hidden;
 }
 
 .pricing-image img.climb,
 img.climb {
-    border-radius: var(--climbing-corner-radius) !important;
+    border-radius: clamp(25px, 4vw, 40px) !important;
     display: block;
 }
 
@@ -5362,6 +5384,18 @@ img.climb {
     font-family: "Montserrat", sans-serif;
 }
 
+.faq-title,
+.help-title {
+    font-size: clamp(1.6rem, 4.2vw, 3.5rem);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: normal;
+}
+
+.cta-title {
+    line-height: 0.95;
+}
+
 
 
 /* =============================================
@@ -5377,6 +5411,8 @@ img.climb {
     width: 170px !important;
     height: 170px !important;
     flex: 0 0 170px !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
     align-self: center !important;
     object-fit: contain !important;
     object-position: center !important;
@@ -5517,16 +5553,19 @@ img.climb {
 
 /* ── DISCLAIMER DROPDOWN ── */
 .disclaimer {
-    padding: 40px 24px;
+    padding: 40px 0;
     background: var(--bg-secondary);
     display: block;
 }
 
 .disclaimer-dropdown {
-    max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
     overflow: hidden;
     background: var(--bg-primary);
 }
@@ -5535,7 +5574,7 @@ img.climb {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 18px 28px;
+    padding: 18px 24px;
     cursor: pointer;
     list-style: none;
     user-select: none;
@@ -5555,7 +5594,7 @@ img.climb {
 .disclaimer-title {
     font-size: clamp(1.2rem, 2.5vw, 1.6rem);
     font-weight: 700;
-    color: var(--accent-color);
+    color: #ff2b2b;
     font-family: "Montserrat", sans-serif;
     letter-spacing: 0.5px;
     text-align: center;
@@ -5573,14 +5612,14 @@ img.climb {
 }
 
 .disclaimer-content {
-    padding: 0 28px 28px;
+    padding: 0 24px 28px;
     border-top: 1px solid var(--border-color);
 }
 
 .disclaimer-content p {
     font-size: 15px;
     line-height: 1.8;
-    color: var(--text-primary);
+    color: #ff2b2b;
     margin: 20px 0 0;
     text-align: left;
     background: none;
@@ -5591,7 +5630,7 @@ img.climb {
 
 @media (max-width: 600px) {
     .disclaimer {
-        padding: 24px 14px;
+        padding: 24px 0;
     }
 
     .disclaimer-summary {
@@ -5610,15 +5649,15 @@ img.climb {
 /* ── TRUST SECTION ── */
 .trust {
     background: var(--bg-primary);
-    padding: 30px 24px 30px;
+    padding: 30px 0 30px;
     text-align: center;
-    overflow-x: clip;
+    overflow: visible;
 }
 
-.trust div {
+.trust > div {
     max-width: 900px;
     margin: 0 auto;
-    overflow: visible;
+    padding: 0 24px;
 }
 
 .trust p {
@@ -5636,7 +5675,8 @@ img.climb {
     margin: 18px auto 0 !important;
     padding: 8px 16px;
     /* background: rgba(18, 18, 18, 0.82); */
-    color: var(--text-secondary) !important;
+    color: #ff2b2b !important;
+    -webkit-text-fill-color: #ff2b2b !important;
     font-size: clamp(0.9rem, 1.7vw, 1.15rem) !important;
     font-weight: 600 !important;
     line-height: 1.45 !important;
@@ -5659,7 +5699,7 @@ img.climb {
     white-space: nowrap !important;
     overflow: visible !important;
     display: inline-block !important;
-    font-size: clamp(0.55rem, 2.5vw, 1rem);
+    font-size: 19px !important;
     max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -5695,7 +5735,7 @@ img.climb {
     .trust-telegram,
     .trust-advisory {
         /* padding-inline: px; */
-        font-size: 0.70rem !important;
+        font-size: 19px !important;
     }
 
     .trust-telegram {
@@ -5747,7 +5787,7 @@ img.climb {
     align-items: center;
     gap: 2px;
     border-radius: 999px;
-    padding: 8px 20px;
+    padding: 12px 19px;
     width: fit-content;
     margin: 0px auto 14px;
 }

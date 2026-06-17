@@ -10,21 +10,34 @@ class Database {
 
     public function connect() {
         try {
-            $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+            // Parse host and port
+            $host = DB_HOST;
+            $port = 3306; // default
+            
+            if (strpos($host, ':') !== false) {
+                list($host, $port) = explode(':', $host, 2);
+                $port = (int) $port;
+            }
+            
+            $this->connection = new mysqli($host, DB_USER, DB_PASS, DB_NAME, $port);
             
             if ($this->connection->connect_error) {
                 throw new Exception("Connection failed: " . $this->connection->connect_error);
             }
             
-            $this->connection->set_charset("utf8");
+            $this->connection->set_charset("utf8mb4");
         } catch (Exception $e) {
-            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
-            exit;
+            error_log("Database connection error: " . $e->getMessage());
+            die("Database connection failed. Please check your configuration.");
         }
     }
 
     public function query($sql) {
-        return $this->connection->query($sql);
+        $result = $this->connection->query($sql);
+        if (!$result && $this->connection->error) {
+            error_log("Query error: " . $this->connection->error . " | SQL: " . $sql);
+        }
+        return $result;
     }
 
     public function prepare($sql) {
@@ -62,9 +75,9 @@ class Database {
 
 // Initialize database with error handling
 try {
-    $db = new Database();
+    $dbInstance = new Database();
+    $db = $dbInstance->getConnection(); // Return actual mysqli connection for compatibility
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Database connection error']);
-    exit;
+    error_log("Database initialization error: " . $e->getMessage());
+    die("Database initialization failed.");
 }

@@ -1,6 +1,6 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 
 require_once __DIR__ . '/backend/db.php';
@@ -859,7 +859,7 @@ if ($isAuthenticated) {
             <a href="#contacts">Contacts</a>
             <a href="#visits">Visits</a>
             <a href="#members">Members</a>
-            <a href="videos.html" target="_blank" rel="noopener">Preview Library</a>
+            <a href="videos.html" target="_blank" rel="noopener ">Preview Library</a>
             <a href="index.html">Website</a>
             <a class="logout" href="admin.php?logout=1">Logout</a>
             <form id="reset-dashboard-form" method="post" style="display:inline;margin-left:8px;">
