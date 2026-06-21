@@ -170,6 +170,8 @@ class EmailSender {
             $mail->msgHTML($htmlBody);
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
+            $mail->SMTPDebug = 2;
+            $mail->Debugoutput = 'html';
 
             if ($mail->send()) {
                 return true;

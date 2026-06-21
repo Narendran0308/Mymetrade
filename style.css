@@ -113,6 +113,14 @@ nav, header, footer, .card, .login-popup, .contact-form-box {
     color: var(--text-primary);
     border-color: var(--border-color);
 }
+.lion{
+    margin-left: -14px;
+    margin-top: 2px;
+}
+.navbar {
+    border-radius: 0px;
+}
+
 
 .card {
     box-shadow: var(--shadow-card);
@@ -490,32 +498,67 @@ body.login-popup-open {
     box-sizing: border-box;
 }
 
+/* Logo: fixed outside navbar, top-left on all devices */
+.floating-logo {
+    position: fixed;
+    top: 46px;
+    left: 16px;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    height: 72px;
+}
+
+.floating-logo img {
+    height: 84px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .floating-logo {
+        top: 48px;
+        left: 12px;
+        height: 50px;
+    }
+    .floating-logo img {
+        height: 48px;
+    }
+}
+
 p {
     font-size: 1rem;
     line-height: 1.6;
-    letter-spacing: 0.07px;
+    /* letter-spacing: 0.07px; */
     /* text-align: left; */
 }
 
 .navbar {
     position: fixed;
-    top: 55px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1280px, calc(100% - 32px));
+    top: 46px; /* Flush against banner bottom */
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
     z-index: 1001;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 18px;
+
     box-sizing: border-box;
-    padding: 12px 22px;
+    padding: 12px 22px 12px 130px;
+
     background: var(--nav-bg);
     backdrop-filter: blur(16px) saturate(1.4);
     -webkit-backdrop-filter: blur(16px) saturate(1.4);
-    border: 1px solid rgba(255, 107, 0, 0.22);
-    border-radius: var(--radius-pill);
-    box-shadow: var(--shadow-card), 0 0 24px rgba(255, 107, 0, 0.08);
+
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.55);
 }
 
 .logo img {
@@ -530,7 +573,7 @@ p {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(13px, 5vw, 44px);
+    gap: clamp(17px, 7.5vw, 54px);
     margin: 0 auto;
     flex-wrap: nowrap;
     justify-content: center;
@@ -637,7 +680,7 @@ p {
 
 .content .content-line {
     color: #ffffff;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .content .confidence-word {
@@ -651,7 +694,7 @@ p {
     padding: 10px 18px;
     border-radius: 6px;
     /* background: #fff; */
-    color: var-secondary();
+    color: var-secondary(--text-secondary);
     font-size: 18px;
     font-weight: normal;
     line-height: 1.35;
@@ -1036,7 +1079,7 @@ p {
     align-self: center;
     border-radius: 0;
     transition: transform 0.35s ease;
-    background: #000;
+    /* background: #000; */
 }
 
 .benefits-section .card > div {
@@ -1088,7 +1131,7 @@ p {
         border-bottom: 1px solid rgba(255, 107, 0, 0.2);
         object-fit: contain;
         object-position: center;
-        background: #000;
+        /* background: #000; */
     }
 
     .benefits-section .card > div {
@@ -1124,7 +1167,7 @@ p {
         border-bottom: 1px solid rgba(255, 107, 0, 0.2);
         object-fit: contain;
         object-position: center;
-        background: #000;
+        /* background: #000; */
     }
 
     .benefits-section .card > div {
@@ -1223,8 +1266,9 @@ p {
 }
 
 .title {
-    font-size: clamp(2rem, 6vw, 5rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     max-width: 1100px;
+    margin-inline: auto;
     font-weight: 700;
     text-align: center;
     color: var(--heading-color);
@@ -1897,7 +1941,7 @@ ul li::after {
 }
 
 .cta-title {
-    font-size: clamp(2rem, 6vw, 5rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     line-height: 1.05;
     font-weight: 700;
     color: var(--heading-color);
@@ -1936,7 +1980,7 @@ ul li::after {
 
 .faq-title {
     text-align: center;
-    font-size: clamp(2.75rem, 7vw, 4.5rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     line-height: 0.95;
     font-weight: 800;
     color: var(--heading-color);
@@ -2101,7 +2145,7 @@ ul li::after {
 }
 
 .help-title {
-    font-size: clamp(2rem, 6vw, 5rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     line-height: 1.05;
     font-weight: 700;
     color: var(--heading-color);
@@ -2241,9 +2285,9 @@ html {
 
 
 .contact-container {
-    max-width: 950px;
+    max-width: 620px;
     margin: 0 auto;
-    text-align: justify;
+    text-align: center;
 }
 
 .contact-title {
@@ -2259,9 +2303,9 @@ html {
     line-height: 1.8;
     color: var(--text-secondary);
     max-width: 1000px;
-    margin: 0 0 50px;
+    margin: 0 auto 50px;
+    text-align: center;
     font-family: "Montserrat", sans-serif;
-    text-align: left;
 }
 
 .contact-form-box {
@@ -2270,8 +2314,8 @@ html {
     border-radius: 24px;
     padding: 35px 26px 40px;
     text-align: left;
-
-    width: 100%;
+    width: 74%;
+    margin: 0 auto;
     overflow: hidden;
 }
 
@@ -2408,9 +2452,8 @@ html {
     font-size: 34px;
     color: var(--heading-color);
     cursor: pointer;
-    margin-right: 20px;
+    flex-shrink: 0;
     z-index: 2000;
-    position: relative;
     line-height: 1;
 }
 
@@ -2514,17 +2557,17 @@ html {
 
 @media (max-width: 1024px) {
     .navbar {
-        left: 50%;
-        transform: translateX(-50%);
-        width: calc(100% - 24px);
-        border-radius: 30px;
-        padding: 12px 16px;
-        top: 55px;
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        padding: 12px 16px 12px 100px;
+        top: 46px;
     }
     .nav-links {
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 10px;
         margin: 0 auto;
         flex-wrap: nowrap;
         justify-content: center;
@@ -2568,7 +2611,7 @@ html {
         font-size: clamp(2.5rem, 4vw, 3.75rem);
     }
     .title {
-        font-size: clamp(3rem, 4vw, 5.5rem);
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
     }
     .card1 {
         width: 100%;
@@ -2588,16 +2631,16 @@ html {
         width: clamp(280px, 85%, 450px);
     }
     .proof-title {
-        font-size: clamp(3.5rem, 4vw, 3.5rem);
+        font-size: clamp(2rem, 3.5vw, 3rem);
     }
     .cta-title {
-        font-size: clamp(2rem, 6vw, 4.5rem);
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
     }
     .faq-title {
-        font-size: clamp(2rem, 6vw, 4.5rem);
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
     }
     .help-title {
-        font-size: clamp(2rem, 6vw, 4.5rem);
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
     }
     .help-subtitle {
         font-size: 0.95rem;
@@ -2611,6 +2654,7 @@ html {
 
     .menu-toggle {
         display: block;
+        margin-left: auto;
     }
 
     .timeline {
@@ -2661,12 +2705,14 @@ html {
     margin-left: 10px;
 }
 
+@media (max-width: 768px) {
     .navbar {
         left: 0;
+        right: auto;
         transform: none;
         width: 100%;
         top: 46px;
-        padding: 6px 14px;
+        padding: 6px 14px 6px 66px;
         box-sizing: border-box;
         border-radius: 0;
         overflow: hidden;
@@ -2679,7 +2725,7 @@ html {
 
     .join-btn {
         padding: 10px 18px;
-        margin-left: 0;
+        margin-left: 40px;
     }
 
     .content {
@@ -2899,7 +2945,7 @@ html {
     }
 
     .contact-form-box {
-        width: 100%;
+        width: 78%;
         margin: 0 auto;
         padding: 20px;
         box-sizing: border-box;
@@ -2909,6 +2955,7 @@ html {
         margin-left: 0;
         margin-right: 0;
     }
+}
 
 
 @media only screen and (max-width: 575px) {
@@ -2918,10 +2965,13 @@ html {
         top: 66px;
         border-radius: 0;
         width: 100%;
-        padding: 10px 12px;
+        padding: 10px 12px 10px 66px;
         box-sizing: border-box;
-        overflow: hidden;
         overflow-x: hidden;
+    }
+
+    .floating-logo {
+        top: 66px;
     }
 
     .content {
@@ -5008,7 +5058,11 @@ section,
 @media (max-width: 520px) {
     .navbar {
         top: 32px;
-        padding: 10px 12px;
+        padding: 10px 12px 10px 66px;
+    }
+
+    .floating-logo {
+        top: 32px;
     }
 
     .logo img {
@@ -5163,7 +5217,7 @@ section,
 button,
 .btn,
 input[type="submit"],
-.join-btn,
+
 .price-btn,
 .cta-btn,
 .help-btn,
@@ -5176,7 +5230,14 @@ input[type="submit"],
 .para a,
 .submit-btn,
 .card0.payment-plan-card .payment-select-btn {
-    background: #ff6b00 !important;
+    background: #ffff00 important;
+    background-image: none !important;
+    color: #0a0a0a !important;
+    border-color: #ffff00 important;
+    box-shadow: none !important;
+}
+.join-btn{
+   background: #ff6b00 !important;
     background-image: none !important;
     color: #0a0a0a !important;
     border-color: #ff6b00 !important;
@@ -5226,7 +5287,22 @@ input[type="submit"]:focus-visible,
 
 .secure-cta,
 .secure-cta:hover,
-.secure-cta:focus-visible {
+.secure-cta:focus-visible,
+.price-btn,
+.price-btn:hover,
+.price-btn:focus-visible,
+.help-btn,
+.help-btn:hover,
+.help-btn:focus-visible,
+.submit-btn,
+.submit-btn:hover,
+.submit-btn:focus-visible,
+.cta-btn,
+.cta-btn:hover,
+.cta-btn:focus-visible,
+.pay-now-btn,
+.pay-now-btn:hover,
+.pay-now-btn:focus-visible {
     background: #FFFF00 !important;
     background-image: none !important;
     border-color: #FFFF00 !important;
@@ -5416,7 +5492,7 @@ img.climb {
     align-self: center !important;
     object-fit: contain !important;
     object-position: center !important;
-    background: #000 !important;
+    /* background: #000 !important; */
 }
 
 .benefits-section .container .card:last-child:nth-child(odd) {
@@ -5443,7 +5519,7 @@ img.climb {
         border-bottom: 1px solid rgba(255, 107, 0, 0.2) !important;
         object-fit: contain !important;
         object-position: center !important;
-        background: #000 !important;
+        /* background: #000 !important; */
     }
 
     .benefits-section .card > div {
@@ -5479,7 +5555,7 @@ img.climb {
         border-bottom: 1px solid rgba(255, 107, 0, 0.2) !important;
         object-fit: contain !important;
         object-position: center !important;
-        background: #000 !important;
+        /* background: #000 !important; */
     }
 
     .benefits-section .card > div {
@@ -5510,7 +5586,7 @@ img.climb {
     }
 
     .navbar {
-        padding: 6px 0px;
+        padding: 6px 0px 6px 66px;
     }
 }
 
@@ -5525,6 +5601,10 @@ img.climb {
     }
 
     .navbar {
+        top: 38px;
+    }
+
+    .floating-logo {
         top: 38px;
     }
 
@@ -5543,6 +5623,14 @@ img.climb {
 
     .navbar {
         top: 33px;
+    }
+
+    .floating-logo {
+        top: 33px;
+    }
+
+    .floating-logo img {
+        height: 42px;
     }
 
     .logo img {
@@ -5729,18 +5817,36 @@ img.climb {
 
 @media (max-width: 600px) {
     .trust {
-        padding: 40px 18px;
+        padding: 40px 10px;
+    }
+
+    .trust > div {
+        padding: 0 4px;
     }
 
     .trust-telegram,
     .trust-advisory {
         /* padding-inline: px; */
-        font-size: 19px !important;
+        font-size: 13px !important;
     }
 
     .trust-telegram {
         white-space: nowrap;
         overflow: visible;
+    }
+}
+
+@media (max-width: 380px) {
+    .trust-large {
+        font-size: 0.55rem;
+    }
+
+    .trust {
+        padding: 30px 6px;
+    }
+
+    .trust > div {
+        padding: 0 2px;
     }
 }
 
@@ -5840,11 +5946,15 @@ img.climb {
 }
 
 .trust-large {
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-size: clamp(0.55rem, 2.8vw, 2.2rem);
     font-weight: 700;
     color: #ffffff;
     font-family: "Montserrat", sans-serif;
     -webkit-text-fill-color: #ffffff;
+    white-space: nowrap;
+    display: inline-block;
+    flex-shrink: 0;
+    max-width: none;
 }
 
 .trust-small {

@@ -4,12 +4,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Mymetrades</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=18">
     <script src="script.js" defer></script>
 </head>
 
@@ -33,12 +33,14 @@
         <p>Welcome traders. Lifetime mentorship is now open with limited seats.</p>
     </div>
 
-    <div class="navbar">
+    <div class="header-wrapper">
 
-        <!-- Logo -->
-        <div class="logo">
-            <img src="image.avif" alt="Logo">
-        </div>
+    <!-- Logo: fixed outside navbar, top-left on all devices -->
+    <div class="floating-logo">
+        <img src="lion.jpeg" class="lion" alt="Logo">
+    </div>
+
+    <div class="navbar">
 
         <!-- Desktop Menu -->
         <div class="nav-links">
@@ -55,22 +57,21 @@
 
         </div>
 
-        <!-- Hamburger -->
+        <!-- Hamburger (inside navbar for proper alignment on mobile) -->
         <div class="menu-toggle" id="menu-toggle">=</div>
+
+</div>
 
     </div>
 
     <!-- MOBILE FULL SCREEN MENU -->
     <div class="mobile-menu" id="mobile-menu">
 
-        <div class="mobile-top">
-
-   
-
-</div>
+      <div class="mobile-links">
+        <!-- <img src="lion.jpeg" alt="Mobile Logo" class="mobile-logo"> -->
+        </div>
 
         <div class="mobile-links">
-            <img src="image.avif" class="mobile-logo">
             <a href="#">Home</a>
             <a href="#benefits">Benefits</a>
             <a href="#process">Process</a>
@@ -88,7 +89,8 @@
     <div class="content">
         
         <strong><span class="content-line">Simple Mechanical Models and trade</span> <br>with full <span class="confidence-word">Confidence</span></strong>
-        <p class="content-note"><b>This mechanical model will never use the following technical indicators.</b><span class="content-note-sub">Candle patterns, Indicators, Option chain, Greeks, Open interest, OFA, other mathematics calculation</span></p>
+        <p class="content-note"><b>This mechanical model will never use the following technical indicators.</b><br>
+        <span class="content-note-sub">Candle patterns, Indicators, Option chain, Greeks, Open interest, OFA, other mathematics calculation</span></p>
     </div>
 
     
@@ -107,7 +109,7 @@
         <span>Magical</span>
     </div>
 
-</div>
+    </div>
 
     <div class="para">
         <p>Join the hundreds of traders who've become consistently profitable through daily live trading sessions, proven strategies, and direct mentorship from a 5-figure trader.</p>
@@ -218,14 +220,13 @@
     </div>
 </div>
     <section id="benefits" class="benefits-section">
-        <div class="benefits">
-            <strong>What you get inside our mentorship.</strong>
-        </div>
+        <h1 class="title">
+            What you get inside our <span>mentorship</span>.
+        </h1>
 
         <div class="container">
-
             <div class="card">
-                <img src="assets/5.avif" alt="Trader analyzing live market charts on screen" loading="lazy">
+                <img src="5.jpg.jpeg" alt="Trader analyzing live market charts on screen" loading="lazy">
                 <div>
                     <h3>Daily Live Market Sessions</h3>
                     <p>Watch Nifty, Bank Nifty, Forex and Gold setups explained live with clear entry, exit and risk logic.
@@ -234,7 +235,7 @@
             </div>
 
             <div class="card">
-                <img src="assets/3.avif" alt="Mentor guiding traders in a team session" loading="lazy">
+                <img src="3.jpg.jpeg" alt="Mentor guiding traders in a team session" loading="lazy">
                 <div>
                     <h3>Direct Mentorship & Support</h3>
                     <p>Ask doubts in simple language, get guidance, and stay accountable through your learning journey.</p>
@@ -242,7 +243,7 @@
             </div>
 
             <div class="card">
-                <img src="assets/4.avif" alt="Online trading course on laptop" loading="lazy">
+                <img src="4.jpg.jpeg" alt="Online trading course on laptop" loading="lazy">
                 <div>
                     <h3>Structured Trading Course</h3>
                     <p>Step-by-step lessons from basics to execution, made easy for beginners from our local market background.</p>
@@ -250,7 +251,7 @@
             </div>
 
             <div class="card">
-                <img src="assets/1.avif" alt="Trading performance analytics dashboard" loading="lazy">
+                <img src="2.jpg.jpeg" alt="Trading performance analytics dashboard" loading="lazy">
                 <div>
                     <h3>Trading Journal Practice</h3>
                     <p>Record every trade, review mistakes, and build the patience needed for serious market work.</p>
@@ -258,7 +259,7 @@
             </div>
 
             <div class="card">
-                <img src="assets/2.avif" alt="Traders collaborating in a community" loading="lazy">
+                <img src="1.jpg.jpeg" alt="Traders collaborating in a community" loading="lazy">
                 <div>
                     <h3>Our Inner Circle</h3>
                     <p>Join a private group of focused South Indian traders learning, reviewing and growing together.</p>
@@ -439,7 +440,7 @@
     <section id="testimonials" class="proof-section">
         <div class="proof-container">
 
-            <h1 class="proof-title">
+            <h1 class="title">
                 Proof that steady learning 
                 builds <span>real</span> confidence.
             </h1>
@@ -521,11 +522,9 @@
     <section class="cta-section">
         <div class="cta-container">
 
-            <h1 class="cta-title">
+            <h1 class="title">
                 Ready to start your own disciplined 
                 trading <span>journey</span>?
-
-
             </h1>
 
             <p class="cta-subtitle">
@@ -542,7 +541,7 @@
     <section id="faq" class="faq-section">
         <div class="faq-container">
 
-            <h1 class="faq-title">
+            <h1 class="title">
                 Any Queries? <br>
                 Find your <span>answers</span> here.
             </h1>
@@ -652,7 +651,7 @@
     <section class="help-section">
         <div class="help-container">
 
-            <h2 class="help-title">
+            <h2 class="title">
                 Need <span>help</span>? <br>
                 Ping us, we will guide you.
             </h2>
@@ -673,7 +672,7 @@
     <!-- Contact Form Section -->
     <section id="contact-section" class="contact-section">
         <div class="contact-container">
-            <h1 class="contact-title">Contact Us</h1>
+            <h1 class="title">Contact Us</h1>
 
             <p class="contact-subtitle">
                 If you have questions about plans, payment, videos or mentorship,
@@ -725,17 +724,16 @@ By joining this mentorship or community, you agree to these terms and understand
     <section class="trust" id="trust">
         <div>
             <p>
-                <span class="trust-large">Trust <span class="trust-highlight">Myme Trades</span> is responsible</span>
-                <span class="trust-small"> for your financial growth</span>
+                <span class="trust-large">Trust <span class="trust-highlight">Myme Trades</span> is responsible for your financial growth</span>
             </p>
             <p class="trust-telegram">
-                Join free telegram :<a href="https://t.me/mymetrades1" target="_blank" rel="noopener">https://t.me/mymetrades1</a>
+                Join free telegram: <a href="https://t.me/mymetrades1" target="_blank" rel="noopener">https://t.me/mymetrades1</a>
             </p>
 
             <div class="trust-divider"></div>
             <!-- <hr> -->
 
-            <p class="trust-advisory">Legal advisory : Website under activation &amp; Under NISM certification</p>
+            <p class="trust-advisory">Legal advisory: Website under activation &amp; Under NISM certification</p>
         </div>
     </section>
 
