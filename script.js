@@ -23,7 +23,7 @@
     });
 
     function updateActiveNavLink() {
-        const scrollPosition = window.scrollY + 150; // Offset for navbar
+        const scrollPosition = window.scrollY + 210; // Offset must exceed scroll-margin-top (200px)
         let activeLink = null;
 
         // Get all nav links
