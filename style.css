@@ -5810,7 +5810,7 @@ img.climb {
     color: #740A03 !important;
     -webkit-text-fill-color: #740A03 !important;
     font-size: clamp(0.9rem, 1.7vw, 1.0rem) !important;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     line-height: 1.45 !important;
     overflow-wrap: anywhere;
 }
