@@ -5753,7 +5753,7 @@ img.climb {
     line-height: 1.8;
     color: var(--text-primary);
     margin: 20px auto 0;
-    text-align: center;
+    text-align: left;
     background: none;
     padding: 0;
     border: none;
