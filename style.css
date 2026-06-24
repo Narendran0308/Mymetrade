@@ -2190,7 +2190,7 @@ ul li::after {
     background: var(--bg-tertiary);
     color: var(--text-secondary);
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 9  px 20px 20px;
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
     border-top: 1px solid var(--border-solid);
@@ -2385,7 +2385,7 @@ html {
     border: none;
     padding: 16px 60px;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
     transition: 0.3s ease;
@@ -2395,7 +2395,7 @@ html {
 
 .form-message {
     min-height: 22px;
-    margin: 14px 0 0;
+    margin: 0px 0 0;
     color: var(--muted-text);
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
@@ -3295,7 +3295,7 @@ html {
 
     .contact-subtitle {
         font-size: 18px;
-        padding: 0 15px;
+        padding: 0 0px;
     }
 
     .contact-form-box {
@@ -4420,7 +4420,7 @@ ul li {
 
 .faq-section {
     padding-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 0px;
 }
 
 .faq-title {
@@ -4450,8 +4450,8 @@ ul li {
 }
 
 footer {
-    padding-top: 36px;
-    padding-bottom: 36px;
+    padding-top: 0px;
+    padding-bottom: 5px;
 }
 
 .payment-checkout-section {
@@ -4639,7 +4639,7 @@ footer {
 }
 .faq-list{
     width: min(100%, 1400px);
-    max-width: 86%;
+    max-width: 100%;
     margin-inline: auto;
     box-sizing: border-box;
 }
@@ -4892,7 +4892,7 @@ section,
 .faq-container,
 .help-container,
 .contact-container {
-    width: min(100%, 1400px);
+    width: min(100%, 1200px);
     margin-inline: auto;
     box-sizing: border-box;
 }
@@ -4923,20 +4923,29 @@ section,
 .price-btn,
 .join-btn,
 .login-popup-primary,
-.login-popup-secondary,
-.spot a,
-.submit-btn {
+.login-popup-secondary{
     max-width: 50%;
     white-space: normal;
     text-align: center;
 }
+.spot a{
+    max-width: 75%;
+    white-space: normal;
+    text-align: center;
+}
+.submit-btn {
+    max-width: 73%;
+    white-space: normal;
+    text-align: center;
+    font-size: 16px;
+}
 .help-btn{
-    max-width: 38%;
+    max-width: 49%;
     white-space: normal;
     text-align: center;
 }
 .cta-btn{
-    max-width: 100%;
+    max-width: 81%;
     white-space: normal;
     text-align: center;
 }
@@ -5071,14 +5080,17 @@ section,
     .progress-content p,
     .proof-text,
     .help-subtitle,
-    .contact-container,
-    .contact-subtitle {
+    .contact-container {
         text-align: left;
+        text-align-last: auto;
+    }
+     .contact-subtitle {
+        text-align: center;
         text-align-last: auto;
     }
 
     .faq-item summary {
-        font-size: clamp(1rem, 4.5vw, 1.25rem);
+        font-size: clamp(0rem, 3.5vw, 1.25rem);
         padding: 20px 18px;
         gap: 14px;
     }
@@ -5176,11 +5188,14 @@ section,
     .cta-section,
     .faq-section,
     .help-section,
-    .contact-section,
     .disclaimer {
         padding-inline: 12px;
     }
-
+     .contact-section{
+         padding-inline: 12px;
+         padding-top: 0px;
+         padding-bottom: 0px;
+     }
     .card1,
     .card0,
     .proof-card,
@@ -5691,15 +5706,17 @@ img.climb {
 }
 
 .disclaimer-dropdown {
-    width: 100%;
+    width: 83%;
     max-width: 100%;
     margin: 0;
-    border: 1px solid var(--border-color);
+    border: 1px  var(--border-color);
     border-left: 0;
     border-right: 0;
-    border-radius: 0;
+    border-radius: 100;
     overflow: hidden;
     background: var(--bg-primary);
+    margin-left: 25px;
+
 }
 
 .disclaimer-summary {
@@ -5757,7 +5774,7 @@ img.climb {
     background: none;
     padding: 0;
     border: none;
-    max-width: 66%;
+    max-width: 115%;
 }
 
 @media (max-width: 600px) {
@@ -5804,7 +5821,7 @@ img.climb {
 
 .trust-advisory {
     width: min(100%, 760px);
-    margin: 18px auto 0 !important;
+    margin: 0px auto 0 !important;
     padding: 8px 16px;
     /* background: rgba(18, 18, 18, 0.82); */
     color: #740A03 !important;
@@ -5842,7 +5859,7 @@ img.climb {
     font-weight: 700;
     text-decoration: none;
     white-space: nowrap !important;
-    font-size: inherit;
+    font-size: 12px;
 }
 
 .trust-telegram a:hover,
@@ -5886,7 +5903,7 @@ img.climb {
     }
 
     .trust {
-        padding: 30px 6px;
+        padding: 0px 6px;
     }
 
     .trust > div {
@@ -6023,7 +6040,7 @@ img.climb {
 }
 
 .trust-growth-line {
-    font-size: clamp(12px, 3.8vw, 15px);
+    font-size: clamp(10px, 2.8vw, 15px);
     font-weight: 600;
 }
 
@@ -6406,5 +6423,35 @@ img.climb {
 @media (max-width: 600px) {
     .benefits-section .card p {
         font-size: 15px !important;
+    }
+}
+
+/* Compact FAQ boxes */
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.faq-item summary {
+    min-height: 54px;
+    padding: 14px 20px !important;
+}
+
+.faq-item[open] summary {
+    padding-bottom: 10px !important;
+}
+
+.faq-item p {
+    padding: 0 20px 14px !important;
+    line-height: 1.45;
+}
+
+@media (max-width: 575px) {
+    .faq-item summary {
+        min-height: 48px;
+        padding: 12px 14px !important;
+    }
+
+    .faq-item p {
+        padding: 0 14px 12px !important;
     }
 }
