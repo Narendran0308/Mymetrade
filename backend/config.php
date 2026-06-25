@@ -14,9 +14,9 @@ define('DB_NAME', 'mymetrades_db');
 
 // Gmail Configuration
 
-define('GMAIL_EMAIL', 'narendrans0308@gmail.com');  // Your Gmail address
+define('GMAIL_EMAIL', 'themymetrades@gmail.com');  // Your Gmail address
 
-define('GMAIL_PASSWORD', 'ttay kbwg qyqn kujh');  // Gmail App Password (NOT regular password)
+define('GMAIL_PASSWORD', 'kcjv zrdf ipfu yqps');  // Gmail App Password (NOT regular password)
 
 
 
@@ -32,7 +32,7 @@ define('MAIL_FROM_NAME', 'Mymetrades');
 
 define('APP_NAME', 'Mymetrades');
 
-define('APP_URL', 'http://localhost/Mymetrades-main/');
+define('APP_URL', 'http://localhost/Mymetrades-main%20-%20Copy/');
 
 
 

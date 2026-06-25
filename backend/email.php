@@ -170,8 +170,10 @@ class EmailSender {
             $mail->msgHTML($htmlBody);
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
-            $mail->SMTPDebug = 2;
-            $mail->Debugoutput = 'html';
+            $mail->SMTPDebug = 0;
+            $mail->Debugoutput = function ($str, $level) {
+                error_log("PHPMailer debug [$level]: $str");
+            };
 
             if ($mail->send()) {
                 return true;

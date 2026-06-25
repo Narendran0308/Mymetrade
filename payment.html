@@ -115,6 +115,9 @@
                     <p class="qr-note">Transfer the exact plan amount shown above. After payment, share your screenshot with the team for admin verification.</p>
                     <a href="index.html#contact-section" class="payment-contact">Contact Support</a>
                 </div>
+                <button type="button" class="pay-now-btn payment-test-continue" id="test-continue-btn">
+                    Continue to Videos (Testing Only)
+                </button>
                 </div>
             </section>
         </main>
@@ -170,6 +173,7 @@
         const paymentSelectedPlan = document.getElementById("payment-selected-plan");
         const qrPlanAmount = document.getElementById("qr-plan-amount");
         const qrPlanName = document.getElementById("qr-plan-name");
+        const testContinueButton = document.getElementById("test-continue-btn");
 
         let activePlanType = sessionStorage.getItem("selectedPlan") || "weekly";
 
@@ -248,6 +252,42 @@
             qrPanel.setAttribute("aria-hidden", "false");
             payNowButton.style.display = "none";
             qrPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+
+        testContinueButton.addEventListener("click", () => {
+            testContinueButton.disabled = true;
+            testContinueButton.textContent = "Granting test access...";
+
+            const formData = new FormData();
+            formData.append("plan_type", activePlanType);
+
+            fetch("backend/grant_test_access.php", {
+                method: "POST",
+                credentials: "same-origin",
+                body: formData
+            })
+                .then((response) => {
+                    if (response.status === 401) {
+                        window.location.href = "login.html?next=course-videos";
+                        return null;
+                    }
+                    return response.ok ? response.json() : null;
+                })
+                .then((data) => {
+                    if (!data) return;
+                    if (data.success) {
+                        window.location.href = "videos.html";
+                        return;
+                    }
+                    alert(data.message || "Could not grant test access.");
+                })
+                .catch(() => {
+                    alert("Could not grant test access. Is Apache/XAMPP running?");
+                })
+                .finally(() => {
+                    testContinueButton.disabled = false;
+                    testContinueButton.textContent = "Continue to Videos (Testing Only)";
+                });
         });
 
         ensureTermsOrLogin().then(() => {

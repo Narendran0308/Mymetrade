@@ -724,6 +724,10 @@ p {
     .content strong {
         white-space: normal;
     }
+
+    .content .content-line {
+        white-space: nowrap;
+    }
 }
 
 .element {
