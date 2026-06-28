@@ -11,6 +11,17 @@ header('Expires: 0');
 ensure_course_videos_table($db);
 ensure_payment_tables($db);
 
+if (!is_member_authenticated()) {
+    http_response_code(401);
+    echo json_encode([
+        'success' => false,
+        'reason' => 'login_required',
+        'message' => 'Please log in with your email to view videos.',
+        'membership' => null,
+    ]);
+    exit;
+}
+
 $access = video_access_status($db);
 
 if (!$access['allowed']) {
