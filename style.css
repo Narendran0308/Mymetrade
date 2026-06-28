@@ -5265,7 +5265,11 @@ section,
         font-size: 18px;
     }
 }
-
+ @media (max-width: 375px){
+    .content-note-sub{
+        font-size: 10px !important;
+    }
+}
 @media (max-width: 360px) {
     .navbar {
         width:100%;
@@ -6190,6 +6194,13 @@ img.climb {
     font-size: 20px;
     color: var(--text-secondary);
     -webkit-text-fill-color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+    .content-note-sub {
+        font-size: 12px !important;
+        line-height: 1.45;
+    }
 }
 /* ── HERO VIDEO SECTION GAP REDUCTION ── */
 .hero-video-section {
