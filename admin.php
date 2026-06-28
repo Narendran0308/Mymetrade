@@ -214,8 +214,8 @@ if ($isAuthenticated) {
         'paid_members' => scalar_value($db, "SELECT COUNT(DISTINCT user_id) FROM subscriptions WHERE status = 'active' AND (end_date IS NULL OR end_date > NOW())")
     ];
 
-    // Load latest contact messages (include id so we can mark them as read when viewed)
-    $recentContacts = fetch_all_rows($db->query("SELECT id, name, email, message, status, ip_address, created_at FROM contact_messages ORDER BY created_at DESC LIMIT 10"));
+    // Load all contact messages. The dashboard paginates them client-side, 10 at a time.
+    $recentContacts = fetch_all_rows($db->query("SELECT id, name, email, message, status, ip_address, created_at FROM contact_messages ORDER BY created_at DESC"));
 
     // If any of the loaded messages are still 'new', mark them as 'read' since admin is viewing them
     $newIds = [];
@@ -239,7 +239,7 @@ if ($isAuthenticated) {
             $stats['new_contacts'] = scalar_value($db, "SELECT COUNT(*) FROM contact_messages WHERE status = 'new'");
         }
     }
-    $recentVisits = fetch_all_rows($db->query("SELECT page_title, page_url, referrer, ip_address, user_agent, visited_at FROM website_visits ORDER BY visited_at DESC LIMIT 12"));
+    $recentVisits = fetch_all_rows($db->query("SELECT page_title, page_url, referrer, ip_address, user_agent, visited_at FROM website_visits ORDER BY visited_at DESC"));
     $recentMembers = fetch_all_rows($db->query(
         "SELECT u.id, u.email, u.first_name, u.last_name, u.phone, u.status, u.created_at, u.last_login, u.pending_plan,
             s.plan_type AS active_plan, s.end_date AS active_end_date, s.status AS sub_status,
@@ -552,6 +552,43 @@ if ($isAuthenticated) {
             max-width: 420px;
             color: var(--text-secondary);
             line-height: 1.5;
+        }
+
+        .table-pager {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 20px 18px;
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+        .table-pager-info {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .table-pager-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .table-pager button {
+            min-width: 82px;
+            padding: 9px 13px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .table-pager button:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
         }
 
         .status {
@@ -1017,10 +1054,10 @@ if ($isAuthenticated) {
                 <section class="panel" id="contacts">
                     <div class="panel-header">
                         <h2>Contact Form Messages</h2>
-                        <span>Latest 10</span>
+                        <span><?= e(count($recentContacts)) ?> total</span>
                     </div>
                     <div class="table-wrap">
-                        <table>
+                        <table data-paged-table="contacts" data-page-size="10">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -1045,16 +1082,23 @@ if ($isAuthenticated) {
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div class="table-pager" data-pager-for="contacts" hidden>
+                            <span class="table-pager-info"></span>
+                            <div class="table-pager-actions">
+                                <button type="button" data-pager-prev>Previous</button>
+                                <button type="button" data-pager-next>Next</button>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <section class="panel" id="visits">
                     <div class="panel-header">
                         <h2>Recent Website Visits</h2>
-                        <span>Latest 12</span>
+                        <span><?= e(count($recentVisits)) ?> total</span>
                     </div>
                     <div class="table-wrap">
-                        <table>
+                        <table data-paged-table="visits" data-page-size="10">
                             <thead>
                                 <tr>
                                     <th>Page</th>
@@ -1080,6 +1124,13 @@ if ($isAuthenticated) {
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div class="table-pager" data-pager-for="visits" hidden>
+                            <span class="table-pager-info"></span>
+                            <div class="table-pager-actions">
+                                <button type="button" data-pager-prev>Previous</button>
+                                <button type="button" data-pager-next>Next</button>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -1230,6 +1281,8 @@ if ($isAuthenticated) {
 <script>
 document.addEventListener('DOMContentLoaded', function(){
     var btn = document.getElementById('reset-dashboard-button');
+    initPagedTables();
+
     if (!btn) return;
 
     btn.addEventListener('click', function(){
@@ -1285,6 +1338,58 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     });
 });
+
+function initPagedTables() {
+    document.querySelectorAll('[data-paged-table]').forEach(function(table) {
+        var tableId = table.getAttribute('data-paged-table');
+        var pageSize = parseInt(table.getAttribute('data-page-size') || '10', 10);
+        var tbody = table.querySelector('tbody');
+        var rows = tbody ? Array.from(tbody.querySelectorAll('tr')) : [];
+        var pager = document.querySelector('[data-pager-for="' + tableId + '"]');
+
+        if (!tbody || !pager || rows.length <= pageSize || rows.some(function(row) {
+            return row.querySelector('.muted') && row.children.length === 1;
+        })) {
+            return;
+        }
+
+        var info = pager.querySelector('.table-pager-info');
+        var prev = pager.querySelector('[data-pager-prev]');
+        var next = pager.querySelector('[data-pager-next]');
+        var page = 0;
+        var totalPages = Math.ceil(rows.length / pageSize);
+
+        function renderPage() {
+            var start = page * pageSize;
+            var end = Math.min(start + pageSize, rows.length);
+
+            rows.forEach(function(row, index) {
+                row.hidden = index < start || index >= end;
+            });
+
+            info.textContent = 'Showing ' + (start + 1) + '-' + end + ' of ' + rows.length;
+            prev.disabled = page === 0;
+            next.disabled = page >= totalPages - 1;
+            pager.hidden = false;
+        }
+
+        prev.addEventListener('click', function() {
+            if (page > 0) {
+                page -= 1;
+                renderPage();
+            }
+        });
+
+        next.addEventListener('click', function() {
+            if (page < totalPages - 1) {
+                page += 1;
+                renderPage();
+            }
+        });
+
+        renderPage();
+    });
+}
 </script>
 
 </body>
