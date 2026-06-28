@@ -5317,10 +5317,10 @@ input[type="submit"],
 .para a,
 .submit-btn,
 .card0.payment-plan-card .payment-select-btn {
-    background: #ffff00 important;
+    background: #ffff00 !important;
     background-image: none !important;
     color: #0a0a0a !important;
-    border-color: #ffff00 important;
+    border-color: #ffff00 !important;
     box-shadow: none !important;
 }
 .join-btn{
@@ -5401,6 +5401,31 @@ input[type="submit"]:focus-visible,
     background-image: none !important;
     border-color: #FFFF00 !important;
     color: #0a0a0a !important;
+}
+
+.secure-cta:hover,
+.secure-cta:focus-visible,
+.price-btn:hover,
+.price-btn:focus-visible,
+.cta-btn:hover,
+.cta-btn:focus-visible,
+.help-btn:hover,
+.help-btn:focus-visible,
+.submit-btn:hover,
+.submit-btn:focus-visible,
+.progress-spot a:hover,
+.progress-spot a:focus-visible,
+.spot a:hover,
+.spot a:focus-visible,
+.para a:hover,
+.para a:focus-visible,
+.pay-now-btn:hover,
+.pay-now-btn:focus-visible {
+    background: #FFFF00 !important;
+    background-image: none !important;
+    border-color: #FFFF00 !important;
+    color: #0a0a0a !important;
+    box-shadow: none !important;
 }
 
 /* Hero note responsive wrapping */
