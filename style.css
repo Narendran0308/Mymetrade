@@ -1262,7 +1262,7 @@ p {
     background: var(--accent-gradient);
     font-family: "Montserrat", sans-serif;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 15px 100px;
     border-radius: var(--radius-sm);
     box-shadow: 0 6px 20px var(--accent-glow);
     display: inline-block;
@@ -1766,12 +1766,30 @@ ul li::after {
 .price-btn,
 .cta-btn,
 .help-btn,
-.progress-spot a,
 .submit-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 20px;
+    padding: 15px 20px;
+    border: none;
+    background: var(--accent-gradient);
+    color: var(--btn-text) !important;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    font-size: clamp(14px, 2.6vw, 18px);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    box-shadow: 0 6px 18px var(--accent-glow);
+    text-decoration: none;
+    word-wrap: break-word;
+}
+.progress-spot a
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 60px;
     border: none;
     background: var(--accent-gradient);
     color: var(--btn-text) !important;
@@ -1808,9 +1826,14 @@ ul li::after {
     color: var(--btn-text) !important;
 }
 
-.cta-btn,
+.cta-btn{
+    
+    width: clamp(280px, 90%, 422px);
+    max-width: 54%;
+    height: 57px;
+}
 .help-btn {
-    width: clamp(280px, 90%, 462px);
+    width: clamp(280px, 90%, 355px);
     max-width: 54%;
     height: 57px;
 }
@@ -2387,7 +2410,7 @@ html {
     background: var(--accent-color);
     color: var(--btn-text);
     border: none;
-    padding: 16px 60px;
+    padding: 18px 94px;
     font-size: 24px;
     font-weight: 600;
     border-radius: 12px;
@@ -4643,7 +4666,7 @@ footer {
 }
 .faq-list{
     width: min(100%, 1400px);
-    max-width: 100%;
+    max-width: 76%;
     margin-inline: auto;
     box-sizing: border-box;
 }
@@ -4941,7 +4964,7 @@ section,
     max-width: 73%;
     white-space: normal;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
 }
 .help-btn{
     max-width: 49%;
@@ -4949,7 +4972,7 @@ section,
     text-align: center;
 }
 .cta-btn{
-    max-width: 81%;
+    max-width: 73%;
     white-space: normal;
     text-align: center;
 }
@@ -5700,6 +5723,14 @@ img.climb {
         max-width: 36px;
         max-height: 28px;
     }
+    .disclaimer-summary {
+        padding: 14px 18px;
+        /* width: 10px; */
+    }
+    .disclaimer-dropdown{
+        width: auto;
+    }
+
 }
 
 /* ── DISCLAIMER DROPDOWN ── */
@@ -5710,18 +5741,20 @@ img.climb {
 }
 
 .disclaimer-dropdown {
-    width: 83%;
+    width: 54%;
     max-width: 100%;
     margin: 0;
-    border: 1px  var(--border-color);
+    border: 1px solid var(--border-color);
     border-left: 0;
     border-right: 0;
-    border-radius: 100;
+    border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--bg-primary);
-    margin-left: 25px;
+    margin-left: 32px; /* moved slightly right */
+    margin: 0 auto;
 
 }
+
 
 .disclaimer-summary {
     display: flex;
@@ -5778,24 +5811,64 @@ img.climb {
     background: none;
     padding: 0;
     border: none;
-    max-width: 115%;
+    max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .disclaimer {
+        padding: 34px 18px;
+    }
+
+    .disclaimer-dropdown {
+        width: min(100%, 760px);
+    }
+
+    .disclaimer-summary {
+        padding: 16px 22px;
+    }
+
+    .disclaimer-title {
+        font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+    }
+
+    .disclaimer-content {
+        padding: 0 22px 24px;
+    }
+
+    .disclaimer-content p {
+        font-size: 14px;
+        line-height: 1.75;
+    }
 }
 
 @media (max-width: 600px) {
     .disclaimer {
-        padding: 24px 0;
+        padding: 24px 12px;
+    }
+
+    .disclaimer-dropdown {
+        width: 100%;
+        border-radius: 10px;
     }
 
     .disclaimer-summary {
-        padding: 14px 18px;
+        padding: 14px 16px;
+    }
+
+    .disclaimer-title {
+        font-size: 1rem;
+        line-height: 1.3;
     }
 
     .disclaimer-content {
-        padding: 0 18px 20px;
+        padding: 0 16px 20px;
     }
 
     .disclaimer-content p {
-        font-size: 10px;
+        font-size: 12px;
+        line-height: 1.65;
+        margin-top: 16px;
+        overflow-wrap: anywhere;
     }
 }
 
@@ -6108,7 +6181,7 @@ img.climb {
 
 .content-note-sub {
     display: block;
-    font-size: 13px;
+    font-size: 20px;
     color: var(--text-secondary);
     -webkit-text-fill-color: var(--text-secondary);
 }
@@ -6457,5 +6530,104 @@ img.climb {
 
     .faq-item p {
         padding: 0 14px 12px !important;
+    }
+}
+
+/* Final responsive disclaimer sizing. */
+.disclaimer {
+    padding: 40px 20px;
+}
+
+.disclaimer-dropdown {
+    width: 57%;
+    margin-inline: auto;
+    border: 1px solid var(--border-color);
+    border-left: 0;
+    border-right: 0;
+    border-radius: var(--radius-md);
+}
+
+.disclaimer-summary {
+    min-height: 62px;
+    padding: 18px 24px;
+}
+
+.disclaimer-content {
+    padding: 0 24px 28px;
+}
+
+.disclaimer-content p {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+@media (max-width: 1024px) {
+    .disclaimer {
+        padding: 34px 18px;
+    }
+
+    .disclaimer-dropdown {
+        width: 70%;
+    }
+
+    .disclaimer-summary {
+        min-height: 58px;
+        padding: 16px 22px;
+    }
+
+    .disclaimer-content {
+        padding: 0 22px 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .disclaimer {
+        padding: 30px 15px;
+    }
+
+    .disclaimer-dropdown {
+        width: 73%;
+        border-radius: 10px;
+    }
+
+    .disclaimer-summary {
+        min-height: 52px;
+        padding: 14px 16px;
+    }
+
+    .disclaimer-title {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .disclaimer-content {
+        padding: 0 16px 20px;
+    }
+
+    .disclaimer-content p {
+        font-size: 12px;
+        line-height: 1.65;
+        margin-top: 16px;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 575px) {
+    .disclaimer {
+        padding-inline: 22px;
+    }
+
+    .disclaimer-dropdown {
+        width: 98%;
+    }
+}
+
+@media (max-width: 375px) {
+    .disclaimer {
+        padding-inline: 18px;
+    }
+
+    .disclaimer-summary {
+        padding-inline: 14px;
     }
 }
